@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  apiURL: string = 'http://18.191.97.1:4000/api/v1/';
+  apiURL: string = 'http://openchefaws-env.eba-zxrnhky2.ap-south-1.elasticbeanstalk.com/chef/v1';
   //token = localStorage.getItem('token');
  // userId = localStorage.getItem('user_id');
   httpOptions = {
@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAllUsers(){
-    return this.http.get<any>(this.apiURL + 'users', this.httpOptions);
+    return this.http.get<any>(this.apiURL + '/users/list', this.httpOptions);
   }
 
   getUserDetails(data:any){
