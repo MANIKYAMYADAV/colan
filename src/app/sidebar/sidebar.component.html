@@ -1,0 +1,594 @@
+<div class="left-side-menu sidebar">
+
+    <div class="slimscroll-menu">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <ul class="metismenu" id="side-menu">
+
+                <li class="menu-title">Navigation</li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-airplay"></i>
+                        <span class="badge badge-success badge-pill float-right">4</span>
+                        <span> Dashboards </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/dashboard1" routerLinkActive='active'>Dashboard 1</a>
+                        </li>
+                        <li>
+                            <a routerLink="/dashboard2">Dashboard 2</a>
+                        </li>
+                        <li>
+                            <a routerLink="/dashboard3">Dashboard 3</a>
+                        </li>
+                        <li>
+                            <a routerLink="/dashboard4">Dashboard 4</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-users"></i>
+                        <span class="badge badge-success badge-pill float-right"></span>
+                        <span> User </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/user-list" routerLinkActive='active'>List</a>
+                        </li>
+                        <li>
+                            <a routerLink="/user-add">Add</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-menu"></i>
+                        <span class="badge badge-success badge-pill float-right"></span>
+                        <span> Category </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a class="active" routerLink="" routerLinkActive='active'>List</a>
+                        </li>
+                        <li>
+                            <a routerLink="">Add</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-menu"></i>
+                        <span class="badge badge-success badge-pill float-right"></span>
+                        <span> Orders </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a class="active" routerLink="" routerLinkActive='active'>List</a>
+                        </li>
+                        <li>
+                            <a routerLink="">Unassigned order List</a>
+                        </li>
+                        <li>
+                            <a routerLink="">Rider rejected  order List</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-pocket"></i>
+                        <span> Apps </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/kanbar-board">Kanban Board</a>
+                        </li>
+                        <li>
+                            <a routerLink="/calendar">Calendar</a>
+                        </li>
+                        <li>
+                            <a routerLink="/contacts">Contacts</a>
+                        </li>
+                        <li>
+                            <a routerLink="/projects">Projects</a>
+                        </li>
+                        <li>
+                            <a routerLink="/tickets">Tickets</a>
+                        </li>
+                        <li>
+                            <a routerLink="/companies">Companies</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-users"></i>
+                        <span> CRM </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/crm-dashboard">Dashboard</a>
+                        </li>
+                        <li>
+                            <a routerLink="/crm-contacts">Contacts</a>
+                        </li>
+                        <li>
+                            <a routerLink="/crm-opportunities">Opportunities</a>
+                        </li>
+                        <li>
+                            <a routerLink="/crm-leads">Leads</a>
+                        </li>
+                        <li>
+                            <a routerLink="/crm-customer">Customers</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-shopping-cart"></i>
+                        <span> eCommerce </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/ecommerce-dashboard">Dashboard</a>
+                        </li>
+                        <li>
+                            <a routerLink="/ecommerce-products">Products</a>
+                        </li>
+                        <li>
+                            <a routerLink="/ecommerce-product-details">Product Detail</a>
+                        </li>
+                        <li>
+                            <a routerLink="/ecommerce-product-edit">Product Edit</a>
+                        </li>
+                        <li>
+                            <a routerLink="/ecommerce-orders">Orders</a>
+                        </li>
+                        <li>
+                            <a routerLink="/ecommerce-sellers">Sellers</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-sidebar"></i>
+                        <span class="badge badge-pink float-right">New</span>
+                        <span> Layouts </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a href="layouts-sidebar-user.html">Sidebar with User</a>
+                        </li>
+                        <li>
+                            <a href="layouts-sidebar-sm.html">Small Sidebar</a>
+                        </li>
+                        <li>
+                            <a href="layouts-dark-sidebar.html">Dark Sidebar</a>
+                        </li>
+                        <li>
+                            <a href="layouts-light-topbar.html">Light Topbar</a>
+                        </li>
+                        <li>
+                            <a href="layouts-preloader.html">Preloader</a>
+                        </li>
+                        <li>
+                            <a href="layouts-sidebar-collapsed.html">Sidebar Collapsed</a>
+                        </li>
+                        <li>
+                            <a href="layouts-boxed.html">Boxed</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-mail"></i>
+                        <span> Email </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/email-inbox">Inbox</a>
+                        </li>
+                        <li>
+                            <a routerLink="/read-email">Read Email</a>
+                        </li>
+                        <li>
+                            <a routerLink="/compose-email">Compose Email</a>
+                        </li>
+                        <li>
+                            <a routerLink="/email-template">Email Templates</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-file-text"></i>
+                        <span> Pages </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="starter">Starter</a>
+                        </li>
+                        <li>
+                            <a routerLink="/login">Log In</a>
+                        </li>
+                        <li>
+                            <a routerLink="/register">Register</a>
+                        </li>
+                        <li>
+                            <a routerLink="/signin-signup">Signin - Signup</a>
+                        </li>
+                        <li>
+                            <a routerLink="/recover-password">Recover Password</a>
+                        </li>
+                        <li>
+                            <a routerLink="/lock-screen">Lock Screen</a>
+                        </li>
+                        <li>
+                            <a routerLink="/logout">Logout</a>
+                        </li>
+                        <li>
+                            <a routerLink="/confirm-mail">Confirm Mail</a>
+                        </li>
+                        <li>
+                            <a routerLink="/error-notfound">Error 404</a>
+                        </li>
+                        <li>
+                            <a routerLink="/error-alt">Error 404-alt</a>
+                        </li>
+                        <li>
+                            <a routerLink="/error-internal">Error 500</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-package"></i>
+                        <span> Extra Pages </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/profile">Profile</a>
+                        </li>
+                        <li>
+                            <a routerLink="/timeline">Timeline</a>
+                        </li>
+                        <li>
+                            <a routerLink="/sitemap">Sitemap</a>
+                        </li>
+                        <li>
+                            <a routerLink="/invoice">Invoice</a>
+                        </li>
+                        <li>
+                            <a routerLink="/faqs">FAQs</a>
+                        </li>
+                        <li>
+                            <a routerLink="/search-results">Search Results</a>
+                        </li>
+                        <li>
+                            <a routerLink="/pricing">Pricing</a>
+                        </li>
+                        <li>
+                            <a routerLink="/maintanance">Maintenance</a>
+                        </li>
+                        <li>
+                            <a routerLink="/coming-soon">Coming Soon</a>
+                        </li>
+                        <li>
+                            <a routerLink="/gallery">Gallery</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="menu-title mt-2">Components</li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-briefcase"></i>
+                        <span> UI Elements </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a href="ui-buttons.html">Buttons</a>
+                        </li>
+                        <li>
+                            <a href="ui-cards.html">Cards</a>
+                        </li>
+                        <li>
+                            <a href="ui-portlets.html">Portlets</a>
+                        </li>
+                        <li>
+                            <a href="ui-tabs-accordions.html">Tabs & Accordions</a>
+                        </li>
+                        <li>
+                            <a href="ui-modals.html">Modals</a>
+                        </li>
+                        <li>
+                            <a href="ui-progress.html">Progress</a>
+                        </li>
+                        <li>
+                            <a href="ui-notifications.html">Notifications</a>
+                        </li>
+                        <li>
+                            <a href="ui-images.html">Images</a>
+                        </li>
+                        <li>
+                            <a href="ui-carousel.html">Carousel</a>
+                        </li>
+                        <li>
+                            <a href="ui-video.html">Embed Video</a>
+                        </li>
+                        <li>
+                            <a href="ui-dropdowns.html">Dropdowns</a>
+                        </li>
+                        <li>
+                            <a href="ui-ribbons.html">Ribbons</a>
+                        </li>
+                        <li>
+                            <a href="ui-tooltips-popovers.html">Tooltips & Popovers</a>
+                        </li>
+                        <li>
+                            <a href="ui-general.html">General UI</a>
+                        </li>
+                        <li>
+                            <a href="ui-typography.html">Typography</a>
+                        </li>
+                        <li>
+                            <a href="ui-grid.html">Grid</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-layers"></i>
+                        <span class="badge badge-info float-right">Hot</span>
+                        <span> Admin UI </span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a href="admin-widgets.html">Widgets</a>
+                        </li>
+                        <li>
+                            <a href="admin-nestable.html">Nestable List</a>
+                        </li>
+                        <li>
+                            <a href="admin-range-slider.html">Range Slider</a>
+                        </li>
+                        <li>
+                            <a href="admin-animation.html">Animation</a>
+                        </li>
+                        <li>
+                            <a href="admin-sweet-alert.html">Sweet Alert</a>
+                        </li>
+                        <li>
+                            <a href="admin-tour.html">Tour Page</a>
+                        </li>
+                        <li>
+                            <a href="admin-loading-buttons.html">Loading Buttons</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-cpu"></i>
+                        <span> Icons </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/feather-icons">Feather Icons</a>
+                        </li>
+                        <li>
+                            <a routerLink="/material-design-icons">Material Design Icons</a>
+                        </li>
+                        <li>
+                            <a routerLink="/dripicons">Dripicons</a>
+                        </li>
+                        <li>
+                            <a routerLink="/font-awesome">Font Awesome</a>
+                        </li>
+                        <li>
+                            <a routerLink="/themify">Themify</a>
+                        </li>
+                        <li>
+                            <a routerLink="/simple-line">Simple Line</a>
+                        </li>
+                        <li>
+                            <a routerLink="/weather">Weather</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-bookmark"></i>
+                        <span> Forms </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/general-elements">General Elements</a>
+                        </li>
+                        <li>
+                            <a routerLink="/advanced">Advanced</a>
+                        </li>
+                        <li>
+                            <a routerLink="/validation">Validation</a>
+                        </li>
+                        <li>
+                            <a routerLink="/pickers">Pickers</a>
+                        </li>
+                        <li>
+                            <a routerLink="/winzard">Wizard</a>
+                        </li>
+                        <li>
+                            <a routerLink="/masks">Masks</a>
+                        </li>
+                        <li>
+                            <a routerLink="/summer-note">Summernote</a>
+                        </li>
+                        <li>
+                            <a routerLink="/quilljs-editor">Quilljs Editor</a>
+                        </li>
+                        <li>
+                            <a routerLink="/file-upload">File Uploads</a>
+                        </li>
+                        <li>
+                            <a routerLink="/x-editable">X Editable</a>
+                        </li>
+                        <li>
+                            <a routerLink="/image-crop">Image Crop</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-grid"></i>
+                        <span> Tables </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a routerLink="/basic-tables">Basic Tables</a>
+                        </li>
+                        <li>
+                            <a routerLink="/data-tables">Data Tables</a>
+                        </li>
+                        <li>
+                            <a routerLink="/editable-tables">Editable Tables</a>
+                        </li>
+                        <li>
+                            <a routerLink="/responsive-tables">Responsive Tables</a>
+                        </li>
+                        <li>
+                            <a routerLink="/foo-tables">FooTable</a>
+                        </li>
+                        <li>
+                            <a routerLink="bootstrap-tables">Bootstrap Tables</a>
+                        </li>
+                        <li>
+                            <a routerLink="/tables-saw-tables">Tablesaw Tables</a>
+                        </li>
+                        <li>
+                            <a routerLink="/jsgrid-tables">JsGrid Tables</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-bar-chart-2"></i>
+                        <span> Charts </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a href="charts-flot.html">Flot Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-morris.html">Morris Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-chartjs.html">Chartjs Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-peity.html">Peity Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-chartist.html">Chartist Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-c3.html">C3 Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-sparklines.html">Sparklines Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-knob.html">Jquery Knob Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-ricksaw.html">Ricksaw Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-just-gage.html">JustGage Charts</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                        <i class="fe-map"></i>
+                        <span> Maps </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                        <li>
+                            <a href="maps-google.html">Google Maps</a>
+                        </li>
+                        <li>
+                            <a href="maps-vector.html">Vector Maps</a>
+                        </li>
+                        <li>
+                            <a href="maps-mapael.html">Mapael Maps</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-folder-plus"></i>
+                        <span> Multi Level </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level nav" aria-expanded="false">
+                        <li>
+                            <a href="javascript: void(0);">Level 1.1</a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" aria-expanded="false">Level 1.2
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-third-level nav" aria-expanded="false">
+                                <li>
+                                    <a href="javascript: void(0);">Level 2.1</a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);">Level 2.2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li> -->
+            </ul>
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
+
+    </div>
+    <!-- Sidebar -left -->
+
+</div>
