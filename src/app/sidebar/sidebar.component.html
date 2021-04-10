@@ -15,7 +15,7 @@
                         <span class="badge badge-success badge-pill float-right">4</span>
                         <span> Dashboards </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                    <ul class="nav-second-level" aria-expanded="false" [hidden]="!isShow">
                         <li>
                             <a routerLink="/dashboard1" routerLinkActive='active'>Dashboard 1</a>
                         </li>
@@ -54,10 +54,10 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
                         <li>
-                            <a class="active" routerLink="" routerLinkActive='active'>List</a>
+                            <a class="active" routerLink="/category-list" routerLinkActive='active'>List</a>
                         </li>
                         <li>
-                            <a routerLink="">Add</a>
+                            <a routerLink="/category-add">Add</a>
                         </li>
                     
                     </ul>
@@ -70,7 +70,7 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
                         <li>
-                            <a class="active" routerLink="" routerLinkActive='active'>List</a>
+                            <a class="active" routerLink="/order-list" routerLinkActive='active'>List</a>
                         </li>
                         <li>
                             <a routerLink="">Unassigned order List</a>

@@ -179,7 +179,7 @@
 
     <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
         <li>
-            <button class="button-menu-mobile waves-effect waves-light" (click)="toggleSidebar()"  >
+            <button class="button-menu-mobile waves-effect waves-light" (click)="toggleSidebar()">
                 <i class="fe-menu"></i>
             </button>
         </li>
@@ -334,4 +334,4 @@
 </div>
 <!-- end Topbar -->
 
-<app-sidebar *ngIf="isShowSideBar"></app-sidebar>
+<app-sidebar [hidden]="isShowSideBar"></app-sidebar>
