@@ -25,7 +25,7 @@
                                 <li class="breadcrumb-item active">Datatables</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Datatables</h4>
+                        <h4 class="page-title">Category</h4>
                     </div>
                 </div>
             </div>
@@ -43,24 +43,41 @@
 
                             <h4 class="header-title">Category-List</h4>
 
-                            <button type="button" class="btn btn-success waves-effect waves-light d-block ml-auto"
-                                data-toggle="modal" data-target="#con-close-modal">+Add User</button>
-                            <br>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="fullname">Search</label>&nbsp;
+                                    <input class="form-control" type="search" placeholder="Search.."
+                                        [(ngModel)]="searchTerm">
+                                    <!-- <span><i class="fa fa-search"></i></span> -->
+
+                                </div>
+                                <div class="form-group d-block ml-auto">
+                                    <button type="button" class="btn btn-success waves-effect waves-light "
+                                        data-toggle="modal" data-target="#con-close-modal">+Add Category</button>
+                                </div>
+                            </div>
+
 
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
+                                        <th>Index</th>
+                                        <th>Id</th>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>ParentId</th>
+
                                     </tr>
                                 </thead>
 
 
-                                <tbody></tbody>
+                                <tbody>
+                                    <tr *ngFor="let category of categories | filter:searchTerm; let i= index">
+                                        <td>{{i}}</td>
+                                        <td>{{category.id}}</td>
+                                        <td>{{category.name}}</td>
+                                        <td>{{category.parentId}}</td>
+                                    </tr>
+                                </tbody>
                             </table>
 
                         </div> <!-- end card body-->
@@ -106,10 +123,10 @@
 
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-full">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Modal Content is Responsive</h4>
+                <h4 class="modal-title">Category Form Modal</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
@@ -120,67 +137,20 @@
                     <div class="card-body p-4">
                         <form action="#">
 
-                            <h1 class="text-center">Add-User Form</h1>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="p-sm-3">
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
-                                        </div>
-
-                                        <div class="custom-control custom-checkbox pt-1">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
-                                            <label class="custom-control-label" for="checkbox-signup">I accept <a
-                                                    href="javascript: void(0);" class="text-dark">Terms and
-                                                    Conditions</a></label>
-                                        </div>
+                            <h1 class="text-center">Add-Category Form</h1>
 
 
-                                    </div>
-                                </div> <!-- end col -->
-
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="p-sm-3">
-
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
-                                        </div>
-                                        <div class="form-group form-inline mb-0">
-
-                                            <button class="btn btn-success btn-sm float-sm-right text-center"
-                                                type="submit"> Add User </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div> <!-- end col -->
+                            <div class="form-group">
+                                <label for="fullname">Name</label>
+                                <input class="form-control" type="text" id="fullname" placeholder="Enter category name"
+                                    required>
                             </div>
-                            <!-- end row-->
+                            <div class="form-group">
+                                <label for="fullname">Parent ID</label>
+                                <input class="form-control" type="text" id="fullname" placeholder="Enter parent id"
+                                    required>
+                            </div>
+
 
                         </form>
                     </div> <!-- end card-body -->

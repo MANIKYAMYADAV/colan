@@ -136,6 +136,9 @@ import { AddCategoryComponent } from './Category/add-category/add-category.compo
 import { OrderListComponent } from './Order/order-list/order-list.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import {HttpClientModule} from '@angular/common/http'
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { AddProductComponent } from './Product/add-product/add-product.component';
+import { ProductListComponent } from './Product/product-list/product-list.component'
 
 
 @NgModule({
@@ -264,7 +267,9 @@ import {HttpClientModule} from '@angular/common/http'
     CategoryListComponent,
     AddCategoryComponent,
     OrderListComponent,
-    UserListComponent
+    UserListComponent,
+    AddProductComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -273,7 +278,8 @@ import {HttpClientModule} from '@angular/common/http'
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     {

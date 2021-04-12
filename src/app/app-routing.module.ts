@@ -67,6 +67,8 @@ import { RecoverPasswordComponent } from './Pages/recover-password/recover-passw
 import { RegisterComponent } from './Pages/register/register.component';
 import { SigninSignupComponent } from './Pages/signin-signup/signin-signup.component';
 import { StarterComponent } from './Pages/starter/starter.component';
+import { AddProductComponent } from './Product/add-product/add-product.component';
+import { ProductListComponent } from './Product/product-list/product-list.component';
 import { SettingComponent } from './setting/setting.component';
 import { BasicTablesComponent } from './Tables/basic-tables/basic-tables.component';
 import { BootstrapTablesComponent } from './Tables/bootstrap-tables/bootstrap-tables.component';
@@ -96,6 +98,9 @@ const routes: Routes = [
   {path:'category-list',component:CategoryListComponent},
   {path:'category-add',component:AddCategoryComponent},
   {path:'order-list',component:OrderListComponent},
+  {path:'product-list',component:ProductListComponent},
+  {path:'add-product',component:AddProductComponent},
+
 
 
   { path: 'calendar', component: CalendarComponent },

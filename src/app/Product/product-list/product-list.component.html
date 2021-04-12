@@ -1,4 +1,6 @@
+<app-header></app-header>
 
+<app-sidebar></app-sidebar>
 
 
 
@@ -6,7 +8,12 @@
 <!-- Start Page Content here -->
 <!-- ============================================================== -->
 
-   
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -18,8 +25,7 @@
                                 <li class="breadcrumb-item active">Datatables</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Orders</h4>
-                        <button class="btn btn-primary m-1" routerLink="/dashboard1">back to home</button>
+                        <h4 class="page-title">Datatables</h4>
                     </div>
                 </div>
             </div>
@@ -35,41 +41,48 @@
 
                         <div class="card-body">
 
-                            <h4 class="header-title">Orders-List</h4>
+                            <h4 class="header-title">Users-List</h4>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="fullname">Search</label>&nbsp;
+                                    <input class="form-control" type="search" placeholder="Search.."
+                                        [(ngModel)]="searchTerm">
+                                    <!-- <span><i class="fa fa-search"></i></span> -->
 
-                            <button type="button" class="btn btn-success waves-effect waves-light d-block ml-auto"
-                                data-toggle="modal" data-target="#con-close-modal">+Add Order</button>
+                                </div>
+                                <div class="form-group d-block ml-auto">
+                                    <button type="button"
+                                        class="btn btn-success waves-effect waves-light "
+                                        data-toggle="modal" data-target="#con-close-modal">+Add User</button>
+                                </div>
+                            </div>
+
+
                             <br>
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th>AdressId</th>
-                                        <th>ChefId</th>
-                                        <th>ChefName</th>
-                                        <th>CreatedDate</th>
-                                        <th>DeliveryAddress</th>
-                                        <th>DeliveryOption</th>
-                                        <th>Description</th>
-                                        <th>Discount</th>
-                                        <th>ImagePath</th>
+
                                         <th>Name</th>
-                                        <th>OrderId</th>
-                                        <!-- <th>PaymentId</th>
-                                        <th>PaymentMode</th>
-                                        <th>Price</th>
-                                        <th>ProductId</th>
-                                        <th>Quantity</th>
-                                        <th>Reward</th>
-                                        <th>Stage</th>
-                                        <th>Total</th> -->
-                                        <th>UserName</th>
-                                        
-                                        
+                                        <th>Description</th>
+                                        <th>Email</th>
+                                        <!-- <th>mobile</th> -->
+                                        <!-- <th>Ending date</th>  -->
+                                        <th>Rating</th>
+                                        <!-- <th>Rating Count</th> -->
+                                        <th>Role</th>
+                                        <!-- <th>Subscription Purchase Date</th> -->
+                                        <th>Subscription</th>
+                                        <th>Subscription cost</th>
+                                        <th>isActive</th>
+                                        <!-- <th>Updated Date</th> -->
                                     </tr>
                                 </thead>
 
 
-                                <tbody></tbody>
+                                <tbody>
+                                  
+                                </tbody>
                             </table>
 
                         </div> <!-- end card body-->
@@ -82,7 +95,9 @@
 
 
 
-       
+        </div> <!-- container -->
+
+    </div> <!-- content -->
 
     <!-- Footer Start -->
     <footer class="footer">
@@ -103,6 +118,7 @@
     </footer>
     <!-- end Footer -->
 
+</div>
 
 <!-- ============================================================== -->
 <!-- End Page content -->
@@ -115,7 +131,7 @@
     <div class="modal-dialog modal-full">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Order Form Modal</h4>
+                <h4 class="modal-title">Modal Content is Responsive</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
@@ -126,7 +142,7 @@
                     <div class="card-body p-4">
                         <form action="#">
 
-                            <h1 class="text-center">Add-Order Form</h1>
+                            <h1 class="text-center">Add-User Form</h1>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
@@ -178,7 +194,7 @@
                                         <div class="form-group form-inline mb-0">
 
                                             <button class="btn btn-success btn-sm float-sm-right text-center"
-                                                type="submit"> Add Order </button>
+                                                type="submit"> Add User </button>
 
                                         </div>
 

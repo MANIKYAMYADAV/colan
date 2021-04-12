@@ -42,31 +42,60 @@
                         <div class="card-body">
 
                             <h4 class="header-title">Users-List</h4>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="fullname">Search</label>&nbsp;
+                                    <input class="form-control" type="search" placeholder="Search.."
+                                        [(ngModel)]="searchTerm">
+                                    <!-- <span><i class="fa fa-search"></i></span> -->
 
-                            <button type="button" class="btn btn-success waves-effect waves-light d-block ml-auto"
-                                data-toggle="modal" data-target="#con-close-modal">+Add User</button>
+                                </div>
+                                <div class="form-group d-block ml-auto">
+                                    <button type="button"
+                                        class="btn btn-success waves-effect waves-light "
+                                        data-toggle="modal" data-target="#con-close-modal">+Add User</button>
+                                </div>
+                            </div>
+
+
                             <br>
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
+
                                         <th>Name</th>
                                         <th>Description</th>
                                         <th>Email</th>
-                                        <th>mobile</th>
-                                        <th>Ending date</th>
+                                        <!-- <th>mobile</th> -->
+                                        <!-- <th>Ending date</th>  -->
                                         <th>Rating</th>
-                                        <th>Rating Count</th>
+                                        <!-- <th>Rating Count</th> -->
                                         <th>Role</th>
-                                        <th>Subscription Purchase Date</th>
+                                        <!-- <th>Subscription Purchase Date</th> -->
                                         <th>Subscription</th>
                                         <th>Subscription cost</th>
                                         <th>isActive</th>
-                                        <th>Updated Date</th>
+                                        <!-- <th>Updated Date</th> -->
                                     </tr>
                                 </thead>
 
 
-                                <tbody></tbody>
+                                <tbody>
+                                    <tr *ngFor="let user of users | filter:searchTerm; let i= index">
+                                        <td>{{user.name}}</td>
+                                        <td>{{user.description}}</td>
+                                        <td>{{user.emailId}}</td>
+                                        <!-- <td>{{user.mobile}}</td> -->
+                                        <!-- <td>{{user.endingDate}}</td> -->
+                                        <td>{{user.rating}}</td>
+                                        <!-- <td>{{user.ratingCount}}</td> -->
+                                        <td>{{user.role}}</td>
+                                        <td>{{user.subcription}}</td>
+                                        <td>{{user.subscriptionCost}}</td>
+                                        <td>{{user.isActive}}</td>
+                                        <!-- <td>{{user.updatedDate}}</td> -->
+                                    </tr>
+                                </tbody>
                             </table>
 
                         </div> <!-- end card body-->
