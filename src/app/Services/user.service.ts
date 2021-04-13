@@ -33,6 +33,10 @@ export class UserService {
     return this.http.post<any>(this.apiURL+'',data ,this.httpOptions);
   }
 
+  deleteUser(id){
+    return this.http.delete<any>(this.apiURL+`/users/inactive + ${id}`,this.httpOptions)
+  }
+
   getOrders(){
     return this.http.get<any>(this.apiURL+'/orders/all',this.httpOptions);
   }
@@ -43,6 +47,11 @@ export class UserService {
 
   addCategory(data:any){
     return this.http.post<any>(this.apiURL+'',data,this.httpOptions);
+  }
+
+
+  getAllProducts(){
+    return this.http.get<any>(this.apiURL+'/products/list',this.httpOptions)
   }
 
 }

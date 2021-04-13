@@ -73,9 +73,10 @@
                                         <th>Role</th>
                                         <!-- <th>Subscription Purchase Date</th> -->
                                         <th>Subscription</th>
-                                        <th>Subscription cost</th>
+                                        <!-- <th>Subscription cost</th> -->
                                         <th>isActive</th>
                                         <!-- <th>Updated Date</th> -->
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
 
@@ -91,9 +92,11 @@
                                         <!-- <td>{{user.ratingCount}}</td> -->
                                         <td>{{user.role}}</td>
                                         <td>{{user.subcription}}</td>
-                                        <td>{{user.subscriptionCost}}</td>
+                                        <!-- <td>{{user.subscriptionCost}}</td> -->
                                         <td>{{user.isActive}}</td>
                                         <!-- <td>{{user.updatedDate}}</td> -->
+
+                                        <td (click)="deleteUser(user.id)"><i class="fa fa-edit"></i> &nbsp;<i class="fa fa-trash"></i></td>
                                     </tr>
                                 </tbody>
                             </table>

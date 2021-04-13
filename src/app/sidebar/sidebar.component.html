@@ -31,12 +31,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                    <a href="javascript: void(0);" (click)="toggleUser()">
                         <i class="fe-users"></i>
                         <span class="badge badge-success badge-pill float-right"></span>
                         <span> User </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isUser">
                         <li>
                             <a routerLink="/user-list" routerLinkActive='active'>List</a>
                         </li>
@@ -47,12 +47,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                    <a href="javascript: void(0);" (click)="toggleCategory()">
                         <i class="fe-menu"></i>
                         <span class="badge badge-success badge-pill float-right"></span>
                         <span> Category </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isCategory">
                         <li>
                             <a class="active" routerLink="/category-list" routerLinkActive='active'>List</a>
                         </li>
@@ -63,12 +63,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                    <a href="javascript: void(0);" (click)="toggleOrder()">
                         <i class="fe-menu"></i>
                         <span class="badge badge-success badge-pill float-right"></span>
                         <span> Orders </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isOrder">
                         <li>
                             <a class="active" routerLink="/order-list" routerLinkActive='active'>List</a>
                         </li>
@@ -83,17 +83,17 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                    <a href="javascript: void(0);" (click)="toggleProduct()">
                         <i class="fe-menu"></i>
                         <span class="badge badge-success badge-pill float-right"></span>
                         <span> Products </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isShow">
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isProduct">
                         <li>
                             <a class="active" routerLink="/product-list" routerLinkActive='active'>List</a>
                         </li>
                         <li>
-                            <a routerLink="">Add</a>
+                            <a routerLink="/add-product">Add</a>
                         </li>
                     
                     </ul>

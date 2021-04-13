@@ -62,26 +62,37 @@
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
-
+                                        <th>Category Name</th>
                                         <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Email</th>
-                                        <!-- <th>mobile</th> -->
-                                        <!-- <th>Ending date</th>  -->
-                                        <th>Rating</th>
-                                        <!-- <th>Rating Count</th> -->
-                                        <th>Role</th>
-                                        <!-- <th>Subscription Purchase Date</th> -->
-                                        <th>Subscription</th>
-                                        <th>Subscription cost</th>
+                                        <th>Delivery Time</th>
                                         <th>isActive</th>
-                                        <!-- <th>Updated Date</th> -->
+                                        <th>Rating</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Stock</th>
+                                        <th>UserName</th>
+                                        <th>User Address</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                  
+                                  <tr *ngFor="let product of products | filter:searchTerm ; let i=index">
+
+                                    <td>{{product.categoryName}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.deliveryTime}}</td>
+                                    <td>{{product.isActive}}</td>
+                                    <td>{{product.rating}}</td>
+                                    <td>{{product.price}}</td>
+                                    <td>{{product.quantity}}</td>
+                                    <td>{{product.status}}</td>
+                                    <td>{{product.stock}}</td>
+                                    <td>{{product.userName}}</td>
+                                    <td>{{product.userAddress}}</td>
+
+                                  </tr>
                                 </tbody>
                             </table>
 
