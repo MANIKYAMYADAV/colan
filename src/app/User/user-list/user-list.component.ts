@@ -9,11 +9,17 @@ import { UserService } from 'src/app/Services/user.service';
 export class UserListComponent implements OnInit {
   searchTerm: any;
   users:any[]=[];
+  userId:any;
 
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
     this.getAllUsers();
+  }
+
+  getUserId(id){
+    this.userId = '';
+    this.userId = id;
   }
 
   getAllUsers(){
@@ -23,9 +29,10 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  deleteUser(id){
-    this.userService.deleteUser(id).subscribe((response)=>{
+  deleteUser(){
+    this.userService.deleteUser(this.userId).subscribe((response)=>{
       console.log("User Deleted : ",response.data)
+      this.getAllUsers();
     })
   
   }
