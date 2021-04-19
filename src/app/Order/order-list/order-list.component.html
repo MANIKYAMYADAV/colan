@@ -1,4 +1,6 @@
+<app-header></app-header>
 
+<app-sidebar></app-sidebar>
 
 
 
@@ -6,7 +8,12 @@
 <!-- Start Page Content here -->
 <!-- ============================================================== -->
 
-   
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -18,8 +25,7 @@
                                 <li class="breadcrumb-item active">Datatables</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Orders</h4>
-                        <button class="btn btn-primary m-1" routerLink="/dashboard1">back to home</button>
+                        <h4 class="page-title">Datatables</h4>
                     </div>
                 </div>
             </div>
@@ -36,40 +42,93 @@
                         <div class="card-body">
 
                             <h4 class="header-title">Orders-List</h4>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="fullname">Search</label>&nbsp;
+                                    <input class="form-control" type="search" placeholder="Search.."
+                                        [(ngModel)]="searchTerm">
+                                    <!-- <span><i class="fa fa-search"></i></span> -->
 
-                            <button type="button" class="btn btn-success waves-effect waves-light d-block ml-auto"
-                                data-toggle="modal" data-target="#con-close-modal">+Add Order</button>
+                                </div>
+                                <div class="form-group d-block ml-auto">
+                                    <button type="button" class="btn btn-success waves-effect waves-light "
+                                        data-toggle="modal" data-target="#con-close-modal">+Add Order</button>
+                                </div>
+                            </div>
+
+
                             <br>
                             <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
+                                        <th>UserName</th>
+
                                         <th>AdressId</th>
-                                        <th>ChefId</th>
+                                        <!-- <th>ChefId</th> -->
                                         <th>ChefName</th>
-                                        <th>CreatedDate</th>
+                                        <!-- <th>CreatedDate</th> -->
                                         <th>DeliveryAddress</th>
-                                        <th>DeliveryOption</th>
-                                        <th>Description</th>
+                                        <!-- <th>DeliveryOption</th> -->
+                                        <!-- <th>Description</th> -->
                                         <th>Discount</th>
-                                        <th>ImagePath</th>
+                                        <th>Price</th>
+
+                                        <!-- <th>ImagePath</th> -->
                                         <th>Name</th>
                                         <th>OrderId</th>
+                                        <th>Actions</th>
                                         <!-- <th>PaymentId</th>
-                                        <th>PaymentMode</th>
-                                        <th>Price</th>
-                                        <th>ProductId</th>
-                                        <th>Quantity</th>
-                                        <th>Reward</th>
-                                        <th>Stage</th>
-                                        <th>Total</th> -->
-                                        <th>UserName</th>
-                                        
-                                        
+                                                    <th>PaymentMode</th>
+                                                    
+                                                    <th>ProductId</th>
+                                                    <th>Quantity</th>
+                                                    <th>Reward</th>
+                                                    <th>Stage</th>
+                                                    <th>Total</th> -->
+
+
                                     </tr>
                                 </thead>
 
 
-                                <tbody></tbody>
+                                <tbody>
+                                    <tr *ngFor="let order of orders | filter:searchTerm; let i= index">
+                                        <td>{{order.userName}}</td>
+                                        <td>{{order.adressId}}</td>
+                                        <td>{{order.chefName}}</td>
+                                        <!-- <td>{{user.mobile}}</td> -->
+                                        <!-- <td>{{user.endingDate}}</td> -->
+                                        <td>{{order.deliveryAddress}}</td>
+                                        <!-- <td>{{user.ratingCount}}</td> -->
+                                        <td>{{order.discount}}</td>
+                                        <td>{{order.price}}</td>
+                                        <!-- <td>{{user.subscriptionCost}}</td> -->
+                                        <td>{{order.name}}</td>
+                                        <td>{{order.orderId}}</td>
+                                        <!-- <td>{{user.updatedDate}}</td> -->
+
+                                        <!-- <td (click)="deleteUser(user.id)"><i class="fa fa-edit"></i> &nbsp;<i class="fa fa-trash"></i></td>
+                                                    <td>
+                                                        <a (click)="getUserId(user._id)" data-toggle="modal" data-target="#deleteModal">
+                                                            <i class="fas fa-trash"></i>
+                                                    </td> -->
+
+
+                                        <td>
+
+
+                                            <a>
+                                                <i class="far fa-edit"></i>
+                                            </a> &nbsp;
+
+                                            <a>
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+
+
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
 
                         </div> <!-- end card body-->
@@ -82,7 +141,9 @@
 
 
 
-       
+        </div> <!-- container -->
+
+    </div> <!-- content -->
 
     <!-- Footer Start -->
     <footer class="footer">
@@ -103,19 +164,42 @@
     </footer>
     <!-- end Footer -->
 
+</div>
 
 <!-- ============================================================== -->
 <!-- End Page content -->
 <!-- ============================================================== -->
 
-
+<!-- delete Modal HTML (click)=" deleteUser()"-->
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a custom field that you are going to delete. Be sure this is what you want to do. Once you
+                    delete this custom field, this data will be gone forever. We CANNOT RESTORE this data.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes, delete
+                    it!</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-full">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Order Form Modal</h4>
+                <h4 class="modal-title">Modal Content is Responsive</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
@@ -126,7 +210,7 @@
                     <div class="card-body p-4">
                         <form action="#">
 
-                            <h1 class="text-center">Add-Order Form</h1>
+                            <h1 class="text-center">Add-User Form</h1>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
@@ -178,7 +262,7 @@
                                         <div class="form-group form-inline mb-0">
 
                                             <button class="btn btn-success btn-sm float-sm-right text-center"
-                                                type="submit"> Add Order </button>
+                                                type="submit"> Add User </button>
 
                                         </div>
 
@@ -250,3 +334,117 @@
         </div>
     </div>
 </div><!-- /.modal -->
+
+
+<!--Create field Modal -->
+
+<!-- 
+<div class="modal fade" id="createField" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Field</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" [formGroup]="createFieldForm">
+                <div class="modal-body">
+                    <div class="offerBox">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Field Name</label>
+                            <input type="text" class="form-control" formControlName="field_name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Field Type</label>
+                            <div class="">
+                                <select class="form-control" formControlName="field_type">
+                                    <option value="text">Text Field</option>
+                                    <option value="datetime">Date Time Field</option>
+                                    <option value="date">Date Field</option>
+                                    <option value="time">Time Field</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Short Code Name</label>
+                            <input type="text" class="form-control" formControlName="short_code_name" placeholder="Shortcode">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Group</label>
+                            <div class="">
+                                <select class="form-control" formControlName="group_id">
+                                    <option *ngFor="let group of allGroups" value="{{group._id}}">{{group.group_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="createField(createFieldForm.value)">Create Field</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+<!--edit field Modal -->
+
+
+
+<!-- <div class="modal fade" id="editField" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Field</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" [formGroup]="createFieldForm">
+                <div class="modal-body">
+                    <div class="offerBox">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Field Name</label>
+                            <input type="text" class="form-control" formControlName="field_name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Field Type</label>
+                            <div class="">
+                                <select class="form-control" formControlName="field_type">
+                                    <option value="text">Text Field</option>
+                                    <option value="datetime">Date Time Field</option>
+                                    <option value="date">Date Field</option>
+                                    <option value="time">Time Field</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Short Code Name</label>
+                            <input type="text" class="form-control" formControlName="short_code_name" placeholder="Shortcode">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Group</label>
+                            <div class="">
+                                <select class="form-control" formControlName="group_id">
+                                    <option *ngFor="let group of allGroups" value="{{group._id}}">{{group.group_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="editField(createFieldForm.value)">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->

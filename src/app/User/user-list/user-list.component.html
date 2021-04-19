@@ -109,7 +109,7 @@
                                                         <i class="far fa-edit"></i>
                                                     </a> &nbsp;
                                                
-                                                    <a (click)="getUserId(user._id)" data-toggle="modal"
+                                                    <a (click)="getUserId(user.id)" data-toggle="modal"
                                                         data-target="#deleteModal">
                                                         <i class="fas fa-trash"></i>
                                                         </a>
@@ -191,130 +191,126 @@
                 <h4 class="modal-title">Modal Content is Responsive</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <div class="modal-body p-4">
+            <div class="card bg-pattern">
 
-
-                <div class="card bg-pattern">
-
-                    <div class="card-body p-4">
-                        <form action="#">
-
-                            <h1 class="text-center">Add-User Form</h1>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="p-sm-3">
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
-                                        </div>
-
-                                        <div class="custom-control custom-checkbox pt-1">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
-                                            <label class="custom-control-label" for="checkbox-signup">I accept <a
-                                                    href="javascript: void(0);" class="text-dark">Terms and
-                                                    Conditions</a></label>
-                                        </div>
-
-
-                                    </div>
-                                </div> <!-- end col -->
-
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="p-sm-3">
-
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
-                                        </div>
-                                        <div class="form-group form-inline mb-0">
-
-                                            <button class="btn btn-success btn-sm float-sm-right text-center"
-                                                type="submit"> Add User </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div> <!-- end col -->
-                            </div>
-                            <!-- end row-->
-
-                        </form>
-                    </div> <!-- end card-body -->
-                </div>
-
-                <!-- <div class="row">
-                                <div class="col-md-6">
+                <div class="card-body p-4">
+                    <button class="btn btn-primary" routerLink="/dashboard1">back to home</button>
+                    <form action="#" [formGroup]="userForm">
+    
+                        <h1 class="text-center">Add-User Form</h1>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="p-sm-3">
                                     <div class="form-group">
-                                        <label for="field-1" class="control-label">Name</label>
-                                        <input type="text" class="form-control" id="field-1" placeholder="John">
+                                        <label for="inputAddress">Email </label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="emailId"
+                                            placeholder="Enter email">
+                                        <div
+                                            *ngIf="(userForm.get('emailId')?.invalid && userForm.get('emailId')?.touched) || userForm.get('emailId')?.dirty">
+                                            <small *ngIf="userForm.get('emailId')?.errors?.required" class="text-danger">
+                                                Email
+                                                is required</small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="field-2" class="control-label">Surname</label>
-                                        <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                                        <label for="inputAddress">Description</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="description" placeholder="Enter description">
+                                        <div
+                                            *ngIf="(userForm.get('description')?.invalid && userForm.get('description')?.touched) || userForm.get('description')?.dirty">
+                                            <small *ngIf="userForm.get('description')?.errors?.required"
+                                                class="text-danger">description
+                                                is required</small>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="field-3" class="control-label">Address</label>
-                                        <input type="text" class="form-control" id="field-3" placeholder="Address">
+                                        <label for="inputAddress">endingDate</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="endingDate" placeholder="Enter ending Date">
+                                        <div
+                                            *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
+                                            <small *ngIf="userForm.get('endingDate')?.errors?.required"
+                                                class="text-danger">endingDate
+                                                is required</small>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+    
                                     <div class="form-group">
-                                        <label for="field-4" class="control-label">City</label>
-                                        <input type="text" class="form-control" id="field-4" placeholder="Boston">
+                                        <label for="inputAddress">Mobile</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="mobile"
+                                            placeholder="Enter mobile">
+                                        <div
+                                            *ngIf="(userForm.get('mobile')?.invalid && userForm.get('mobile')?.touched) || userForm.get('mobile')?.dirty">
+                                            <small *ngIf="userForm.get('mobile')?.errors?.required"
+                                                class="text-danger">Mobile
+                                                is required</small>
+                                        </div>
                                     </div>
+    
+    
                                 </div>
-                                <div class="col-md-4">
+                            </div> <!-- end col -->
+    
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="p-sm-3">
+    
                                     <div class="form-group">
-                                        <label for="field-5" class="control-label">Country</label>
-                                        <input type="text" class="form-control" id="field-5" placeholder="United States">
+                                        <label for="inputAddress">Rating</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="rating"
+                                            placeholder="Enter rating">
+                                        <div
+                                            *ngIf="(userForm.get('rating')?.invalid && userForm.get('rating')?.touched) || userForm.get('rating')?.dirty">
+                                            <small *ngIf="userForm.get('rating')?.errors?.required"
+                                                class="text-danger">Rating
+                                                is required</small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="field-6" class="control-label">Zip</label>
-                                        <input type="text" class="form-control" id="field-6" placeholder="123456">
+                                        <label for="inputAddress">Role</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="role"
+                                            placeholder="Enter role">
+                                        <div
+                                            *ngIf="(userForm.get('role')?.invalid && userForm.get('role')?.touched) || userForm.get('role')?.dirty">
+                                            <small *ngIf="userForm.get('role')?.errors?.required" class="text-danger">Role
+                                                is required</small>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group no-margin">
-                                        <label for="field-7" class="control-label">Personal Info</label>
-                                        <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Subscription</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="subscription" placeholder="Enter subscription">
+                                        <div
+                                            *ngIf="(userForm.get('subscription')?.invalid && userForm.get('subscription')?.touched) || userForm.get('subscription')?.dirty">
+                                            <small *ngIf="userForm.get('subscription')?.errors?.required"
+                                                class="text-danger">subscription
+                                                is required</small>
+                                        </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">isActive</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="isActive"
+                                            placeholder="Enter isActive">
+                                        <div
+                                            *ngIf="(userForm.get('isActive')?.invalid && userForm.get('isActive')?.touched) || userForm.get('isActive')?.dirty">
+                                            <small *ngIf="userForm.get('isActive')?.errors?.required"
+                                                class="text-danger">isActive
+                                                is required</small>
+                                        </div>
+                                    </div>
+    
                                 </div>
-                            </div> -->
+    
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row-->
+    
+    
+    
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Add User</button>
+                        </div>
+                    </form>
+                </div> <!-- end card-body -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>

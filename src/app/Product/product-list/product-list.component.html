@@ -41,7 +41,7 @@
 
                         <div class="card-body">
 
-                            <h4 class="header-title">Users-List</h4>
+                            <h4 class="header-title">Product-List</h4>
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label for="fullname">Search</label>&nbsp;
@@ -51,9 +51,8 @@
 
                                 </div>
                                 <div class="form-group d-block ml-auto">
-                                    <button type="button"
-                                        class="btn btn-success waves-effect waves-light "
-                                        data-toggle="modal" data-target="#con-close-modal">+Add User</button>
+                                    <button type="button" class="btn btn-success waves-effect waves-light "
+                                        data-toggle="modal" data-target="#con-close-modal">+Add Product</button>
                                 </div>
                             </div>
 
@@ -73,26 +72,40 @@
                                         <th>Stock</th>
                                         <th>UserName</th>
                                         <th>User Address</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                  <tr *ngFor="let product of products | filter:searchTerm ; let i=index">
+                                    <tr *ngFor="let product of products | filter:searchTerm ; let i=index">
 
-                                    <td>{{product.categoryName}}</td>
-                                    <td>{{product.name}}</td>
-                                    <td>{{product.deliveryTime}}</td>
-                                    <td>{{product.isActive}}</td>
-                                    <td>{{product.rating}}</td>
-                                    <td>{{product.price}}</td>
-                                    <td>{{product.quantity}}</td>
-                                    <td>{{product.status}}</td>
-                                    <td>{{product.stock}}</td>
-                                    <td>{{product.userName}}</td>
-                                    <td>{{product.userAddress}}</td>
+                                        <td>{{product.categoryName}}</td>
+                                        <td>{{product.name}}</td>
+                                        <td>{{product.deliveryTime}}</td>
+                                        <td>{{product.isActive}}</td>
+                                        <td>{{product.rating}}</td>
+                                        <td>{{product.price}}</td>
+                                        <td>{{product.quantity}}</td>
+                                        <td>{{product.status}}</td>
+                                        <td>{{product.stock}}</td>
+                                        <td>{{product.userName}}</td>
+                                        <td>{{product.userAddress}}</td>
+                                        <td>
 
-                                  </tr>
+
+                                            <a>
+                                                <i class="far fa-edit"></i>
+                                            </a> &nbsp;
+
+                                            <a>
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+
+
+                                        </td>
+
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -151,70 +164,121 @@
                 <div class="card bg-pattern">
 
                     <div class="card-body p-4">
-                        <form action="#">
-
-                            <h1 class="text-center">Add-User Form</h1>
+                        <button class="btn btn-primary" routerLink="/dashboard1">back to home</button>
+                        <form action="#" [formGroup]="productForm">
+        
+                            <h1 class="text-center">Add-Product Form</h1>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
+                                        <div class="form-group">
+                                            <label for="inputAddress">Category Name </label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="categoryName"
+                                                placeholder="Enter categoryName">
+                                            <div
+                                                *ngIf="(productForm.get('categoryName')?.invalid && productForm.get('categoryName')?.touched) || productForm.get('categoryName')?.dirty">
+                                                <small *ngIf="productForm.get('categoryName')?.errors?.required" class="text-danger">
+                                                    Category Name
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Description</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="description" placeholder="Enter description">
+                                            <div
+                                                *ngIf="(productForm.get('description')?.invalid && productForm.get('description')?.touched) || productForm.get('description')?.dirty">
+                                                <small *ngIf="productForm.get('description')?.errors?.required"
+                                                    class="text-danger">description
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
+                                        <div class="form-group">
+                                            <label for="inputAddress">endingDate</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="endingDate" placeholder="Enter ending Date">
+                                            <div
+                                                *ngIf="(productForm.get('endingDate')?.invalid && productForm.get('endingDate')?.touched) || productForm.get('endingDate')?.dirty">
+                                                <small *ngIf="productForm.get('endingDate')?.errors?.required"
+                                                    class="text-danger">endingDate
+                                                    is required</small>
+                                            </div>
                                         </div>
-
-                                        <div class="custom-control custom-checkbox pt-1">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
-                                            <label class="custom-control-label" for="checkbox-signup">I accept <a
-                                                    href="javascript: void(0);" class="text-dark">Terms and
-                                                    Conditions</a></label>
+        
+                                        <div class="form-group">
+                                            <label for="inputAddress">Delivery Option</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="deliveryOption"
+                                                placeholder="Enter delivery option">
+                                            <div
+                                                *ngIf="(productForm.get('deliveryOption')?.invalid && productForm.get('deliveryOption')?.touched) || productForm.get('deliveryOption')?.dirty">
+                                                <small *ngIf="productForm.get('deliveryOption')?.errors?.required"
+                                                    class="text-danger">Delivery Option
+                                                    is required</small>
+                                            </div>
                                         </div>
-
-
+        
+        
                                     </div>
                                 </div> <!-- end col -->
-
+        
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
-
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
+        
+                                        <div class="form-group">
+                                            <label for="inputAddress">Rating</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="rating"
+                                                placeholder="Enter rating">
+                                            <div
+                                                *ngIf="(productForm.get('rating')?.invalid && productForm.get('rating')?.touched) || productForm.get('rating')?.dirty">
+                                                <small *ngIf="productForm.get('rating')?.errors?.required"
+                                                    class="text-danger">Rating
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Name</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="name"
+                                                placeholder="Enter name">
+                                            <div
+                                                *ngIf="(productForm.get('name')?.invalid && productForm.get('name')?.touched) || productForm.get('name')?.dirty">
+                                                <small *ngIf="productForm.get('name')?.errors?.required" class="text-danger">Name
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Price</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="price" placeholder="Enter price">
+                                            <div
+                                                *ngIf="(productForm.get('price')?.invalid && productForm.get('price')?.touched) || productForm.get('price')?.dirty">
+                                                <small *ngIf="productForm.get('price')?.errors?.required"
+                                                    class="text-danger">Price
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group form-inline mb-0">
-
-                                            <button class="btn btn-success btn-sm float-sm-right text-center"
-                                                type="submit"> Add User </button>
-
+                                        <div class="form-group">
+                                            <label for="inputAddress">Quantity</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="quantity"
+                                                placeholder="Enter quantity">
+                                            <div
+                                                *ngIf="(productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched) || productForm.get('quantity')?.dirty">
+                                                <small *ngIf="productForm.get('quantity')?.errors?.required"
+                                                    class="text-danger">quantity
+                                                    is required</small>
+                                            </div>
                                         </div>
-
+        
                                     </div>
-
+        
                                 </div> <!-- end col -->
                             </div>
                             <!-- end row-->
-
+        
+        
+        
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success" [disabled]="productForm.invalid">Add Product</button>
+                            </div>
                         </form>
                     </div> <!-- end card-body -->
                 </div>

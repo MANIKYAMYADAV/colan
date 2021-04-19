@@ -20,15 +20,14 @@ export class AddUserComponent implements OnInit {
       description: ['', Validators.required],
       emailId:['',Validators.required],
       isActive:['',Validators.required],
-      endingDate:['',Validators.required],
+     /// endingDate:['',Validators.required],
       mobile:['',Validators.required],
       name:['',Validators.required],
       rating:['',Validators.required],
-      ratingCount:['',Validators.required],
+     // ratingCount:['',Validators.required],
       role:['',Validators.required],
       subscription:['',Validators.required],
-      subscriptionCost:['',Validators.required],
-      updateDate:['',Validators.required],
+      // subscriptionCost:['',Validators.required],
 
     })
   }

@@ -12,12 +12,12 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AddProductComponent implements OnInit {
 
-  userForm: FormGroup;
+  productForm: FormGroup;
 
 
   constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService) {
 
-    this.userForm = this.fb.group({
+    this.productForm = this.fb.group({
       availableDate	: ['', Validators.required],
       availableTime	:['',Validators.required],
       categoryId	:['',Validators.required],
