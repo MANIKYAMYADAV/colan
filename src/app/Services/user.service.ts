@@ -36,6 +36,10 @@ export class UserService {
     return this.http.post<any>(this.apiURL + '', data, this.httpOptions);
   }
 
+  updateUser(data: any) {
+    return this.http.put<any>(this.apiURL + '/users/update', data, this.httpOptions);
+  }
+
   deleteUser(id) {
     return this.http.delete<any>(this.apiURL + `/users/inactive + ${id}`, this.httpOptions)
   }
