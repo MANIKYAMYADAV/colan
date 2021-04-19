@@ -32,6 +32,14 @@ export class AddUserComponent implements OnInit {
     })
   }
 
+  addUser(data){
+    this.userService.addUser(data).subscribe((response)=>{
+      console.log("User Data :",response.data);
+
+    })
+
+  }
+
   ngOnInit(): void {
   }
 

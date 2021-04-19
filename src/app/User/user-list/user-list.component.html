@@ -105,7 +105,7 @@
                                         <td>
                                            
                                                
-                                                    <a>
+                                                    <a (click)="openModalForEditUser(user.id)" data-toggle="modal" data-target="#editField">
                                                         <i class="far fa-edit"></i>
                                                     </a> &nbsp;
                                                
@@ -307,7 +307,8 @@
     
     
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Add User</button>
+                            <button type="submit" class="btn btn-success" [disabled]="userForm.invalid"
+                            (click)="addUser(userForm.value)">Add User</button>
                         </div>
                     </form>
                 </div> <!-- end card-body -->
@@ -383,7 +384,7 @@
 
 
 
-<!-- <div class="modal fade" id="editField" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editField" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -393,43 +394,127 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" [formGroup]="createFieldForm">
-                <div class="modal-body">
-                    <div class="offerBox">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Field Name</label>
-                            <input type="text" class="form-control" formControlName="field_name" placeholder="Name">
+            <div class="card bg-pattern">
+
+                <div class="card-body p-4">
+                    <form action="#" [formGroup]="userForm">
+    
+                        <h1 class="text-center">Edit-User Form</h1>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="p-sm-3">
+                                    <div class="form-group">
+                                        <label for="inputAddress">Email </label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="emailId"
+                                            placeholder="Enter email">
+                                        <div
+                                            *ngIf="(userForm.get('emailId')?.invalid && userForm.get('emailId')?.touched) || userForm.get('emailId')?.dirty">
+                                            <small *ngIf="userForm.get('emailId')?.errors?.required" class="text-danger">
+                                                Email
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Description</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="description" placeholder="Enter description">
+                                        <div
+                                            *ngIf="(userForm.get('description')?.invalid && userForm.get('description')?.touched) || userForm.get('description')?.dirty">
+                                            <small *ngIf="userForm.get('description')?.errors?.required"
+                                                class="text-danger">description
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">endingDate</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="endingDate" placeholder="Enter ending Date">
+                                        <div
+                                            *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
+                                            <small *ngIf="userForm.get('endingDate')?.errors?.required"
+                                                class="text-danger">endingDate
+                                                is required</small>
+                                        </div>
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <label for="inputAddress">Mobile</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="mobile"
+                                            placeholder="Enter mobile">
+                                        <div
+                                            *ngIf="(userForm.get('mobile')?.invalid && userForm.get('mobile')?.touched) || userForm.get('mobile')?.dirty">
+                                            <small *ngIf="userForm.get('mobile')?.errors?.required"
+                                                class="text-danger">Mobile
+                                                is required</small>
+                                        </div>
+                                    </div>
+    
+    
+                                </div>
+                            </div> <!-- end col -->
+    
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="p-sm-3">
+    
+                                    <div class="form-group">
+                                        <label for="inputAddress">Rating</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="rating"
+                                            placeholder="Enter rating">
+                                        <div
+                                            *ngIf="(userForm.get('rating')?.invalid && userForm.get('rating')?.touched) || userForm.get('rating')?.dirty">
+                                            <small *ngIf="userForm.get('rating')?.errors?.required"
+                                                class="text-danger">Rating
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Role</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="role"
+                                            placeholder="Enter role">
+                                        <div
+                                            *ngIf="(userForm.get('role')?.invalid && userForm.get('role')?.touched) || userForm.get('role')?.dirty">
+                                            <small *ngIf="userForm.get('role')?.errors?.required" class="text-danger">Role
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Subscription</label>
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="subscription" placeholder="Enter subscription">
+                                        <div
+                                            *ngIf="(userForm.get('subscription')?.invalid && userForm.get('subscription')?.touched) || userForm.get('subscription')?.dirty">
+                                            <small *ngIf="userForm.get('subscription')?.errors?.required"
+                                                class="text-danger">subscription
+                                                is required</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">isActive</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="isActive"
+                                            placeholder="Enter isActive">
+                                        <div
+                                            *ngIf="(userForm.get('isActive')?.invalid && userForm.get('isActive')?.touched) || userForm.get('isActive')?.dirty">
+                                            <small *ngIf="userForm.get('isActive')?.errors?.required"
+                                                class="text-danger">isActive
+                                                is required</small>
+                                        </div>
+                                    </div>
+    
+                                </div>
+    
+                            </div> <!-- end col -->
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Field Type</label>
-                            <div class="">
-                                <select class="form-control" formControlName="field_type">
-                                    <option value="text">Text Field</option>
-                                    <option value="datetime">Date Time Field</option>
-                                    <option value="date">Date Field</option>
-                                    <option value="time">Time Field</option>
-                                </select>
-                            </div>
+                        <!-- end row-->
+    
+    
+    
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success" [disabled]="userForm.invalid"
+                            (click)="editUser(userForm.value)">save</button>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Short Code Name</label>
-                            <input type="text" class="form-control" formControlName="short_code_name" placeholder="Shortcode">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Group</label>
-                            <div class="">
-                                <select class="form-control" formControlName="group_id">
-                                    <option *ngFor="let group of allGroups" value="{{group._id}}">{{group.group_name}}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" (click)="editField(createFieldForm.value)">Save changes</button>
-                </div>
-            </form>
+                    </form>
+                </div> <!-- end card-body -->
+            </div>
         </div>
     </div>
-</div> -->
+</div>
