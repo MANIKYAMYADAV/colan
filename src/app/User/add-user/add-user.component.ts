@@ -13,8 +13,8 @@ export class AddUserComponent implements OnInit {
 
   userForm: FormGroup;
   userId: any;
-  userDetails:any;
-  isLoading=false;
+  userDetails: any;
+  isLoading = false;
 
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
@@ -38,6 +38,9 @@ export class AddUserComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+
+    //getting id using activated route from path of(query params)
     this.activeRoute
       .queryParams
       .subscribe(params => {
@@ -50,37 +53,44 @@ export class AddUserComponent implements OnInit {
         })
       });
 
-      this.userService.getUserDetails(this.userId).subscribe(res => {
-        this.isLoading = false;
-        if (res && res.data) {
-          let userDetails = res.data[0];
-          this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
-          this.userForm.get('description').setValue(userDetails.description ? userDetails.description : '')
-          this.userForm.get('isActive').setValue(userDetails.isActive ? userDetails.isActive : '')
-          this.userForm.get('mobile').setValue(userDetails.mobile ? userDetails.mobile : '')
-          this.userForm.get('name').setValue(userDetails.name ? userDetails.name : '')
-          this.userForm.get('rating').setValue(userDetails.rating ? userDetails.rating : '')
-          this.userForm.get('role').setValue(userDetails.role ? userDetails.role : '')
-          this.userForm.get('subscription').setValue(userDetails.subscription ? userDetails.subscription : '')
-        }
-      }, (error) => {
-        this.isLoading = false;
-      })
+
+    // for getting specify user on id
+    this.userService.getUserDetails(this.userId).subscribe(res => {
+      this.isLoading = false;
+      if (res && res.data) {
+        let userDetails = res.data[0];
+        this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
+        this.userForm.get('description').setValue(userDetails.description ? userDetails.description : '')
+        this.userForm.get('isActive').setValue(userDetails.isActive ? userDetails.isActive : '')
+        this.userForm.get('mobile').setValue(userDetails.mobile ? userDetails.mobile : '')
+        this.userForm.get('name').setValue(userDetails.name ? userDetails.name : '')
+        this.userForm.get('rating').setValue(userDetails.rating ? userDetails.rating : '')
+        this.userForm.get('role').setValue(userDetails.role ? userDetails.role : '')
+        this.userForm.get('subscription').setValue(userDetails.subscription ? userDetails.subscription : '')
+      }
+    }, (error) => {
+      this.isLoading = false;
+    })
 
   }
 
 
+
+  // by using add we can add or update based on id present   sir is these right sir yes it is right but today whole day you took for this ?  no sir i have created forms for orders and same designed for all the products orders and category sir
   addUser(data) {
-    if (this.userId == null) {
+    
+    if (this.userId) {
+      this.userService.updateUser(data).subscribe((response) => {
+        console.log("Updated User Data :", response.data);
+      })
+    }
+    else {
+
       this.userService.addUser(data).subscribe((response) => {
         console.log("Added User Data :", response.data);
 
       })
-    }
-    else {
-      this.userService.updateUser(data).subscribe((response) => {
-        console.log("Updated User Data :", response.data);
-      })
+
 
     }
 
