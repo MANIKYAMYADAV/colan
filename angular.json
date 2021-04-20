@@ -27,20 +27,21 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/assets/css/app.min.css",
               "src/assets/css/bootstrap.min.css",
               "src/assets/css/icons.min.css",
               "src/assets/libs/ladda/ladda-themeless.min.css",
               "src/assets/libs/jquery-nice-select/nice-select.css",
-              "src/assets/libs/switchery/switchery.min.css",
-              "src/assets/libs/select2/select2.min.css" ,
+              "src/assets/libs/switchery/switchery.min.css" ,
+              "src/assets/libs/select2/select2.min.css",
               "src/assets/libs/bootstrap-select/bootstrap-select.min.css",
               "src/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.css",
               "src/assets/libs/dropzone/dropzone.min.css",
               "src/assets/libs/cropper/cropper.min.css",
               "src/assets/libs/flatpickr/flatpickr.min.css",
-              "src/assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css",
-              "src/assets/libs/clockpicker/bootstrap-clockpicker.min.css" ,
+              "src/assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css" ,
+              "src/assets/libs/clockpicker/bootstrap-clockpicker.min.css",
               "src/assets/libs/quill/quill.core.css",
               "src/assets/libs/quill/quill.bubble.css",
               "src/assets/libs/quill/quill.snow.css",
@@ -178,6 +179,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []

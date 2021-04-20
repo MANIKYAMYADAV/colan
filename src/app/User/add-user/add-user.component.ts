@@ -62,9 +62,7 @@ export class AddUserComponent implements OnInit {
           this.userForm.get('rating').setValue(userDetails.rating ? userDetails.rating : '')
           this.userForm.get('role').setValue(userDetails.role ? userDetails.role : '')
           this.userForm.get('subscription').setValue(userDetails.subscription ? userDetails.subscription : '')
-       
         }
-       // this.ngAfterViewInit();
       }, (error) => {
         this.isLoading = false;
       })

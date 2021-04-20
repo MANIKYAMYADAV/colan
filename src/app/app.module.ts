@@ -139,7 +139,11 @@ import {HttpClientModule} from '@angular/common/http'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { AddProductComponent } from './Product/add-product/add-product.component';
 import { ProductListComponent } from './Product/product-list/product-list.component';
-import { AddOrderComponent } from './Order/add-order/add-order.component'
+import { AddOrderComponent } from './Order/add-order/add-order.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+import { MaterialModule } from './material/material.module';
+
 
 
 @NgModule({
@@ -276,12 +280,14 @@ import { AddOrderComponent } from './Order/add-order/add-order.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
     ToastrModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

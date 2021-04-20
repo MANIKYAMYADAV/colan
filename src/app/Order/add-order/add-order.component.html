@@ -19,22 +19,22 @@
         <div class="card bg-pattern">
 
             <div class="card-body p-4">
-                <button class="btn btn-primary" routerLink="/dashboard1">back to home</button>
-                 <!-- <form action="#" [formGroup]="productForm">
+                <button class="btn btn-primary" routerLink="/order-list">back to home</button>
+                 <form action="#" [formGroup]="orderForm">
 
                     <h1 class="text-center">Add-Product Form</h1>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="p-sm-3">
                                 <div class="form-group">
-                                    <label for="inputAddress">Category Name </label>
+                                    <label for="inputAddress">Chef Name </label>
                                     <input type="text" class="form-control" id="inputAddress"
-                                        formControlName="categoryName" placeholder="Enter categoryName">
+                                        formControlName="chefName" placeholder="Enter chefName">
                                     <div
-                                        *ngIf="(productForm.get('categoryName')?.invalid && productForm.get('categoryName')?.touched) || productForm.get('categoryName')?.dirty">
-                                        <small *ngIf="productForm.get('categoryName')?.errors?.required"
+                                        *ngIf="(orderForm.get('chefName')?.invalid && orderForm.get('chefName')?.touched) || orderForm.get('chefName')?.dirty">
+                                        <small *ngIf="orderForm.get('chefName')?.errors?.required"
                                             class="text-danger">
-                                            Category Name
+                                            chef Name 
                                             is required</small>
                                     </div>
                                 </div>
@@ -43,20 +43,20 @@
                                     <input type="text" class="form-control" id="inputAddress"
                                         formControlName="description" placeholder="Enter description">
                                     <div
-                                        *ngIf="(productForm.get('description')?.invalid && productForm.get('description')?.touched) || productForm.get('description')?.dirty">
-                                        <small *ngIf="productForm.get('description')?.errors?.required"
+                                        *ngIf="(orderForm.get('description')?.invalid && orderForm.get('description')?.touched) || orderForm.get('description')?.dirty">
+                                        <small *ngIf="orderForm.get('description')?.errors?.required"
                                             class="text-danger">description
                                             is required</small>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputAddress">ending Date</label>
+                                    <label for="inputAddress">delivery Address</label>
                                     <input type="text" class="form-control" id="inputAddress"
-                                        formControlName="endingDate" placeholder="Enter ending Date">
+                                        formControlName="deliveryAddress" placeholder="Enter delivery address">
                                     <div
-                                        *ngIf="(productForm.get('endingDate')?.invalid && productForm.get('endingDate')?.touched) || productForm.get('endingDate')?.dirty">
-                                        <small *ngIf="productForm.get('endingDate')?.errors?.required"
-                                            class="text-danger">endingDate
+                                        *ngIf="(orderForm.get('deliveryAddress')?.invalid && orderForm.get('deliveryAddress')?.touched) || orderForm.get('deliveryAddress')?.dirty">
+                                        <small *ngIf="orderForm.get('deliveryAddress')?.errors?.required"
+                                            class="text-danger">deliveryAddress
                                             is required</small>
                                     </div>
                                 </div>
@@ -66,8 +66,8 @@
                                     <input type="text" class="form-control" id="inputAddress"
                                         formControlName="deliveryOption" placeholder="Enter delivery option">
                                     <div
-                                        *ngIf="(productForm.get('deliveryOption')?.invalid && productForm.get('deliveryOption')?.touched) || productForm.get('deliveryOption')?.dirty">
-                                        <small *ngIf="productForm.get('deliveryOption')?.errors?.required"
+                                        *ngIf="(orderForm.get('deliveryOption')?.invalid && orderForm.get('deliveryOption')?.touched) || orderForm.get('deliveryOption')?.dirty">
+                                        <small *ngIf="orderForm.get('deliveryOption')?.errors?.required"
                                             class="text-danger">Delivery Option
                                             is required</small>
                                     </div>
@@ -81,13 +81,13 @@
                             <div class="p-sm-3">
 
                                 <div class="form-group">
-                                    <label for="inputAddress">Rating</label>
-                                    <input type="text" class="form-control" id="inputAddress" formControlName="rating"
-                                        placeholder="Enter rating">
+                                    <label for="inputAddress">payment Mode</label>
+                                    <input type="text" class="form-control" id="inputAddress" formControlName="paymentMode"
+                                        placeholder="Enter payment Mode">
                                     <div
-                                        *ngIf="(productForm.get('rating')?.invalid && productForm.get('rating')?.touched) || productForm.get('rating')?.dirty">
-                                        <small *ngIf="productForm.get('rating')?.errors?.required"
-                                            class="text-danger">Rating
+                                        *ngIf="(orderForm.get('paymentMode')?.invalid && orderForm.get('paymentMode')?.touched) || orderForm.get('paymentMode')?.dirty">
+                                        <small *ngIf="orderForm.get('paymentMode')?.errors?.required"
+                                            class="text-danger">payment Mode
                                             is required</small>
                                     </div>
                                 </div>
@@ -96,8 +96,8 @@
                                     <input type="text" class="form-control" id="inputAddress" formControlName="name"
                                         placeholder="Enter name">
                                     <div
-                                        *ngIf="(productForm.get('name')?.invalid && productForm.get('name')?.touched) || productForm.get('name')?.dirty">
-                                        <small *ngIf="productForm.get('name')?.errors?.required"
+                                        *ngIf="(orderForm.get('name')?.invalid && orderForm.get('name')?.touched) || orderForm.get('name')?.dirty">
+                                        <small *ngIf="orderForm.get('name')?.errors?.required"
                                             class="text-danger">Name
                                             is required</small>
                                     </div>
@@ -107,8 +107,8 @@
                                     <input type="text" class="form-control" id="inputAddress" formControlName="price"
                                         placeholder="Enter price">
                                     <div
-                                        *ngIf="(productForm.get('price')?.invalid && productForm.get('price')?.touched) || productForm.get('price')?.dirty">
-                                        <small *ngIf="productForm.get('price')?.errors?.required"
+                                        *ngIf="(orderForm.get('price')?.invalid && orderForm.get('price')?.touched) || orderForm.get('price')?.dirty">
+                                        <small *ngIf="orderForm.get('price')?.errors?.required"
                                             class="text-danger">Price
                                             is required</small>
                                     </div>
@@ -118,8 +118,8 @@
                                     <input type="text" class="form-control" id="inputAddress" formControlName="quantity"
                                         placeholder="Enter quantity">
                                     <div
-                                        *ngIf="(productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched) || productForm.get('quantity')?.dirty">
-                                        <small *ngIf="productForm.get('quantity')?.errors?.required"
+                                        *ngIf="(orderForm.get('quantity')?.invalid && orderForm.get('quantity')?.touched) || orderForm.get('quantity')?.dirty">
+                                        <small *ngIf="orderForm.get('quantity')?.errors?.required"
                                             class="text-danger">quantity
                                             is required</small>
                                     </div>
@@ -133,10 +133,10 @@
 
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success" >Add
+                        <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid" (click)="saveOrder(orderForm.value)">Add
                             Order</button>
                     </div>
-                </form>  -->
+                </form> 
 
                
             </div>

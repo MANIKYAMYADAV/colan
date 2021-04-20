@@ -4,6 +4,12 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+// import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+// import { CalendarOptions, DateSelectArg, EventClickArg, EventApi, FullCalendarComponent } from '@fullcalendar/angular';
+// import * as moment from 'moment';
+
+
+
 
 @Component({
   selector: 'app-add-product',
@@ -99,5 +105,17 @@ export class AddProductComponent implements OnInit {
     }
 
   }
+
+
+  // addEvent(event: MatDatepickerInputEvent<Date>) {
+  //   console.log(moment(new Date(event.value)).format('MM/DD/yyyy'));
+  //   this.calendarOptions.selectConstraint = {
+  //     start: moment(new Date(event.value)).format('YYYY-MM-DD')
+  //   }
+  //   this.calendarOptions.eventConstraint = {
+  //     start: moment(new Date(event.value)).format('YYYY-MM-DD')
+  //   }
+  //   // this.appoinmentStep2.get('starting_date').setValue(moment(new Date(event.value)).format('mm/dd/yyyy'))
+  // }
 
 }

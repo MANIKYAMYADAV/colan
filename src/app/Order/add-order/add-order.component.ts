@@ -22,29 +22,22 @@ export class AddOrderComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
 
     this.orderForm = this.fb.group({
-      availableDate: ['', Validators.required],
-      availableTime: ['', Validators.required],
-      categoryId: ['', Validators.required],
-      categoryName: ['', Validators.required],
+      chefName	: ['', Validators.required],
+      deliveryAddress	: ['', Validators.required],
       deliveryOption: ['', Validators.required],
       deliveryTime: ['', Validators.required],
       description: ['', Validators.required],
-      endingDate: ['', Validators.required],
-      endingTime: ['', Validators.required],
       imagePath: ['', Validators.required],
-      isActive: ['', Validators.required],
-      isEditable: ['', Validators.required],
+      discount	:[''],
       name: [''],
-      price: [''],
-      quantity: [''],
-      rating: [''],
-      ratingCount: [''],
-      special: [''],
-      stock: [''],
-      userAddress: [''],
+      orderId	: [''],
+      paymentMode	: [''],
+      price	: [''],
+      quantity	: [''],
       userName: [''],
-      status: [''],
-      isDeletable: ['']
+      updateDate	: [''],
+      stage	: [''],
+      userImage	:['']
 
     })
   }

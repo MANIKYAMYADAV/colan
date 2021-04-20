@@ -19,7 +19,7 @@
         <div class="card bg-pattern">
 
             <div class="card-body p-4">
-                <button class="btn btn-primary" routerLink="/dashboard1">back to home</button>
+                <button class="btn btn-primary" routerLink="/product-list">back to home</button>
                 <form action="#" [formGroup]="productForm">
 
                     <h1 class="text-center">Add-Product Form</h1>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">ending Date</label>
-                                    <input type="text" class="form-control" id="inputAddress"
+                                    <input type="date" class="form-control" id="inputAddress"
                                         formControlName="endingDate" placeholder="Enter ending Date">
                                     <div
                                         *ngIf="(productForm.get('endingDate')?.invalid && productForm.get('endingDate')?.touched) || productForm.get('endingDate')?.dirty">
@@ -60,6 +60,20 @@
                                             is required</small>
                                     </div>
                                 </div>
+
+                                <!-- <div class="input-group form-group">
+                                    <input matInput [min]="minDate"
+                                        class="form-control"
+                                        (dateChange)="addEvent($event)"
+                                        placeholder="Select Date"
+                                        formControlName="endingDate"
+                                        [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix
+                                        [for]="picker">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #picker>
+                                    </mat-datepicker>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label for="inputAddress">Delivery Option</label>
