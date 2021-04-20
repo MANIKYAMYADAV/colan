@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-order-list',
@@ -9,8 +11,10 @@ import { UserService } from 'src/app/Services/user.service';
 export class OrderListComponent implements OnInit {
   searchTerm: any;
   orders: any[] = [];
+  orderId: any;
 
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllOrders();
@@ -22,6 +26,24 @@ export class OrderListComponent implements OnInit {
       this.orders = response.data;
       console.log("All Orders :", response.data);
     })
+  }
+  getOrderId(id) {
+    this.orderId = '';
+    this.orderId = id;
+
+  }
+
+  editOrder(order) {
+    console.log("order Id ", order.id)
+    this.router.navigate(['add-order'], { queryParams: { 'id': order.id } });
+
+  }
+
+  deleteOrder() {
+    this.userService.deleteOrder(this.orderId).subscribe((response) => {
+      console.log("Deleted Order is :", response.data);
+    })
+
   }
 
 }

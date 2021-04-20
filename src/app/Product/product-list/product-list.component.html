@@ -94,11 +94,12 @@
                                         <td>
 
 
-                                            <a>
+                                            <a (click)="editProduct(product)">
                                                 <i class="far fa-edit"></i>
                                             </a> &nbsp;
 
-                                            <a>
+                                            <a (click)="getProductId(product.id)" data-toggle="modal"
+                                            data-target="#deleteModal">
                                                 <i class="fas fa-trash"></i>
                                             </a>
 
@@ -148,7 +149,31 @@
 <!-- End Page content -->
 <!-- ============================================================== -->
 
-
+<!-- delete Modal HTML -->
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <div class="d-block ml-auto">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            </div>
+            <div class="modal-body">
+                <p>This is a custom field that you are going to delete. Be sure this is what you want to do. Once you
+                    delete this custom field, this data will be gone forever. We CANNOT RESTORE this data.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)=" deleteProduct()">Yes, delete
+                    it!</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">

@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUserDetails(id) {
-    return this.http.post<any>(this.apiURL + '', id, this.httpOptions);
+    return this.http.get<any>(this.apiURL + `/users + ${id}`, this.httpOptions);
   }
 
   addUser(data: any) {
@@ -64,8 +64,8 @@ export class UserService {
 
   }
 
-  delteteCategory() {
-    return this.http.delete<any>(this.apiURL + '/categories/update', this.httpOptions);
+  delteteCategory(id) {
+    return this.http.delete<any>(this.apiURL + `/categories/update+ ${id}`, this.httpOptions);
 
   }
 
@@ -82,6 +82,10 @@ export class UserService {
 
   addOrder(data: any) {
     return this.http.post<any>(this.apiURL + '/orders/add', data, this.httpOptions);
+  }
+  deleteOrder(id){
+    return this.http.delete<any>(this.apiURL + `/orders/delete+ ${id}`, this.httpOptions);
+
   }
 
 
@@ -101,8 +105,8 @@ export class UserService {
     return this.http.post<any>(this.apiURL + '/products/add', data, this.httpOptions);
   }
 
-  deleteOrder() {
-    return this.http.delete<any>(this.apiURL + '/products/delete', this.httpOptions);
+  deleteProduct(id) {
+    return this.http.delete<any>(this.apiURL + `/products/delete+ ${id}`, this.httpOptions);
   }
 
 

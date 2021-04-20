@@ -1,7 +1,16 @@
+
+
 <app-header></app-header>
 
 <app-sidebar></app-sidebar>
-
+<!-- preloader -->
+<div *ngIf="isLoading">
+    <div class="corporex-preloader">
+        <div class="spinner-wrapper">
+            <div class="spinner"></div>
+        </div><!-- .spinner-wrapper -->
+    </div> <!-- .corporex-preloader -->
+</div>
 
 
 <!-- ============================================================== -->
@@ -99,13 +108,13 @@
                                         <td>
                                             <a (click)="getUserId(user._id)" data-toggle="modal" data-target="#deleteModal">
                                                 <i class="fas fa-trash"></i>
-                                        </td> -->
+                                        </td> data-toggle="modal" data-target="#editField"-->
 
 
                                         <td>
                                            
                                                
-                                                    <a (click)="openModalForEditUser(user.id)" data-toggle="modal" data-target="#editField">
+                                                    <a (click)="editUserDetails(user)">
                                                         <i class="far fa-edit"></i>
                                                     </a> &nbsp;
                                                
@@ -164,9 +173,9 @@
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
             <div class="modal-header flex-column">
-                <div class="icon-box">
+                <!-- <div class="icon-box">
                     <i class="material-icons">&#xE5CD;</i>
-                </div>
+                </div> -->
                 <h4 class="modal-title w-100">Are you sure?</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -10,11 +11,21 @@ export class CategoryListComponent implements OnInit {
 
   categories : any[]=[];
   searchTerm:any;
-  constructor(private userService : UserService) { }
+  categoryId:any;
+
+  constructor(private userService : UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllCategories();
   }
+
+
+  getCategoryId(id){
+    this.categoryId='';
+    this.categoryId=id;
+
+  }
+
 
   getAllCategories(){
     this.userService.getCategories().subscribe((response)=>{
@@ -24,5 +35,20 @@ export class CategoryListComponent implements OnInit {
 
     
   }
+
+
+  editCategory(category){
+    console.log("order Id ", category.id)
+    this.router.navigate(['add-category'], { queryParams: { 'id': category.id } });
+  }
+
+
+  deleteCategory() {
+    this.userService.delteteCategory(this.categoryId).subscribe((response) => {
+      console.log("Deleted Category is :", response.data);
+    })
+
+  }
+
 
 }

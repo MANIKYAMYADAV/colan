@@ -13,6 +13,7 @@ export class UserListComponent implements OnInit {
   searchTerm: any;
   users: any[] = [];
   userId: any;
+  isLoading = false;
 
   userForm: FormGroup;
 
@@ -51,11 +52,20 @@ export class UserListComponent implements OnInit {
     })
   }
 
+  editUserDetails(user) {
+    console.log("user Id ",user.id)
+    this.router.navigate(['add-user'], { queryParams: { 'id': user.id } });
+
+  }
+
+
   deleteUser() {
+    this.isLoading=true;
     console.log("User ID :", this.userId);
     this.userService.deleteUser(this.userId).subscribe((response) => {
       console.log("User Deleted : ", response.data)
       this.getAllUsers();
+      this.isLoading =false;
     })
 
   }

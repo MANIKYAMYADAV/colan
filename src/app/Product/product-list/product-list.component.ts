@@ -15,6 +15,8 @@ export class ProductListComponent implements OnInit {
   searchTerm:any;
   products:any[]=[];
   productForm: FormGroup;
+  isLoading=false;
+  productId:any;
 
 
   constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService) {
@@ -56,6 +58,32 @@ export class ProductListComponent implements OnInit {
       console.log("All Products : ",response.data);
     })
     
+  }
+
+  getProductId(id) {
+    this.productId = '';
+    this.productId = id;
+    console.log("product Id  :", this.productId);
+  }
+
+  editProduct(product) {
+    console.log("product Id ",product.id)
+    this.router.navigate(['add-product'], { queryParams: { 'id': product.id } });
+
+  }
+
+
+  
+
+  deleteProduct() {
+    this.isLoading=true;
+    console.log("product Id :", this.productId);
+    this.userService.deleteProduct(this.productId).subscribe((response) => {
+      console.log("Product Deleted : ", response.data)
+      this.getAllProducts();
+      this.isLoading =false;
+    })
+
   }
 
 }

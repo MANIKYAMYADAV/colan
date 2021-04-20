@@ -55,6 +55,7 @@ import { MaterialDesignIconsComponent } from './Icons/material-design-icons/mate
 import { SimpleLineComponent } from './Icons/simple-line/simple-line.component';
 import { ThemifyComponent } from './Icons/themify/themify.component';
 import { WeatherComponent } from './Icons/weather/weather.component';
+import { AddOrderComponent } from './Order/add-order/add-order.component';
 import { OrderListComponent } from './Order/order-list/order-list.component';
 import { ConfirmMailComponent } from './Pages/confirm-mail/confirm-mail.component';
 import { ErrorAltComponent } from './Pages/error-alt/error-alt.component';
@@ -98,6 +99,7 @@ const routes: Routes = [
   {path:'category-list',component:CategoryListComponent},
   {path:'category-add',component:AddCategoryComponent},
   {path:'order-list',component:OrderListComponent},
+  {path:'add-order',component:AddOrderComponent},
   {path:'product-list',component:ProductListComponent},
   {path:'add-product',component:AddProductComponent},
 

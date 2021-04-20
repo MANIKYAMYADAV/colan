@@ -138,7 +138,8 @@ import { UserListComponent } from './User/user-list/user-list.component';
 import {HttpClientModule} from '@angular/common/http'
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { AddProductComponent } from './Product/add-product/add-product.component';
-import { ProductListComponent } from './Product/product-list/product-list.component'
+import { ProductListComponent } from './Product/product-list/product-list.component';
+import { AddOrderComponent } from './Order/add-order/add-order.component'
 
 
 @NgModule({
@@ -269,7 +270,8 @@ import { ProductListComponent } from './Product/product-list/product-list.compon
     OrderListComponent,
     UserListComponent,
     AddProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    AddOrderComponent
   ],
   imports: [
     BrowserModule,

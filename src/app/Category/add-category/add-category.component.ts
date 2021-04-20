@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -12,9 +12,12 @@ import { UserService } from 'src/app/Services/user.service';
 export class AddCategoryComponent implements OnInit {
 
   categoryForm: FormGroup;
+  categoryId:any;
+  categoryDetails:any;
+  isLoading=false;
 
 
-  constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService,private activeRoute:ActivatedRoute) {
 
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
@@ -22,11 +25,55 @@ export class AddCategoryComponent implements OnInit {
     })
   }
 
+
+
   ngOnInit(): void {
+    this.activeRoute
+      .queryParams
+      .subscribe(params => {
+        this.categoryId = params.id;
+        console.log("CategoryId from category list :", this.categoryId);
+
+        // this.userService.getProductDetails(this.productId).subscribe((response) => {
+        //   console.log("User Details : ", response.data);
+        //   this.productDetails = response.data;
+        // })
+      });
+
+      this.userService.getCategoryDetails(this.categoryId).subscribe(res => {
+        this.isLoading = false;
+        if (res && res.data) {
+          let categoryDetails = res.data[0];
+          this.categoryForm.get('categoryName').setValue(categoryDetails.categoryName ? categoryDetails.categoryName : '')
+          this.categoryForm.get('description').setValue(categoryDetails.description ? categoryDetails.description : '')
+          this.categoryForm.get('endingDate').setValue(categoryDetails.endingDate ? categoryDetails.endingDate : '')
+        
+       
+        }
+       // this.ngAfterViewInit();
+      }, (error) => {
+        this.isLoading = false;
+      })
+
   }
 
-  addCategory(formData:any) {
-    
+
+  saveCategory(categoryData){
+
+    if(this.categoryId==null)
+    {
+      this.isLoading=true;
+      this.userService.addCategory(categoryData).subscribe((response)=>{
+        console.log("Added Category Data : ",response.data);
+      })
+    }
+    else{
+      this.isLoading=true;
+       this.userService.updateCategory(categoryData).subscribe((response)=>{
+        console.log("Updated category data : ",response.data)
+      })
+    }
 
   }
+
 }

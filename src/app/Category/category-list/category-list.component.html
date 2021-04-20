@@ -65,6 +65,7 @@
                                         <th>Id</th>
                                         <th>Name</th>
                                         <th>ParentId</th>
+                                        <th>Actions</th>
 
                                     </tr>
                                 </thead>
@@ -76,6 +77,19 @@
                                         <td>{{category.id}}</td>
                                         <td>{{category.name}}</td>
                                         <td>{{category.parentId}}</td>
+                                        <td>
+
+
+                                            <a (click)="editCategory(category)">
+                                                <i class="far fa-edit"></i>
+                                            </a> &nbsp;
+
+                                            <a>
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -119,7 +133,29 @@
 <!-- End Page content -->
 <!-- ============================================================== -->
 
-
+<!-- delete Modal HTML (click)=" deleteUser()"-->
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <!-- <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div> -->
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This is a custom field that you are going to delete. Be sure this is what you want to do. Once you
+                    delete this custom field, this data will be gone forever. We CANNOT RESTORE this data.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Yes, delete
+                    it!</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
