@@ -20,7 +20,7 @@
 
             <div class="card-body p-4">
                 <button class="btn btn-primary" routerLink="/order-list">back to home</button>
-                 <form action="#" [formGroup]="orderForm">
+                <form action="#" [formGroup]="orderForm">
 
                     <h1 class="text-center">Add-Order Form</h1>
                     <div class="row">
@@ -28,13 +28,12 @@
                             <div class="p-sm-3">
                                 <div class="form-group">
                                     <label for="inputAddress">Chef Name </label>
-                                    <input type="text" class="form-control" id="inputAddress"
-                                        formControlName="chefName" placeholder="Enter chefName">
+                                    <input type="text" class="form-control" id="inputAddress" formControlName="chefName"
+                                        placeholder="Enter chefName">
                                     <div
                                         *ngIf="(orderForm.get('chefName')?.invalid && orderForm.get('chefName')?.touched) || orderForm.get('chefName')?.dirty">
-                                        <small *ngIf="orderForm.get('chefName')?.errors?.required"
-                                            class="text-danger">
-                                            chef Name 
+                                        <small *ngIf="orderForm.get('chefName')?.errors?.required" class="text-danger">
+                                            chef Name
                                             is required</small>
                                     </div>
                                 </div>
@@ -89,15 +88,15 @@
                                 </div> -->
 
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="p-sm-3">
 
                                 <div class="form-group">
                                     <label for="inputAddress">payment Mode</label>
-                                    <input type="text" class="form-control" id="inputAddress" formControlName="paymentMode"
-                                        placeholder="Enter payment Mode">
+                                    <input type="text" class="form-control" id="inputAddress"
+                                        formControlName="paymentMode" placeholder="Enter payment Mode">
                                     <div
                                         *ngIf="(orderForm.get('paymentMode')?.invalid && orderForm.get('paymentMode')?.touched) || orderForm.get('paymentMode')?.dirty">
                                         <small *ngIf="orderForm.get('paymentMode')?.errors?.required"
@@ -111,8 +110,7 @@
                                         placeholder="Enter name">
                                     <div
                                         *ngIf="(orderForm.get('name')?.invalid && orderForm.get('name')?.touched) || orderForm.get('name')?.dirty">
-                                        <small *ngIf="orderForm.get('name')?.errors?.required"
-                                            class="text-danger">Name
+                                        <small *ngIf="orderForm.get('name')?.errors?.required" class="text-danger">Name
                                             is required</small>
                                     </div>
                                 </div>
@@ -141,18 +139,23 @@
 
                             </div>
 
-                        </div> 
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid" (click)="saveOrder(orderForm.value)"
+                                class="btn btn-outline-success btn-round waves-effect waves-light m-1">Add
+                                    Order</button>
+                            </div>
+                        </div>
                     </div>
+
+
+                  
                    
+                </form>
 
 
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid" (click)="saveOrder(orderForm.value)">Add
-                            Order</button>
-                    </div>
-                </form> 
-
-               
             </div>
         </div>
     </div>

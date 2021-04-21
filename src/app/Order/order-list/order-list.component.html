@@ -175,14 +175,11 @@
 <div id="deleteModal" class="modal fade">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
-            <div class="modal-header flex-column">
-                <!-- <div class="icon-box">
-                    <i class="material-icons">&#xE5CD;</i>
-                </div> -->
+            <div class="modal-header">
                 <h4 class="modal-title w-100">Are you sure?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4">
                 <p>This is a custom field that you are going to delete. Be sure this is what you want to do. Once you
                     delete this custom field, this data will be gone forever. We CANNOT RESTORE this data.</p>
             </div>
@@ -209,72 +206,144 @@
                 <div class="card bg-pattern">
 
                     <div class="card-body p-4">
-                        <form action="#">
-
-                            <h1 class="text-center">Add-User Form</h1>
+                        <button class="btn btn-primary" routerLink="/order-list">back to home</button>
+                        <form action="#" [formGroup]="orderForm">
+        
+                            <h1 class="text-center">Add-Order Form</h1>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
+                                        <div class="form-group">
+                                            <label for="inputAddress">Chef Name </label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="chefName"
+                                                placeholder="Enter chefName">
+                                            <div
+                                                *ngIf="(orderForm.get('chefName')?.invalid && orderForm.get('chefName')?.touched) || orderForm.get('chefName')?.dirty">
+                                                <small *ngIf="orderForm.get('chefName')?.errors?.required" class="text-danger">
+                                                    chef Name
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Description</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="description" placeholder="Enter description">
+                                            <div
+                                                *ngIf="(orderForm.get('description')?.invalid && orderForm.get('description')?.touched) || orderForm.get('description')?.dirty">
+                                                <small *ngIf="orderForm.get('description')?.errors?.required"
+                                                    class="text-danger">description
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
+                                        <div class="form-group">
+                                            <label for="inputAddress">delivery Address</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="deliveryAddress" placeholder="Enter delivery address">
+                                            <div
+                                                *ngIf="(orderForm.get('deliveryAddress')?.invalid && orderForm.get('deliveryAddress')?.touched) || orderForm.get('deliveryAddress')?.dirty">
+                                                <small *ngIf="orderForm.get('deliveryAddress')?.errors?.required"
+                                                    class="text-danger">deliveryAddress
+                                                    is required</small>
+                                            </div>
                                         </div>
-
-                                        <div class="custom-control custom-checkbox pt-1">
-                                            <input type="checkbox" class="custom-control-input" id="checkbox-signup">
-                                            <label class="custom-control-label" for="checkbox-signup">I accept <a
-                                                    href="javascript: void(0);" class="text-dark">Terms and
-                                                    Conditions</a></label>
+        
+                                        <div class="form-group">
+                                            <label for="inputAddress">Delivery Option</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="deliveryOption" placeholder="Enter delivery option">
+                                            <div
+                                                *ngIf="(orderForm.get('deliveryOption')?.invalid && orderForm.get('deliveryOption')?.touched) || orderForm.get('deliveryOption')?.dirty">
+                                                <small *ngIf="orderForm.get('deliveryOption')?.errors?.required"
+                                                    class="text-danger">Delivery Option
+                                                    is required</small>
+                                            </div>
                                         </div>
-
-
+                                        <!-- <div class="form-group">
+                                            <label>End Date</label>
+                                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                            <input type="text" class="form-control bg-white" [min]="todayDate"
+                                                placeholder="Enter here" formControlName="endingDate"
+                                                [matDatepicker]="picker" readonly>
+                                            <div
+                                                *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
+                                                <small
+                                                    *ngIf="userForm.get('endingDate')?.errors?.required"
+                                                    class="text-danger">Ending Date is required</small>
+                                            </div>
+                                        </div> -->
+        
                                     </div>
-                                </div> <!-- end col -->
-
+                                </div>
+        
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
-
-                                        <div class="form-group mb-3">
-                                            <label for="fullname">Full Name</label>
-                                            <input class="form-control" type="text" id="fullname"
-                                                placeholder="Enter your name" required>
+        
+                                        <div class="form-group">
+                                            <label for="inputAddress">payment Mode</label>
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="paymentMode" placeholder="Enter payment Mode">
+                                            <div
+                                                *ngIf="(orderForm.get('paymentMode')?.invalid && orderForm.get('paymentMode')?.touched) || orderForm.get('paymentMode')?.dirty">
+                                                <small *ngIf="orderForm.get('paymentMode')?.errors?.required"
+                                                    class="text-danger">payment Mode
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="emailaddress2">Email address</label>
-                                            <input class="form-control" type="email" id="emailaddress2" required
-                                                placeholder="Enter your email">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Name</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="name"
+                                                placeholder="Enter name">
+                                            <div
+                                                *ngIf="(orderForm.get('name')?.invalid && orderForm.get('name')?.touched) || orderForm.get('name')?.dirty">
+                                                <small *ngIf="orderForm.get('name')?.errors?.required" class="text-danger">Name
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="password2">Password</label>
-                                            <input class="form-control" type="password" required id="password2"
-                                                placeholder="Enter your password">
+                                        <div class="form-group">
+                                            <label for="inputAddress">Price</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="price"
+                                                placeholder="Enter price">
+                                            <div
+                                                *ngIf="(orderForm.get('price')?.invalid && orderForm.get('price')?.touched) || orderForm.get('price')?.dirty">
+                                                <small *ngIf="orderForm.get('price')?.errors?.required"
+                                                    class="text-danger">Price
+                                                    is required</small>
+                                            </div>
                                         </div>
-                                        <div class="form-group form-inline mb-0">
-
-                                            <button class="btn btn-success btn-sm float-sm-right text-center"
-                                                type="submit"> Add User </button>
-
+                                        <div class="form-group">
+                                            <label for="inputAddress">Quantity</label>
+                                            <input type="text" class="form-control" id="inputAddress" formControlName="quantity"
+                                                placeholder="Enter quantity">
+                                            <div
+                                                *ngIf="(orderForm.get('quantity')?.invalid && orderForm.get('quantity')?.touched) || orderForm.get('quantity')?.dirty">
+                                                <small *ngIf="orderForm.get('quantity')?.errors?.required"
+                                                    class="text-danger">quantity
+                                                    is required</small>
+                                            </div>
                                         </div>
-
+        
                                     </div>
-
-                                </div> <!-- end col -->
+        
+                                </div>
+        
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid" (click)="saveOrder(orderForm.value)"
+                                        class="btn btn-outline-success btn-round waves-effect waves-light m-1">Add
+                                            Order</button>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- end row-->
-
+        
+        
+                          
+                           
                         </form>
-                    </div> <!-- end card-body -->
+        
+        
+                    </div>
                 </div>
 
                 <!-- <div class="row">

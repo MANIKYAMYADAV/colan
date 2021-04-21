@@ -20,7 +20,7 @@
 
             <div class="card-body p-4">
                 <button class="btn btn-primary" routerLink="/product-list">back to home</button>
-                <form action="#" [formGroup]="productForm">
+                <form [formGroup]="productForm">
 
                     <h1 class="text-center">Add-Product Form</h1>
                     <div class="row">
@@ -49,7 +49,7 @@
                                             is required</small>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="inputAddress">ending Date</label>
                                     <input type="date" class="form-control" id="inputAddress"
                                         formControlName="endingDate" placeholder="Enter ending Date">
@@ -59,7 +59,7 @@
                                             class="text-danger">endingDate
                                             is required</small>
                                     </div>
-                                </div>
+                                </div> -->
 
                                  <div class="form-group">
                                     <label>Ending Date</label>
@@ -68,7 +68,7 @@
                                     <mat-datepicker #picker></mat-datepicker>
                                     <input type="text" class="form-control bg-white" [min]="todayDate"
                                         placeholder="Enter here" formControlName="endingDate"
-                                        [matDatepicker]="picker" readonly>
+                                        [matDatepicker]="picker" >
                                         <div
                                         *ngIf="(productForm.get('endingDate')?.invalid && productForm.get('endingDate')?.touched) || productForm.get('endingDate')?.dirty">
                                         <small *ngIf="productForm.get('endingDate')?.errors?.required"
@@ -158,15 +158,17 @@
                             </div>
 
                         </div> <!-- end col -->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success" [disabled]="productForm.invalid" (click)="saveProduct(productForm.value)"
+                                class="btn btn-outline-success btn-round waves-effect waves-light m-1">Add
+                                    Product</button>
+                            </div>
+                        </div>
                     </div>
                     <!-- end row-->
-
-
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success" [disabled]="productForm.invalid">Add
-                            Product</button>
-                    </div>
+    
                 </form>
             </div> <!-- end card-body -->
         </div>

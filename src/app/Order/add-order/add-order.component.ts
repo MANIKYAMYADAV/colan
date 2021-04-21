@@ -79,18 +79,19 @@ export class AddOrderComponent implements OnInit {
 
 
   saveOrder(orderData) {
-
-    if (this.orderId == null) {
-      this.isLoading = true;
-      this.userService.addOrder(orderData).subscribe((response) => {
-        console.log("Added Order Data : ", response.data);
-      })
-    }
-    else {
+    if (this.orderId) {
       this.isLoading = true;
       //  this.userService.updateProduct(productData).subscribe((response)=>{
       //   console.log("Updated Product Data : ",response.data)
       // })
+    }
+    else {
+      console.log("Order Data :",orderData)
+      this.isLoading = true;
+      this.userService.addOrder(orderData).subscribe((response) => {
+        console.log("Added Order Data : ", response.data);
+      })
+     
     }
 
   }

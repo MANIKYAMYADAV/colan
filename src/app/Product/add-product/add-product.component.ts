@@ -101,6 +101,7 @@ export class AddProductComponent implements OnInit {
 
     }
     else {
+      console.log("Product Data  :",productData)
       this.isLoading = true;
       this.userService.addProduct(productData).subscribe((response) => {
         console.log("Added Product Data : ", response.data);

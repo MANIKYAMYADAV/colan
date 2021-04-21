@@ -32,8 +32,15 @@ export class OrderListComponent implements OnInit {
     this.orderId = id;
 
   }
+  
+  saveOrder(orderData){
+    this.userService.addOrder(orderData).subscribe((response)=>{
+      console.log("Order Data : ",response.data)
+    })
+  }
 
   editOrder(order) {
+
     console.log("order Id ", order.id)
     this.router.navigate(['add-order'], { queryParams: { 'id': order.id } });
 

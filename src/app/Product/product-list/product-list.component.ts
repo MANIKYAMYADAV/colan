@@ -73,7 +73,11 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  
+  saveProduct(productData){
+    this.userService.addProduct(productData).subscribe((response)=>{
+      console.log("Product Data",response.data)
+    })
+  }
 
   deleteProduct() {
     this.isLoading=true;

@@ -65,6 +65,7 @@ export class AddCategoryComponent implements OnInit {
 
     }
     else {
+      console.log("Category Data :",categoryData)
       this.isLoading = true;
       this.userService.addCategory(categoryData).subscribe((response) => {
         console.log("Added Category Data : ", response.data);
