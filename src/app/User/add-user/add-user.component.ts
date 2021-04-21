@@ -15,6 +15,8 @@ export class AddUserComponent implements OnInit {
   userId: any;
   userDetails: any;
   isLoading = false;
+  todayDate: Date = new Date();
+
 
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
@@ -23,7 +25,7 @@ export class AddUserComponent implements OnInit {
       description: ['', Validators.required],
       emailId: ['', Validators.required],
       isActive: ['', Validators.required],
-      /// endingDate:['',Validators.required],
+      endingDate: ['', Validators.required],
       mobile: ['', Validators.required],
       name: ['', Validators.required],
       rating: ['', Validators.required],
@@ -78,14 +80,14 @@ export class AddUserComponent implements OnInit {
 
   // by using add we can add or update based on id present   sir is these right sir yes it is right but today whole day you took for this ?  no sir i have created forms for orders and same designed for all the products orders and category sir
   addUser(data) {
-    
+
     if (this.userId) {
       this.userService.updateUser(data).subscribe((response) => {
         console.log("Updated User Data :", response.data);
       })
     }
     else {
-
+      console.log("User Form Data :", data);
       this.userService.addUser(data).subscribe((response) => {
         console.log("Added User Data :", response.data);
 

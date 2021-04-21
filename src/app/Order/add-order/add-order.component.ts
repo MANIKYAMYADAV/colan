@@ -17,6 +17,8 @@ export class AddOrderComponent implements OnInit {
   orderId: any;
   orderDetails: any
   isLoading = false;
+  todayDate: Date = new Date();
+
 
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
@@ -60,7 +62,7 @@ export class AddOrderComponent implements OnInit {
         let orderDetails = res.data[0];
         this.orderForm.get('categoryName').setValue(orderDetails.categoryName ? orderDetails.categoryName : '')
         this.orderForm.get('description').setValue(orderDetails.description ? orderDetails.description : '')
-        this.orderForm.get('endingDate').setValue(orderDetails.endingDate ? orderDetails.endingDate : '')
+        this.orderForm.get('deliveryAddress').setValue(orderDetails.deliveryAddress ? orderDetails.deliveryAddress : '')
         this.orderForm.get('deliveryOption').setValue(orderDetails.deliveryOption ? orderDetails.deliveryOption : '')
         this.orderForm.get('name').setValue(orderDetails.name ? orderDetails.name : '')
         this.orderForm.get('rating').setValue(orderDetails.rating ? orderDetails.rating : '')

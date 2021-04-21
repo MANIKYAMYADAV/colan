@@ -12,16 +12,16 @@ import { UserService } from 'src/app/Services/user.service';
 export class AddCategoryComponent implements OnInit {
 
   categoryForm: FormGroup;
-  categoryId:any;
-  categoryDetails:any;
-  isLoading=false;
+  categoryId: any;
+  categoryDetails: any;
+  isLoading = false;
 
 
-  constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService,private activeRoute:ActivatedRoute) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
 
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
-      parentId:['',Validators.required]
+      parentId: ['', Validators.required]
     })
   }
 
@@ -40,37 +40,34 @@ export class AddCategoryComponent implements OnInit {
         // })
       });
 
-      this.userService.getCategoryDetails(this.categoryId).subscribe(res => {
-        this.isLoading = false;
-        if (res && res.data) {
-          let categoryDetails = res.data[0];
-          this.categoryForm.get('categoryName').setValue(categoryDetails.categoryName ? categoryDetails.categoryName : '')
-          this.categoryForm.get('description').setValue(categoryDetails.description ? categoryDetails.description : '')
-          this.categoryForm.get('endingDate').setValue(categoryDetails.endingDate ? categoryDetails.endingDate : '')
-        
-       
-        }
-       // this.ngAfterViewInit();
-      }, (error) => {
-        this.isLoading = false;
-      })
+    this.userService.getCategoryDetails(this.categoryId).subscribe(res => {
+      this.isLoading = false;
+      if (res && res.data) {
+        let categoryDetails = res.data[0];
+        this.categoryForm.get('name').setValue(categoryDetails.name ? categoryDetails.name : '')
+        this.categoryForm.get('parentId').setValue(categoryDetails.parentId ? categoryDetails.parentId : '')
+
+      }
+      // this.ngAfterViewInit();
+    }, (error) => {
+      this.isLoading = false;
+    })
 
   }
 
 
-  saveCategory(categoryData){
-
-    if(this.categoryId==null)
-    {
-      this.isLoading=true;
-      this.userService.addCategory(categoryData).subscribe((response)=>{
-        console.log("Added Category Data : ",response.data);
+  saveCategory(categoryData) {
+    if (this.categoryId) {
+      this.isLoading = true;
+      this.userService.updateCategory(categoryData).subscribe((response) => {
+        console.log("Updated category data : ", response.data)
       })
+
     }
-    else{
-      this.isLoading=true;
-       this.userService.updateCategory(categoryData).subscribe((response)=>{
-        console.log("Updated category data : ",response.data)
+    else {
+      this.isLoading = true;
+      this.userService.addCategory(categoryData).subscribe((response) => {
+        console.log("Added Category Data : ", response.data);
       })
     }
 

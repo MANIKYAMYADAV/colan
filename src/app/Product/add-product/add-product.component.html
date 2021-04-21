@@ -61,6 +61,22 @@
                                     </div>
                                 </div>
 
+                                 <div class="form-group">
+                                    <label>Ending Date</label>
+                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <input type="text" class="form-control bg-white" [min]="todayDate"
+                                        placeholder="Enter here" formControlName="endingDate"
+                                        [matDatepicker]="picker" readonly>
+                                        <div
+                                        *ngIf="(productForm.get('endingDate')?.invalid && productForm.get('endingDate')?.touched) || productForm.get('endingDate')?.dirty">
+                                        <small *ngIf="productForm.get('endingDate')?.errors?.required"
+                                            class="text-danger">endingDate
+                                            is required</small>
+                                    </div>
+                                </div>
+
                                 <!-- <div class="input-group form-group">
                                     <input matInput [min]="minDate"
                                         class="form-control"

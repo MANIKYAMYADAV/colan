@@ -22,7 +22,7 @@
                 <button class="btn btn-primary" routerLink="/order-list">back to home</button>
                  <form action="#" [formGroup]="orderForm">
 
-                    <h1 class="text-center">Add-Product Form</h1>
+                    <h1 class="text-center">Add-Order Form</h1>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="p-sm-3">
@@ -72,7 +72,21 @@
                                             is required</small>
                                     </div>
                                 </div>
-
+                                <!-- <div class="form-group">
+                                    <label>End Date</label>
+                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <input type="text" class="form-control bg-white" [min]="todayDate"
+                                        placeholder="Enter here" formControlName="endingDate"
+                                        [matDatepicker]="picker" readonly>
+                                    <div
+                                        *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
+                                        <small
+                                            *ngIf="userForm.get('endingDate')?.errors?.required"
+                                            class="text-danger">Ending Date is required</small>
+                                    </div>
+                                </div> -->
 
                             </div>
                         </div> 

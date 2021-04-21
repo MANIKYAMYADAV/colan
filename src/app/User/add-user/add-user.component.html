@@ -61,9 +61,42 @@
                                     </div>
                                 </div> -->
 
+                                <!-- <div class="form-group">
+                                    <label>Start Time</label>
+                                    <div class="input_date">
+                                        <input type="text" class="form-control" id=""
+                                            placeholder="Enter here" formControlName="startTime"
+                                            [ngxTimepicker]="picker3">
+                                        <ngx-material-timepicker #picker3></ngx-material-timepicker>
+                                    </div>
+                                    <div
+                                        *ngIf="(CreateGeneralTripForm.get('startTime')?.invalid && CreateGeneralTripForm.get('startTime')?.touched) || CreateGeneralTripForm.get('startTime')?.dirty">
+                                        <small
+                                            *ngIf="CreateGeneralTripForm.get('startTime')?.errors?.required"
+                                            class="text-danger">Start Time is required</small>
+                                    </div>
+                                </div> -->
+
+
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <input type="text" class="form-control bg-white" [min]="todayDate"
+                                        placeholder="Enter here" formControlName="endingDate"
+                                        [matDatepicker]="picker" readonly>
+                                    <div
+                                        *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
+                                        <small
+                                            *ngIf="userForm.get('endingDate')?.errors?.required"
+                                            class="text-danger">Ending Date is required</small>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="inputAddress">Mobile</label>
-                                    <input type="text" class="form-control" id="inputAddress" formControlName="mobile"
+                                    <input type="tel" class="form-control" id="inputAddress" minlength="10" maxlength="10"  formControlName="mobile"
                                         placeholder="Enter mobile">
                                     <div
                                         *ngIf="(userForm.get('mobile')?.invalid && userForm.get('mobile')?.touched) || userForm.get('mobile')?.dirty">
@@ -133,7 +166,7 @@
 
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success" [disabled]="userForm.invalid"
+                        <button type="submit" class="btn btn-success" 
                             (click)="addUser(userForm.value)">Add User</button>
                     </div>
                 </form>
