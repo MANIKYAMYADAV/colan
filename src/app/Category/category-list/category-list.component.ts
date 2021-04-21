@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-category-list',
@@ -9,35 +12,47 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class CategoryListComponent implements OnInit {
 
-  categories : any[]=[];
-  searchTerm:any;
-  categoryId:any;
+  categories: any[] = [];
+  searchTerm: any;
+  categoryId: any;
+  categoryForm : any;
 
-  constructor(private userService : UserService,private router:Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
+
+    this.categoryForm = this.fb.group({
+      name: ['', Validators.required],
+      parentId: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
     this.getAllCategories();
   }
 
 
-  getCategoryId(id){
-    this.categoryId='';
-    this.categoryId=id;
+  getCategoryId(id) {
+    this.categoryId = '';
+    this.categoryId = id;
 
   }
 
 
-  getAllCategories(){
-    this.userService.getCategories().subscribe((response)=>{
-      this.categories=response.data;
-      console.log("All Categories :",response.data);
+  getAllCategories() {
+    this.userService.getCategories().subscribe((response) => {
+      this.categories = response.data;
+      console.log("All Categories :", response.data);
     })
 
-    
+
   }
 
+  saveCategory(formData) {
+    this.userService.addCategory(formData).subscribe((response) => {
+      console.log("Category Data : ", response.data);
+    })
+  }
 
-  editCategory(category){
+  editCategory(category) {
     console.log("order Id ", category.id)
     this.router.navigate(['add-category'], { queryParams: { 'id': category.id } });
   }

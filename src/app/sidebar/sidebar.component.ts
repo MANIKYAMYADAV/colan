@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   isCategory:boolean = false;
   isOrder:boolean = false;
   isProduct:boolean = false;
+  public isShowSideBar:boolean = false;
    
   toggleSidebar() {
     this.isShow = !this.isShow;

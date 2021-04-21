@@ -17,6 +17,8 @@ export class ProductListComponent implements OnInit {
   productForm: FormGroup;
   isLoading=false;
   productId:any;
+  todayDate: Date = new Date();
+
 
 
   constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService) {

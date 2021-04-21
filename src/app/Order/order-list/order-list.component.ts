@@ -14,6 +14,8 @@ export class OrderListComponent implements OnInit {
   orders: any[] = [];
   orderId: any;
   orderForm:any;
+  todayDate: Date = new Date();
+
 
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {

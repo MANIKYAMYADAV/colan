@@ -16,6 +16,8 @@ export class UserListComponent implements OnInit {
   isLoading = false;
 
   userForm: FormGroup;
+  todayDate: Date = new Date();
+
 
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {

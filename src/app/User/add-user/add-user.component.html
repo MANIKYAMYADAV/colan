@@ -85,7 +85,7 @@
                                     <mat-datepicker #picker></mat-datepicker>
                                     <input type="text" class="form-control bg-white" [min]="todayDate"
                                         placeholder="Enter here" formControlName="endingDate"
-                                        [matDatepicker]="picker" readonly>
+                                        [matDatepicker]="picker">
                                     <div
                                         *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
                                         <small

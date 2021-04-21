@@ -17,63 +17,81 @@
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" [hidden]="!isShow">
                         <li>
-                            <a routerLink="/dashboard1" routerLinkActive='active'>Dashboard 1</a>
+                            <a routerLink="/dashboard1" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>Dashboard 1</a>
                         </li>
                         <li>
-                            <a routerLink="/dashboard2">Dashboard 2</a>
+                            <a routerLink="/dashboard2">
+                                <i class="dripicons-dot"></i>Dashboard 2</a>
                         </li>
                         <li>
-                            <a routerLink="/dashboard3">Dashboard 3</a>
+                            <a routerLink="/dashboard3">
+                                <i class="dripicons-dot"></i>Dashboard 3</a>
                         </li>
                         <li>
-                            <a routerLink="/dashboard4">Dashboard 4</a>
+                            <a routerLink="/dashboard4">
+                                <i class="dripicons-dot"></i>Dashboard 4</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" (click)="toggleUser()">
                         <i class="fe-users"></i>
-                        <span class="badge badge-success badge-pill float-right"></span>
                         <span> User </span>
+                        <!-- <span class="ml-auto float-right"><i class="fe-chevron-right"></i></span> -->
+                        <span class="menu-arrow"></span>
+
+
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" *ngIf="isUser">
                         <li>
-                            <a routerLink="/user-list" routerLinkActive='active'>List</a>
+                            <a routerLink="/user-list" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>List</a>
                         </li>
                         <li>
-                            <a routerLink="/add-user">Add</a>
+                            <a routerLink="/add-user">
+                                <i class="dripicons-dot"></i>Add</a>
                         </li>
-                    
+
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" (click)="toggleCategory()">
-                        <i class="fe-menu"></i>
-                        <span class="badge badge-success badge-pill float-right"></span>
+                        <i class="icon-list"></i>
+                        <!-- fe-menu -->
+                        <!-- <span class="badge badge-success badge-pill float-right"></span> -->
                         <span> Category </span>
+                        <span class="menu-arrow"></span>
+
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" *ngIf="isCategory">
                         <li>
-                            <a class="active" routerLink="/category-list" routerLinkActive='active'>List</a>
+                            <a class="active" routerLink="/category-list" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>List</a>
                         </li>
                         <li>
-                            <a routerLink="/category-add">Add</a>
+                            <a routerLink="/category-add">
+                                <i class="dripicons-dot"></i>Add</a>
                         </li>
-                    
+
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" (click)="toggleOrder()">
-                        <i class="fe-menu"></i>
-                        <span class="badge badge-success badge-pill float-right"></span>
+                        <i class="icon-list"></i>
+                        <!-- <span class="badge badge-success badge-pill float-right"></span> -->
                         <span> Orders </span>
+                        <span class="menu-arrow"></span>
+
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" *ngIf="isOrder">
                         <li>
-                            <a class="active" routerLink="/order-list" routerLinkActive='active'>List</a>
+                            <a class="active" routerLink="/order-list" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>List</a>
                         </li>
                         <li>
-                            <a routerLink="/add-order">Add-order</a>
+                            <a routerLink="/add-order">
+                                <i class="dripicons-dot"></i>Add-order</a>
                         </li>
                         <!-- <li>
                             <a routerLink="">Unassigned order List</a>
@@ -87,18 +105,22 @@
 
                 <li>
                     <a href="javascript: void(0);" (click)="toggleProduct()">
-                        <i class="fe-menu"></i>
-                        <span class="badge badge-success badge-pill float-right"></span>
+                        <i class="icon-list"></i>
+                        <!-- <span class="badge badge-success badge-pill float-right"></span> -->
                         <span> Products </span>
+                        <span class="menu-arrow"></span>
+
                     </a>
                     <ul class="nav-second-level" aria-expanded="false" *ngIf="isProduct">
                         <li>
-                            <a class="active" routerLink="/product-list" routerLinkActive='active'>List</a>
+                            <a class="active" routerLink="/product-list" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>List</a>
                         </li>
                         <li>
-                            <a routerLink="/add-product">Add-product</a>
+                            <a routerLink="/add-product">
+                                <i class="dripicons-dot"></i>Add-product</a>
                         </li>
-                    
+
                     </ul>
                 </li>
                 <!-- <li>

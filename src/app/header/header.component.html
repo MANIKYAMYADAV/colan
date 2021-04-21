@@ -6,7 +6,8 @@
             <form class="app-search">
                 <div class="app-search-box">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <!-- [(ngModel)]="searchTerm"  -->
+                        <input type="text" class="form-control" placeholder="Search..."  >
                         <div class="input-group-append">
                             <button class="btn" type="submit">
                                 <i class="fe-search"></i>
@@ -179,9 +180,10 @@
 
     <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
         <li>
-            <button class="button-menu-mobile waves-effect waves-light" (click)="toggleSidebar()">
+            <button class="button-menu-mobile waves-effect waves-light">
                 <i class="fe-menu"></i>
             </button>
+            <!-- (click)="toggleSidebar()" -->
         </li>
 
         <li class="dropdown d-none d-lg-block">

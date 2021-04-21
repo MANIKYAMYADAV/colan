@@ -206,7 +206,7 @@
                 <div class="card bg-pattern">
 
                     <div class="card-body p-4">
-                        <button class="btn btn-primary" routerLink="/order-list">back to home</button>
+                        <!-- <button class="btn btn-primary" routerLink="/order-list">back to home</button> -->
                         <form action="#" [formGroup]="orderForm">
         
                             <h1 class="text-center">Add-Order Form</h1>
@@ -328,13 +328,13 @@
         
                                 </div>
         
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success"  (click)="saveOrder(orderForm.value)"
                                         class="btn btn-success btn-round waves-effect waves-light m-1">Add
                                             Order</button>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
         
         
@@ -399,7 +399,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
+                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="orderForm.invalid" (click)="saveOrder(orderForm.value)">Save changes</button>
             </div>
         </div>
     </div>

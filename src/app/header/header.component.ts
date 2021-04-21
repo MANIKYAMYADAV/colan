@@ -9,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  searchTerm: any;
   constructor() { }
- public isShowSideBar:boolean = false;
-   
+  public isShowSideBar: boolean = false;
+
   toggleSidebar() {
     this.isShowSideBar = !this.isShowSideBar;
   }
