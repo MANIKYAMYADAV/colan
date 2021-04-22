@@ -49,10 +49,10 @@ export class AddUserComponent implements OnInit {
         this.userId = params.id;
         console.log("User Id from user list :", this.userId);
 
-        this.userService.getUserDetails(this.userId).subscribe((response) => {
-          console.log("User Details : ", response.data);
-          this.userDetails = response.data;
-        })
+        // this.userService.getUserDetails(this.userId).subscribe((response) => {
+        //   console.log("User Details : ", response.data);
+        //   this.userDetails = response.data;
+        // })
       });
 
 

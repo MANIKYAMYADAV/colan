@@ -143,6 +143,8 @@ import { AddOrderComponent } from './Order/add-order/add-order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { MaterialModule } from './material/material.module';
+import { TransactionListComponent } from './Transaction/transaction-list/transaction-list.component';
+import { TransactionDetailsComponent } from './Transaction/transaction-details/transaction-details.component';
 
 
 
@@ -275,7 +277,9 @@ import { MaterialModule } from './material/material.module';
     UserListComponent,
     AddProductComponent,
     ProductListComponent,
-    AddOrderComponent
+    AddOrderComponent,
+    TransactionListComponent,
+    TransactionDetailsComponent
   ],
   imports: [
     BrowserModule,

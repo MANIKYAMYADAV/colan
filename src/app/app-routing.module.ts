@@ -79,6 +79,8 @@ import { FooTablesComponent } from './Tables/foo-tables/foo-tables.component';
 import { JsgridTablesComponent } from './Tables/jsgrid-tables/jsgrid-tables.component';
 import { ResponsiveTablesComponent } from './Tables/responsive-tables/responsive-tables.component';
 import { TablesawTablesComponent } from './Tables/tablesaw-tables/tablesaw-tables.component';
+import { TransactionDetailsComponent } from './Transaction/transaction-details/transaction-details.component';
+import { TransactionListComponent } from './Transaction/transaction-list/transaction-list.component';
 import { AddUserComponent } from './User/add-user/add-user.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 
@@ -102,6 +104,8 @@ const routes: Routes = [
   {path:'add-order',component:AddOrderComponent},
   {path:'product-list',component:ProductListComponent},
   {path:'add-product',component:AddProductComponent},
+  {path:'transaction-list',component:TransactionListComponent},
+  {path:'transaction-details',component:TransactionDetailsComponent},
 
 
 

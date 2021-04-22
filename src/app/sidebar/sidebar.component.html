@@ -123,6 +123,28 @@
 
                     </ul>
                 </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleTransaction()">
+                        <i class="icon-list"></i>
+                        <!-- <span class="badge badge-success badge-pill float-right"></span> -->
+                        <span> Transaction </span>
+                        <span class="menu-arrow"></span>
+
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isTransaction">
+                        <li>
+                            <a class="active" routerLink="/transaction-list" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>List</a>
+                        </li>
+                        <li>
+                            <a routerLink="/transaction-details">
+                                <i class="dripicons-dot"></i>Transaction-details</a>
+                        </li>
+
+                    </ul>
+                </li>
                 <!-- <li>
                     <a href="javascript: void(0);" (click)="toggleSidebar()">
                         <i class="fe-pocket"></i>

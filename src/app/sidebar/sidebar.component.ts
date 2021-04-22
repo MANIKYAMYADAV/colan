@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   isCategory:boolean = false;
   isOrder:boolean = false;
   isProduct:boolean = false;
+  isTransaction=false;
   public isShowSideBar:boolean = false;
    
   toggleSidebar() {
@@ -31,7 +32,10 @@ export class SidebarComponent implements OnInit {
   toggleCategory() {
     this.isCategory = !this.isCategory;
   }
+  toggleTransaction(){
+    this.isTransaction=!this.isTransaction;
 
+  }
   ngOnInit(): void {
   }
 

@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUserDetails(id) {
-    return this.http.get<any>(this.apiURL + `/users + ${id}`, this.httpOptions);
+    return this.http.get<any>(this.apiURL + `/users/${id}`, this.httpOptions);
   }
 
   addUser(data: any) {
@@ -83,7 +83,7 @@ export class UserService {
   addOrder(data: any) {
     return this.http.post<any>(this.apiURL + '/orders/add', data, this.httpOptions);
   }
-  deleteOrder(id){
+  deleteOrder(id) {
     return this.http.delete<any>(this.apiURL + `/orders/delete+ ${id}`, this.httpOptions);
 
   }
@@ -109,7 +109,15 @@ export class UserService {
     return this.http.delete<any>(this.apiURL + `/products/delete+ ${id}`, this.httpOptions);
   }
 
+  //Transactions service call  to api from userService component classs
+
+  getAllTransactions() {
+    return this.http.get<any>(this.apiURL + '/transactions', this.httpOptions);
+  }
 
 
+  getTransactionDetails(id) {
+    return this.http.get<any>(this.apiURL + `/transactions/${id}`, this.httpOptions);
+  }
 
 }
