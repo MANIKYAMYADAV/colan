@@ -42,7 +42,7 @@ export class TransactionDetailsComponent implements OnInit {
       .queryParams
       .subscribe(params => {
         this.transactionId = params.id;
-        console.log("User Id from user list :", this.transactionId);
+        console.log("Transaction Id from transaction list :", this.transactionId);
       });
 
 
@@ -65,4 +65,15 @@ export class TransactionDetailsComponent implements OnInit {
 
 
 
+
+   saveTransaction(data){
+     if(this.transactionId){
+
+      //update existing transaction details based on seleted ID 
+
+     }
+     else{
+       //create new Transaction 
+     }
+   }
 }

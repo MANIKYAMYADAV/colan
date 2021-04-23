@@ -48,7 +48,7 @@
 
                         <div class="card-body">
 
-                            <h4 class="header-title">Transaction-List</h4>
+                            <h4 class="header-title">Notification-List</h4>
                             <div class="form-inline">
                                 <div class="form-group">
                                     <label for="fullname">Search</label>&nbsp;
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group d-block ml-auto">
                                     <button type="button" class="btn btn-success waves-effect waves-light "
-                                        routerLink="/transaction-details">+Transaction-details</button>
+                                        data-toggle="modal" data-target="#createField">+Create-Notification</button>
                                 </div>
                                 <!-- <div class="form-group d-block ml-auto">
                                     <button type="button" class="btn btn-success waves-effect waves-light "
@@ -73,11 +73,10 @@
                                 <thead>
                                     <tr>
 
-                                        <th>Transaction ID</th>
+                                        <th>Notification ID</th>
                                         <th>Type</th>
                                         <th>Description</th>
                                         <th>Status</th>
-                                        <th>Total Amount</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -155,7 +154,7 @@
 
 <!--Create field Modal -->
 
-<!-- 
+
 <div class="modal fade" id="createField" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -166,49 +165,44 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" [formGroup]="createFieldForm">
+            <form action="" [formGroup]="notificationForm">
                 <div class="modal-body">
                     <div class="offerBox">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Field Name</label>
-                            <input type="text" class="form-control" formControlName="field_name" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Field Type</label>
-                            <div class="">
-                                <select class="form-control" formControlName="field_type">
-                                    <option value="text">Text Field</option>
-                                    <option value="datetime">Date Time Field</option>
-                                    <option value="date">Date Field</option>
-                                    <option value="time">Time Field</option>
-                                </select>
+                            <label for="exampleInputEmail1">Title</label>
+                            <input type="text" class="form-control" formControlName="title" placeholder="Title">
+                            <div
+                                *ngIf="(notificationForm.get('title')?.invalid && notificationForm.get('title')?.touched) || notificationForm.get('title')?.dirty">
+                                <small *ngIf="notificationForm.get('title')?.errors?.required" class="text-danger">Title
+                                    is required</small>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Short Code Name</label>
-                            <input type="text" class="form-control" formControlName="short_code_name" placeholder="Shortcode">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Group</label>
-                            <div class="">
-                                <select class="form-control" formControlName="group_id">
-                                    <option *ngFor="let group of allGroups" value="{{group._id}}">{{group.group_name}}</option>
-                                </select>
+                            <label for="exampleInputEmail1">Body</label>
+                            <textarea name="" id="" cols="30" rows="5" class="form-control" formControlName="body"
+                                placeholder="body"></textarea>
+                            <div
+                                *ngIf="(notificationForm.get('body')?.invalid && notificationForm.get('body')?.touched) || notificationForm.get('body')?.dirty">
+                                <small *ngIf="notificationForm.get('body')?.errors?.required" class="text-danger">Body
+                                    is required</small>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" (click)="createField(createFieldForm.value)">Create Field</button>
+                    <button type="button" class="btn btn-primary"
+                        (click)="createNotification(notificationForm.value)">Create Notification</button>
                 </div>
             </form>
         </div>
     </div>
-</div> -->
+</div>
 
 
 
 
 
-<!--edit field Modal -->
+<!--edit field Modal (click)="createField(createFieldForm.value)" -->

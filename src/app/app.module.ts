@@ -145,6 +145,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MaterialModule } from './material/material.module';
 import { TransactionListComponent } from './Transaction/transaction-list/transaction-list.component';
 import { TransactionDetailsComponent } from './Transaction/transaction-details/transaction-details.component';
+import { NotificationListComponent } from './Notification/notification-list/notification-list.component';
 
 
 
@@ -279,7 +280,8 @@ import { TransactionDetailsComponent } from './Transaction/transaction-details/t
     ProductListComponent,
     AddOrderComponent,
     TransactionListComponent,
-    TransactionDetailsComponent
+    TransactionDetailsComponent,
+    NotificationListComponent
   ],
   imports: [
     BrowserModule,

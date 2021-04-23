@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +15,10 @@ export class SidebarComponent implements OnInit {
   isOrder:boolean = false;
   isProduct:boolean = false;
   isTransaction=false;
+  isNotification=false;
   public isShowSideBar:boolean = false;
+
+  @Input()  public headerProp;
    
   toggleSidebar() {
     this.isShow = !this.isShow;
@@ -35,6 +38,10 @@ export class SidebarComponent implements OnInit {
   toggleTransaction(){
     this.isTransaction=!this.isTransaction;
 
+  }
+
+  toggleNotification(){
+    this.isNotification=!this.isNotification;
   }
   ngOnInit(): void {
   }

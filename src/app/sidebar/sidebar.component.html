@@ -145,6 +145,22 @@
 
                     </ul>
                 </li>
+
+                <li>
+                    <a href="javascript: void(0);" (click)="toggleNotification()">
+                        <i class="icon-list"></i>
+                        <span> Notification </span>
+                        <span class="menu-arrow"></span>
+
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" *ngIf="isNotification">
+                        <li>
+                            <a class="active" routerLink="/notification-list" routerLinkActive='active'>
+                                <i class="dripicons-dot"></i>List</a>
+                        </li>
+
+                    </ul>
+                </li>
                 <!-- <li>
                     <a href="javascript: void(0);" (click)="toggleSidebar()">
                         <i class="fe-pocket"></i>
