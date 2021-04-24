@@ -59,7 +59,7 @@ export class AddOrderComponent implements OnInit {
     this.userService.getOrderDetails(this.orderId).subscribe(res => {
       this.isLoading = false;
       if (res && res.data) {
-        let orderDetails = res.data[0];
+        let orderDetails = res.data;
         this.orderForm.get('categoryName').setValue(orderDetails.categoryName ? orderDetails.categoryName : '')
         this.orderForm.get('description').setValue(orderDetails.description ? orderDetails.description : '')
         this.orderForm.get('deliveryAddress').setValue(orderDetails.deliveryAddress ? orderDetails.deliveryAddress : '')

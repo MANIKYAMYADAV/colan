@@ -71,7 +71,7 @@ export class AddProductComponent implements OnInit {
     this.userService.getProductDetails(this.productId).subscribe(res => {
       this.isLoading = false;
       if (res && res.data) {
-        let productDetails = res.data[0];
+        let productDetails = res.data;
         console.log("Product Details : ", productDetails)
         this.productForm.get('categoryName').setValue(productDetails.categoryName ? productDetails.categoryName : '')
         this.productForm.get('description').setValue(productDetails.description ? productDetails.description : '')

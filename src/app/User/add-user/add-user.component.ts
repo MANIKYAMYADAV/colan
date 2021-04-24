@@ -60,9 +60,9 @@ export class AddUserComponent implements OnInit {
     this.userService.getUserDetails(this.userId).subscribe(res => {
       this.isLoading = false;
       if (res && res.data) {
-        let userDetails = res.data[0];
+        let userDetails = res.data;
         console.log("User Details : ", userDetails)
-        this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
+         this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
         this.userForm.get('description').setValue(userDetails.description ? userDetails.description : '')
         this.userForm.get('isActive').setValue(userDetails.isActive ? userDetails.isActive : '')
         this.userForm.get('mobile').setValue(userDetails.mobile ? userDetails.mobile : '')

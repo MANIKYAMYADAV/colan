@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUserDetails(id) {
-    return this.http.get<any>(this.apiURL + `/users/id/${id}`, this.httpOptions);
+    return this.http.get<any>(this.apiURL + `/users/id?id=${id}`, this.httpOptions);
   }
 
   addUser(data: any) {
@@ -77,7 +77,7 @@ export class UserService {
   }
 
   getOrderDetails(id) {
-    return this.http.get<any>(this.apiURL + `/orders/id/${id}`, this.httpOptions)
+    return this.http.get<any>(this.apiURL + `/orders/id?id=${id}`, this.httpOptions)
   }
 
   addOrder(data: any) {
@@ -97,7 +97,7 @@ export class UserService {
   }
 
   getProductDetails(id) {
-    return this.http.get<any>(this.apiURL + `/products/id/${id}`, this.httpOptions)
+    return this.http.get<any>(this.apiURL + `/products/id?id=${id}`, this.httpOptions)
   }
 
 
