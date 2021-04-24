@@ -24,22 +24,22 @@ export class AddOrderComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
 
     this.orderForm = this.fb.group({
-      chefName	: ['', Validators.required],
-      deliveryAddress	: ['', Validators.required],
+      chefName: ['', Validators.required],
+      deliveryAddress: ['', Validators.required],
       deliveryOption: ['', Validators.required],
       deliveryTime: ['', Validators.required],
       description: ['', Validators.required],
       imagePath: ['', Validators.required],
-      discount	:[''],
+      discount: [''],
       name: [''],
-      orderId	: [''],
-      paymentMode	: [''],
-      price	: [''],
-      quantity	: [''],
+      orderId: [''],
+      paymentMode: [''],
+      price: [''],
+      quantity: [''],
       userName: [''],
-      updateDate	: [''],
-      stage	: [''],
-      userImage	:['']
+      updateDate: [''],
+      stage: [''],
+      userImage: ['']
 
     })
   }
@@ -68,11 +68,16 @@ export class AddOrderComponent implements OnInit {
         this.orderForm.get('rating').setValue(orderDetails.rating ? orderDetails.rating : '')
         this.orderForm.get('price').setValue(orderDetails.price ? orderDetails.price : '')
         this.orderForm.get('quantity').setValue(orderDetails.quantity ? orderDetails.quantity : '')
+        this.toastr.success(res.message, "Success")
 
       }
-      // this.ngAfterViewInit();
+      else {
+        this.toastr.error(res.message, "Error");
+
+      }
     }, (error) => {
       this.isLoading = false;
+      this.toastr.error(error.error.message, 'Error');
     })
 
   }
@@ -86,12 +91,12 @@ export class AddOrderComponent implements OnInit {
       // })
     }
     else {
-      console.log("Order Data :",orderData)
+      console.log("Order Data :", orderData)
       this.isLoading = true;
       this.userService.addOrder(orderData).subscribe((response) => {
         console.log("Added Order Data : ", response.data);
       })
-     
+
     }
 
   }

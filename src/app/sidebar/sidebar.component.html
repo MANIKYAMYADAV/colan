@@ -10,29 +10,29 @@
                 <li class="menu-title">Navigation</li>
 
                 <li>
-                    <a href="javascript: void(0);" (click)="toggleSidebar()">
+                    <a href="javascript: void(0);" (click)="toggleSidebar()" routerLink="/dashboard1">
                         <i class="fe-airplay"></i>
-                        <span class="badge badge-success badge-pill float-right">4</span>
-                        <span> Dashboards </span>
+                        <!-- <span class="badge badge-success badge-pill float-right">4</span> -->
+                        <span> Dashboard </span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false" [hidden]="!isShow">
-                        <!-- <li>
+                    <!-- <ul class="nav-second-level" aria-expanded="false" [hidden]="!isShow">
+                        <li>
                             <a routerLink="/dashboard1" routerLinkActive='active'>
                                 <i class="dripicons-dot"></i>Dashboard 1</a>
-                        </li> -->
+                        </li>
                         <li>
                             <a routerLink="/dashboard2">
                                 <i class="dripicons-dot"></i>Dashboard 2</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <a routerLink="/dashboard3">
                                 <i class="dripicons-dot"></i>Dashboard 3</a>
-                        </li> -->
-                        <!-- <li>
+                        </li>
+                        <li>
                             <a routerLink="/dashboard4">
                                 <i class="dripicons-dot"></i>Dashboard 4</a>
-                        </li> -->
-                    </ul>
+                        </li>
+                    </ul> -->
                 </li>
                 <li>
                     <a href="javascript: void(0);" (click)="toggleUser()">
@@ -55,7 +55,7 @@
 
                     </ul>
                 </li>
-                <!-- <li>
+                <li>
                     <a href="javascript: void(0);" (click)="toggleCategory()">
                         <i class="icon-list"></i>
                         <span> Category </span>
@@ -73,7 +73,7 @@
                         </li>
 
                     </ul>
-                </li> -->
+                </li>
                 <li>
                     <a href="javascript: void(0);" (click)="toggleOrder()">
                         <i class="icon-list"></i>

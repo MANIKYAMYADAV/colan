@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class UserService {
   apiURL: string = 'http://openchefaws-env.eba-zxrnhky2.ap-south-1.elasticbeanstalk.com/chef/v1';
@@ -40,8 +40,8 @@ export class UserService {
     return this.http.put<any>(this.apiURL + '/users/update', data, this.httpOptions);
   }
 
-  deleteUser(id) {
-    return this.http.delete<any>(this.apiURL + `/users/inactive + ${id}`, this.httpOptions)
+  deleteUser() {
+    return this.http.delete<any>(this.apiURL+'/users/inactive', this.httpOptions)
   }
 
 
@@ -65,7 +65,7 @@ export class UserService {
   }
 
   delteteCategory(id) {
-    return this.http.delete<any>(this.apiURL + `/categories/update+ ${id}`, this.httpOptions);
+    return this.http.delete<any>(this.apiURL + `/categories/delete/${id}`, this.httpOptions);
 
   }
 
@@ -77,7 +77,7 @@ export class UserService {
   }
 
   getOrderDetails(id) {
-    return this.http.post<any>(this.apiURL + '/orders/order', id, this.httpOptions)
+    return this.http.get<any>(this.apiURL + `/orders/id/${id}`, this.httpOptions)
   }
 
   addOrder(data: any) {
@@ -97,7 +97,7 @@ export class UserService {
   }
 
   getProductDetails(id) {
-    return this.http.post<any>(this.apiURL + '/products/category-product', id, this.httpOptions)
+    return this.http.get<any>(this.apiURL + `/products/id/${id}`, this.httpOptions)
   }
 
 
@@ -106,7 +106,7 @@ export class UserService {
   }
 
   deleteProduct(id) {
-    return this.http.delete<any>(this.apiURL + `/products/delete+ ${id}`, this.httpOptions);
+    return this.http.delete<any>(this.apiURL + `/products/delete/${id}`, this.httpOptions);
   }
 
   //Transactions service call  to api from userService component classs

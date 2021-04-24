@@ -61,7 +61,7 @@ export class AddUserComponent implements OnInit {
       this.isLoading = false;
       if (res && res.data) {
         let userDetails = res.data[0];
-        console.log("User Details : ",userDetails)
+        console.log("User Details : ", userDetails)
         this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
         this.userForm.get('description').setValue(userDetails.description ? userDetails.description : '')
         this.userForm.get('isActive').setValue(userDetails.isActive ? userDetails.isActive : '')
@@ -70,16 +70,23 @@ export class AddUserComponent implements OnInit {
         this.userForm.get('rating').setValue(userDetails.rating ? userDetails.rating : '')
         this.userForm.get('role').setValue(userDetails.role ? userDetails.role : '')
         this.userForm.get('subscription').setValue(userDetails.subscription ? userDetails.subscription : '')
+        this.toastr.success(res.message, "Success")
+
+      }
+      else {
+        this.toastr.error(res.message, "Error");
+
       }
     }, (error) => {
       this.isLoading = false;
+      this.toastr.error(error.error.message, 'Error');
     })
 
   }
 
 
 
-  // by using add we can add or update based on id present   sir is these right sir yes it is right but today whole day you took for this ?  no sir i have created forms for orders and same designed for all the products orders and category sir
+  // by using add we can add or update based on id present
   addUser(data) {
 
     if (this.userId) {

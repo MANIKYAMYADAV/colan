@@ -64,7 +64,7 @@ export class UserListComponent implements OnInit {
   deleteUser() {
     this.isLoading=true;
     console.log("User ID :", this.userId);
-    this.userService.deleteUser(this.userId).subscribe((response) => {
+    this.userService.deleteUser().subscribe((response) => {
       console.log("User Deleted : ", response.data)
       this.getAllUsers();
       this.isLoading =false;

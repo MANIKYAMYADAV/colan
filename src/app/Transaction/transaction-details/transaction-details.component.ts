@@ -56,24 +56,32 @@ export class TransactionDetailsComponent implements OnInit {
         this.transactionForm.get('status').setValue(transactionDetails.status ? transactionDetails.status : '')
         this.transactionForm.get('type').setValue(transactionDetails.type ? transactionDetails.type : '')
         this.transactionForm.get('totalAmount').setValue(transactionDetails.totalAmount ? transactionDetails.totalAmount : '')
+        this.toastr.success(res.message, "Success")
+
+      }
+      else {
+        this.toastr.error(res.message, "Error");
+
       }
     }, (error) => {
       this.isLoading = false;
+      this.toastr.error(error.error.message, 'Error');
     })
+
 
   }
 
 
 
 
-   saveTransaction(data){
-     if(this.transactionId){
+  saveTransaction(data) {
+    if (this.transactionId) {
 
       //update existing transaction details based on seleted ID 
 
-     }
-     else{
-       //create new Transaction 
-     }
-   }
+    }
+    else {
+      //create new Transaction 
+    }
+  }
 }

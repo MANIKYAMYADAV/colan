@@ -72,20 +72,30 @@ export class AddProductComponent implements OnInit {
       this.isLoading = false;
       if (res && res.data) {
         let productDetails = res.data[0];
+        console.log("Product Details : ", productDetails)
         this.productForm.get('categoryName').setValue(productDetails.categoryName ? productDetails.categoryName : '')
         this.productForm.get('description').setValue(productDetails.description ? productDetails.description : '')
         this.productForm.get('endingDate').setValue(productDetails.endingDate ? productDetails.endingDate : '')
         this.productForm.get('deliveryOption').setValue(productDetails.deliveryOption ? productDetails.deliveryOption : '')
+        this.productForm.get('deliveryTime').setValue(productDetails.deliveryTime ? productDetails.deliveryTime : '')
         this.productForm.get('name').setValue(productDetails.name ? productDetails.name : '')
         this.productForm.get('rating').setValue(productDetails.rating ? productDetails.rating : '')
         this.productForm.get('price').setValue(productDetails.price ? productDetails.price : '')
         this.productForm.get('quantity').setValue(productDetails.quantity ? productDetails.quantity : '')
+        this.productForm.get('imagePath').setValue(productDetails.imagePath ? productDetails.imagePath : '')
+        this.toastr.success(res.message, "Success")
+
 
       }
-      // this.ngAfterViewInit();
+      else {
+        this.toastr.error(res.message, "Error");
+
+      }
     }, (error) => {
       this.isLoading = false;
+      this.toastr.error(error.error.message, 'Error');
     })
+
 
   }
 
@@ -101,7 +111,7 @@ export class AddProductComponent implements OnInit {
 
     }
     else {
-      console.log("Product Data  :",productData)
+      console.log("Product Data  :", productData)
       this.isLoading = true;
       this.userService.addProduct(productData).subscribe((response) => {
         console.log("Added Product Data : ", response.data);

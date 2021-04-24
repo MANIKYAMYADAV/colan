@@ -59,6 +59,7 @@ export class CategoryListComponent implements OnInit {
 
 
   deleteCategory() {
+    console.log("Category ID :",this.categoryId)
     this.userService.delteteCategory(this.categoryId).subscribe((response) => {
       console.log("Deleted Category is :", response.data);
     })
