@@ -130,13 +130,14 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import pagination the module
 import { AddUserComponent } from './User/add-user/add-user.component';
 import { CategoryListComponent } from './Category/category-list/category-list.component';
 import { AddCategoryComponent } from './Category/add-category/add-category.component';
 import { OrderListComponent } from './Order/order-list/order-list.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import {HttpClientModule} from '@angular/common/http'
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng2SearchPipeModule} from 'ng2-search-filter'; // import ng2search pipe module
 import { AddProductComponent } from './Product/add-product/add-product.component';
 import { ProductListComponent } from './Product/product-list/product-list.component';
 import { AddOrderComponent } from './Order/add-order/add-order.component';
@@ -293,7 +294,8 @@ import { NotificationListComponent } from './Notification/notification-list/noti
     SocialLoginModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [
     {

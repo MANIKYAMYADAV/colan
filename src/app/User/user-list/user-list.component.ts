@@ -14,6 +14,12 @@ export class UserListComponent implements OnInit {
   users: any[] = [];
   userId: any;
   isLoading = false;
+  p: number = 1;
+  // itemsPerPage:any;
+  // currentPage:any;
+  config:any;
+  count: number = 0;
+
 
   userForm: FormGroup;
   todayDate: Date = new Date();
@@ -36,9 +42,22 @@ export class UserListComponent implements OnInit {
       // subscriptionCost:['',Validators.required],
 
     })
+
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.users.length
+    };
   }
+
+  pageChanged(event){
+    this.config.currentPage = event;
+  }
+
+
   ngOnInit(): void {
     this.getAllUsers();
+    
   }
 
   getUserId(id) {

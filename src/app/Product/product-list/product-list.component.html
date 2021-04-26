@@ -79,7 +79,8 @@
 
 
                                 <tbody>
-                                    <tr *ngFor="let product of products | filter:searchTerm ; let i=index">
+                                    <tr
+                                        *ngFor="let product of products | paginate: config | filter:searchTerm; let i=index">
 
                                         <td>{{product.categoryName}}</td>
                                         <td>{{product.name}}</td>
@@ -93,7 +94,7 @@
                                         <td>{{product.stock}}</td>
                                         <td>{{product.userName}}</td>
                                         <td>
-                                            <img src="{{product.imagePath}}"  height="50px" width="50px" alt="">
+                                            <img src="{{product.imagePath}}" height="50px" width="50px" alt="">
                                         </td>
                                         <td>
 
@@ -103,7 +104,7 @@
                                             </a> &nbsp;
 
                                             <a (click)="getProductId(product.id)" data-toggle="modal"
-                                            data-target="#deleteModal">
+                                                data-target="#deleteModal">
                                                 <i class="fas fa-trash"></i>
                                             </a>
 
@@ -113,6 +114,8 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
 
                         </div> <!-- end card body-->
                     </div> <!-- end card -->
@@ -199,7 +202,7 @@
                     <div class="card-body p-4">
                         <!-- <button class="btn btn-primary" routerLink="/product-list">back to home</button> -->
                         <form [formGroup]="productForm">
-        
+
                             <h1 class="text-center">Add-Product Form</h1>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -238,23 +241,23 @@
                                                     is required</small>
                                             </div>
                                         </div> -->
-        
-                                         <div class="form-group">
+
+                                        <div class="form-group">
                                             <label>Ending Date</label>
                                             <mat-datepicker-toggle matSuffix [for]="picker">
                                             </mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
                                             <input type="text" class="form-control bg-white" [min]="todayDate"
                                                 placeholder="Enter here" formControlName="endingDate"
-                                                [matDatepicker]="picker" >
-                                                <div
+                                                [matDatepicker]="picker">
+                                            <div
                                                 *ngIf="(productForm.get('endingDate')?.invalid && productForm.get('endingDate')?.touched) || productForm.get('endingDate')?.dirty">
                                                 <small *ngIf="productForm.get('endingDate')?.errors?.required"
                                                     class="text-danger">endingDate
                                                     is required</small>
                                             </div>
                                         </div>
-        
+
                                         <!-- <div class="input-group form-group">
                                             <input matInput [min]="minDate"
                                                 class="form-control"
@@ -268,7 +271,7 @@
                                             <mat-datepicker #picker>
                                             </mat-datepicker>
                                         </div> -->
-        
+
                                         <div class="form-group">
                                             <label for="inputAddress">Delivery Option</label>
                                             <input type="text" class="form-control" id="inputAddress"
@@ -280,18 +283,18 @@
                                                     is required</small>
                                             </div>
                                         </div>
-        
-        
+
+
                                     </div>
                                 </div> <!-- end col -->
-        
+
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
-        
+
                                         <div class="form-group">
                                             <label for="inputAddress">Rating</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="rating"
-                                                placeholder="Enter rating">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="rating" placeholder="Enter rating">
                                             <div
                                                 *ngIf="(productForm.get('rating')?.invalid && productForm.get('rating')?.touched) || productForm.get('rating')?.dirty">
                                                 <small *ngIf="productForm.get('rating')?.errors?.required"
@@ -301,8 +304,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Name</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="name"
-                                                placeholder="Enter name">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="name" placeholder="Enter name">
                                             <div
                                                 *ngIf="(productForm.get('name')?.invalid && productForm.get('name')?.touched) || productForm.get('name')?.dirty">
                                                 <small *ngIf="productForm.get('name')?.errors?.required"
@@ -312,8 +315,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Price</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="price"
-                                                placeholder="Enter price">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="price" placeholder="Enter price">
                                             <div
                                                 *ngIf="(productForm.get('price')?.invalid && productForm.get('price')?.touched) || productForm.get('price')?.dirty">
                                                 <small *ngIf="productForm.get('price')?.errors?.required"
@@ -323,8 +326,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Quantity</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="quantity"
-                                                placeholder="Enter quantity">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="quantity" placeholder="Enter quantity">
                                             <div
                                                 *ngIf="(productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched) || productForm.get('quantity')?.dirty">
                                                 <small *ngIf="productForm.get('quantity')?.errors?.required"
@@ -332,11 +335,11 @@
                                                     is required</small>
                                             </div>
                                         </div>
-        
+
                                     </div>
-        
+
                                 </div> <!-- end col -->
-        
+
                                 <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success" [disabled]="productForm.invalid" (click)="saveProduct(productForm.value)"
@@ -346,16 +349,17 @@
                                 </div> -->
                             </div>
                             <!-- end row-->
-            
+
                         </form>
                     </div> <!-- end card-body -->
                 </div>
 
-               
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="productForm.invalid" (click)="saveProduct(productForm.value)">Save changes</button>
+                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="productForm.invalid"
+                    (click)="saveProduct(productForm.value)">Save changes</button>
             </div>
         </div>
     </div>

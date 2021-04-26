@@ -1,5 +1,3 @@
-
-
 <app-header></app-header>
 
 <app-sidebar></app-sidebar>
@@ -90,7 +88,7 @@
 
 
                                 <tbody>
-                                    <tr *ngFor="let user of users | filter:searchTerm; let i= index">
+                                    <tr *ngFor="let user of users | paginate: config | filter:searchTerm; let i= index">
                                         <td>{{user.name}}</td>
                                         <td>{{user.description}}</td>
                                         <td>{{user.emailId}}</td>
@@ -112,22 +110,26 @@
 
 
                                         <td>
-                                           
-                                               
-                                                    <a (click)="editUserDetails(user)">
-                                                        <i class="far fa-edit"></i>
-                                                    </a> &nbsp;
-                                               
-                                                    <a (click)="getUserId(user.id)" data-toggle="modal"
-                                                        data-target="#deleteModal">
-                                                        <i class="fas fa-trash"></i>
-                                                        </a>
-                                               
-                                           
+
+
+                                            <a (click)="editUserDetails(user)">
+                                                <i class="far fa-edit"></i>
+                                            </a> &nbsp;
+
+                                            <a (click)="getUserId(user.id)" data-toggle="modal"
+                                                data-target="#deleteModal">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+
+
                                         </td>
                                     </tr>
+
                                 </tbody>
+
+
                             </table>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 
                         </div> <!-- end card body-->
                     </div> <!-- end card -->
@@ -202,18 +204,19 @@
                 <div class="card-body p-4">
                     <!-- <button class="btn btn-primary" routerLink="/user-list">back to home</button> -->
                     <form action="#" [formGroup]="userForm">
-    
+
                         <h1 class="text-center">Add-User Form</h1>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="p-sm-3">
                                     <div class="form-group">
                                         <label for="inputAddress">Email </label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="emailId"
-                                            placeholder="Enter email">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="emailId" placeholder="Enter email">
                                         <div
                                             *ngIf="(userForm.get('emailId')?.invalid && userForm.get('emailId')?.touched) || userForm.get('emailId')?.dirty">
-                                            <small *ngIf="userForm.get('emailId')?.errors?.required" class="text-danger">
+                                            <small *ngIf="userForm.get('emailId')?.errors?.required"
+                                                class="text-danger">
                                                 Email
                                                 is required</small>
                                         </div>
@@ -240,7 +243,7 @@
                                                 is required</small>
                                         </div>
                                     </div> -->
-    
+
                                     <!-- <div class="form-group">
                                         <label>Start Time</label>
                                         <div class="input_date">
@@ -256,8 +259,8 @@
                                                 class="text-danger">Start Time is required</small>
                                         </div>
                                     </div> -->
-    
-    
+
+
                                     <div class="form-group">
                                         <label>End Date</label>
                                         <mat-datepicker-toggle matSuffix [for]="picker">
@@ -268,16 +271,15 @@
                                             [matDatepicker]="picker" readonly>
                                         <div
                                             *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
-                                            <small
-                                                *ngIf="userForm.get('endingDate')?.errors?.required"
+                                            <small *ngIf="userForm.get('endingDate')?.errors?.required"
                                                 class="text-danger">Ending Date is required</small>
                                         </div>
                                     </div>
-    
+
                                     <div class="form-group">
                                         <label for="inputAddress">Mobile</label>
-                                        <input type="tel" class="form-control" id="inputAddress" minlength="10" maxlength="10"  formControlName="mobile"
-                                            placeholder="Enter mobile">
+                                        <input type="tel" class="form-control" id="inputAddress" minlength="10"
+                                            maxlength="10" formControlName="mobile" placeholder="Enter mobile">
                                         <div
                                             *ngIf="(userForm.get('mobile')?.invalid && userForm.get('mobile')?.touched) || userForm.get('mobile')?.dirty">
                                             <small *ngIf="userForm.get('mobile')?.errors?.required"
@@ -285,18 +287,18 @@
                                                 is required</small>
                                         </div>
                                     </div>
-    
-    
+
+
                                 </div>
                             </div> <!-- end col -->
-    
+
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="p-sm-3">
-    
+
                                     <div class="form-group">
                                         <label for="inputAddress">Rating</label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="rating"
-                                            placeholder="Enter rating">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="rating" placeholder="Enter rating">
                                         <div
                                             *ngIf="(userForm.get('rating')?.invalid && userForm.get('rating')?.touched) || userForm.get('rating')?.dirty">
                                             <small *ngIf="userForm.get('rating')?.errors?.required"
@@ -310,7 +312,8 @@
                                             placeholder="Enter role">
                                         <div
                                             *ngIf="(userForm.get('role')?.invalid && userForm.get('role')?.touched) || userForm.get('role')?.dirty">
-                                            <small *ngIf="userForm.get('role')?.errors?.required" class="text-danger">Role
+                                            <small *ngIf="userForm.get('role')?.errors?.required"
+                                                class="text-danger">Role
                                                 is required</small>
                                         </div>
                                     </div>
@@ -327,8 +330,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">isActive</label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="isActive"
-                                            placeholder="Enter isActive">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="isActive" placeholder="Enter isActive">
                                         <div
                                             *ngIf="(userForm.get('isActive')?.invalid && userForm.get('isActive')?.touched) || userForm.get('isActive')?.dirty">
                                             <small *ngIf="userForm.get('isActive')?.errors?.required"
@@ -336,11 +339,11 @@
                                                 is required</small>
                                         </div>
                                     </div>
-    
+
                                 </div>
-    
+
                             </div> <!-- end col -->
-    
+
                             <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success" [disabled]="userForm.invalid" (click)="addUser(userForm.value)"
@@ -355,7 +358,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="userForm.invalid" (click)="addUser(userForm.value)">Save changes</button>
+                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="userForm.invalid"
+                    (click)="addUser(userForm.value)">Save changes</button>
             </div>
         </div>
     </div>
@@ -438,18 +442,19 @@
 
                 <div class="card-body p-4">
                     <form action="#" [formGroup]="userForm">
-    
+
                         <h1 class="text-center">Edit-User Form</h1>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="p-sm-3">
                                     <div class="form-group">
                                         <label for="inputAddress">Email </label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="emailId"
-                                            placeholder="Enter email">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="emailId" placeholder="Enter email">
                                         <div
                                             *ngIf="(userForm.get('emailId')?.invalid && userForm.get('emailId')?.touched) || userForm.get('emailId')?.dirty">
-                                            <small *ngIf="userForm.get('emailId')?.errors?.required" class="text-danger">
+                                            <small *ngIf="userForm.get('emailId')?.errors?.required"
+                                                class="text-danger">
                                                 Email
                                                 is required</small>
                                         </div>
@@ -476,11 +481,11 @@
                                                 is required</small>
                                         </div>
                                     </div>
-    
+
                                     <div class="form-group">
                                         <label for="inputAddress">Mobile</label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="mobile"
-                                            placeholder="Enter mobile">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="mobile" placeholder="Enter mobile">
                                         <div
                                             *ngIf="(userForm.get('mobile')?.invalid && userForm.get('mobile')?.touched) || userForm.get('mobile')?.dirty">
                                             <small *ngIf="userForm.get('mobile')?.errors?.required"
@@ -488,18 +493,18 @@
                                                 is required</small>
                                         </div>
                                     </div>
-    
-    
+
+
                                 </div>
                             </div> <!-- end col -->
-    
+
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="p-sm-3">
-    
+
                                     <div class="form-group">
                                         <label for="inputAddress">Rating</label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="rating"
-                                            placeholder="Enter rating">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="rating" placeholder="Enter rating">
                                         <div
                                             *ngIf="(userForm.get('rating')?.invalid && userForm.get('rating')?.touched) || userForm.get('rating')?.dirty">
                                             <small *ngIf="userForm.get('rating')?.errors?.required"
@@ -513,7 +518,8 @@
                                             placeholder="Enter role">
                                         <div
                                             *ngIf="(userForm.get('role')?.invalid && userForm.get('role')?.touched) || userForm.get('role')?.dirty">
-                                            <small *ngIf="userForm.get('role')?.errors?.required" class="text-danger">Role
+                                            <small *ngIf="userForm.get('role')?.errors?.required"
+                                                class="text-danger">Role
                                                 is required</small>
                                         </div>
                                     </div>
@@ -530,8 +536,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputAddress">isActive</label>
-                                        <input type="text" class="form-control" id="inputAddress" formControlName="isActive"
-                                            placeholder="Enter isActive">
+                                        <input type="text" class="form-control" id="inputAddress"
+                                            formControlName="isActive" placeholder="Enter isActive">
                                         <div
                                             *ngIf="(userForm.get('isActive')?.invalid && userForm.get('isActive')?.touched) || userForm.get('isActive')?.dirty">
                                             <small *ngIf="userForm.get('isActive')?.errors?.required"
@@ -539,18 +545,18 @@
                                                 is required</small>
                                         </div>
                                     </div>
-    
+
                                 </div>
-    
+
                             </div> <!-- end col -->
                         </div>
                         <!-- end row-->
-    
-    
-    
+
+
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-success" [disabled]="userForm.invalid"
-                            (click)="editUser(userForm.value)">save</button>
+                                (click)="editUser(userForm.value)">save</button>
                         </div>
                     </form>
                 </div> <!-- end card-body -->

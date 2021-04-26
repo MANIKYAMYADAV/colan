@@ -83,7 +83,7 @@
                                     <mat-datepicker-toggle matSuffix [for]="picker">
                                     </mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
-                                    <input type="text" class="form-control bg-white" [min]="todayDate"
+                                    <input type="text" class="form-control bg-white"
                                         placeholder="Enter here" formControlName="endingDate"
                                         [matDatepicker]="picker">
                                     <div
@@ -94,10 +94,22 @@
                                     </div>
                                 </div>
 
+
+                                <!-- <div class="form-group">
+                                    <label>End Date</label>
+
+                                    <input type="text" class="form-control bg-white" placeholder="Enter here"
+                                        formControlName="endingDate">
+                                    <div
+                                        *ngIf="(userForm.get('endingDate')?.invalid && userForm.get('endingDate')?.touched) || userForm.get('endingDate')?.dirty">
+                                        <small *ngIf="userForm.get('endingDate')?.errors?.required"
+                                            class="text-danger">Ending Date is required</small>
+                                    </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="inputAddress">Mobile</label>
-                                    <input type="tel" class="form-control" id="inputAddress" minlength="10" maxlength="10"  formControlName="mobile"
-                                        placeholder="Enter mobile">
+                                    <input type="tel" class="form-control" id="inputAddress" minlength="10"
+                                        maxlength="10" formControlName="mobile" placeholder="Enter mobile">
                                     <div
                                         *ngIf="(userForm.get('mobile')?.invalid && userForm.get('mobile')?.touched) || userForm.get('mobile')?.dirty">
                                         <small *ngIf="userForm.get('mobile')?.errors?.required"
@@ -114,6 +126,16 @@
                             <div class="p-sm-3">
 
                                 <div class="form-group">
+                                    <label for="inputAddress">Name</label>
+                                    <input type="text" class="form-control" id="inputAddress" formControlName="name"
+                                        placeholder="Enter name">
+                                    <div
+                                        *ngIf="(userForm.get('name')?.invalid && userForm.get('name')?.touched) || userForm.get('name')?.dirty">
+                                        <small *ngIf="userForm.get('name')?.errors?.required" class="text-danger">Name
+                                            is required</small>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="inputAddress">Rating</label>
                                     <input type="text" class="form-control" id="inputAddress" formControlName="rating"
                                         placeholder="Enter rating">
@@ -123,7 +145,7 @@
                                             class="text-danger">Rating
                                             is required</small>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="inputAddress">Role</label>
                                     <input type="text" class="form-control" id="inputAddress" formControlName="role"
@@ -146,13 +168,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputAddress">isActive</label>
-                                    <input type="text" class="form-control" id="inputAddress" formControlName="isActive"
-                                        placeholder="Enter isActive">
+                                    <label for="inputAddress">Subscription Cost</label>
+                                    <input type="text" class="form-control" id="inputAddress" formControlName="subscriptionCost"
+                                        placeholder="Enter subscriptionCost">
                                     <div
-                                        *ngIf="(userForm.get('isActive')?.invalid && userForm.get('isActive')?.touched) || userForm.get('isActive')?.dirty">
-                                        <small *ngIf="userForm.get('isActive')?.errors?.required"
-                                            class="text-danger">isActive
+                                        *ngIf="(userForm.get('subscriptionCost')?.invalid && userForm.get('subscriptionCost')?.touched) || userForm.get('subscriptionCost')?.dirty">
+                                        <small *ngIf="userForm.get('subscriptionCost')?.errors?.required"
+                                            class="text-danger">Subscription Cost
                                             is required</small>
                                     </div>
                                 </div>
@@ -163,9 +185,10 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success" [disabled]="userForm.invalid" (click)="addUser(userForm.value)"
-                                class="btn btn-success btn-round waves-effect waves-light m-1">Add User
-                                    </button>
+                                <button type="submit" class="btn btn-success" 
+                                    (click)="addUser(userForm.value)"
+                                    class="btn btn-success btn-round waves-effect waves-light m-1">Add User
+                                </button>
                             </div>
                         </div>
                     </div>

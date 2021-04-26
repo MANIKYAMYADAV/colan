@@ -37,7 +37,7 @@ export class UserService {
   }
 
   updateUser(data: any) {
-    return this.http.put<any>(this.apiURL + '/users/update', data, this.httpOptions);
+    return this.http.put<any>(this.apiURL + `/users/update?discription=${data.description}`, this.httpOptions);
   }
 
   deleteUser() {
@@ -106,7 +106,7 @@ export class UserService {
   }
 
   deleteProduct(id) {
-    return this.http.delete<any>(this.apiURL + `/products/delete/${id}`, this.httpOptions);
+    return this.http.delete<any>(this.apiURL + `/products/delete?id=${id}`, this.httpOptions);
   }
 
   //Transactions service call  to api from userService component classs

@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
   isLoading=false;
   productId:any;
   todayDate: Date = new Date();
+  config:any;
 
 
 
@@ -49,7 +50,18 @@ export class ProductListComponent implements OnInit {
       isDeletable	:['']
 
     })
+    this.config = {
+      itemsPerPage: 3,
+      currentPage: 1,
+      totalItems: this.products.length
+    };
   }
+
+  pageChanged(event){
+    this.config.currentPage = event;
+  }
+
+
   ngOnInit(): void {
     this.getAllProducts();
   }

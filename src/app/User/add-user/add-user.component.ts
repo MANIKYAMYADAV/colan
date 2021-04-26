@@ -32,7 +32,7 @@ export class AddUserComponent implements OnInit {
       // ratingCount:['',Validators.required],
       role: ['', Validators.required],
       subscription: ['', Validators.required],
-      // subscriptionCost:['',Validators.required],
+      subscriptionCost: ['', Validators.required],
 
     })
   }
@@ -61,8 +61,8 @@ export class AddUserComponent implements OnInit {
       this.isLoading = false;
       if (res && res.data) {
         let userDetails = res.data;
-        console.log("User Details : ", userDetails)
-         this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
+        console.log("User Details : ", userDetails)  //
+        this.userForm.get('emailId').setValue(userDetails.emailId ? userDetails.emailId : '')
         this.userForm.get('description').setValue(userDetails.description ? userDetails.description : '')
         this.userForm.get('isActive').setValue(userDetails.isActive ? userDetails.isActive : '')
         this.userForm.get('mobile').setValue(userDetails.mobile ? userDetails.mobile : '')
@@ -70,6 +70,9 @@ export class AddUserComponent implements OnInit {
         this.userForm.get('rating').setValue(userDetails.rating ? userDetails.rating : '')
         this.userForm.get('role').setValue(userDetails.role ? userDetails.role : '')
         this.userForm.get('subscription').setValue(userDetails.subscription ? userDetails.subscription : '')
+        this.userForm.get('subscriptionCost').setValue(userDetails.subscriptionCost ? userDetails.subscriptionCost : '')
+        this.userForm.get('endingDate').setValue(userDetails.endingDate ? userDetails.endingDate : '')
+
         this.toastr.success(res.message, "Success")
 
       }
@@ -89,6 +92,7 @@ export class AddUserComponent implements OnInit {
   // by using add we can add or update based on id present
   addUser(data) {
 
+    console.log("Updated User Data :",data);
     if (this.userId) {
       this.userService.updateUser(data).subscribe((response) => {
         console.log("Updated User Data :", response.data);
