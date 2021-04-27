@@ -25,8 +25,8 @@ export class UserService {
   //Users service call to admin login api from userService component class 
 
   adminLogin(data: any) {
-    console.log("Login Data : ", data);
-    return this.http.post<any>(this.apiURL + '/users/admin/login', {emailId:data.emailId,password:data.password}, this.httpOptions);
+    console.log("Service Login Data : ", data);
+    return this.http.post<any>(this.apiURL + `/users/admin/login?emailId=${data.emailId}&&password=${data.password}`, this.httpOptions);
   }
 
 

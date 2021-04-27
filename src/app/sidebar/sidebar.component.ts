@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,19 +8,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-  
-  public isShow:boolean = false;
-  isUser:boolean = false;
-  isCategory:boolean = false;
-  isOrder:boolean = false;
-  isProduct:boolean = false;
-  isTransaction=false;
-  isNotification=false;
-  public isShowSideBar:boolean = false;
+  constructor(private router: Router) { }
 
-  @Input()  public headerProp;
-   
+  public isShow: boolean = false;
+  isUser: boolean = false;
+  isCategory: boolean = false;
+  isOrder: boolean = false;
+  isProduct: boolean = false;
+  isTransaction = false;
+  isNotification = false;
+  public isShowSideBar: boolean = false;
+
+  @Input() public headerProp;
+
   toggleSidebar() {
     this.isShow = !this.isShow;
   }
@@ -35,15 +36,16 @@ export class SidebarComponent implements OnInit {
   toggleCategory() {
     this.isCategory = !this.isCategory;
   }
-  toggleTransaction(){
-    this.isTransaction=!this.isTransaction;
+  toggleTransaction() {
+    this.isTransaction = !this.isTransaction;
 
   }
 
-  toggleNotification(){
-    this.isNotification=!this.isNotification;
+  toggleNotification() {
+    this.isNotification = !this.isNotification;
   }
   ngOnInit(): void {
   }
+
 
 }

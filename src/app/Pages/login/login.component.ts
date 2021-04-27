@@ -93,13 +93,13 @@ export class LoginComponent implements OnInit {
     console.log("Login Data : ", data);
 
     this.userService.adminLogin(data).subscribe(Response => {
-      if (Response.data[0].status == 1) {
-        localStorage.setItem('token', Response.data[1].token);
-        localStorage.setItem('user_id', Response.data[0]._id);
+      if (Response.statusCode == 200) {
+        localStorage.setItem('token', Response.data.jwtTokenId);
+        localStorage.setItem('user_id', Response.data.id);
         // localStorage.setItem('userNumber', Response.data[0].userName);
         // localStorage.setItem('user_data', JSON.stringify({"name": Response.data[0].userName, "email" :Response.data.email, "role": Response.data.role }));
         this.toastr.success(Response.message, "Success")
-        this.router.navigate(['dashboard1']);
+        this.router.navigate(['/dashboard1']);
       } else {
         this.toastr.error(Response.message, "Error");
       }

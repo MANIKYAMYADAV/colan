@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   searchTerm: any;
-  constructor() { }
+  constructor(private router: Router) { }
   public isShowSideBar: boolean = false;
 
   toggleSidebar() {
@@ -20,6 +21,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     //this.toggleSidebar()
   }
+  logout() {
+    this.router.navigate(['/'])
+      .then(() => {
+        localStorage.clear();
+      });
+
+    this.router.navigate(['/login']);
+  }
+
   // logout() {
   //   this.router.navigate(['/'])
   //     .then(() => {
