@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SocialUser } from 'angularx-social-login';
 import { SocialAuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { UserService } from 'src/app/Services/user.service';
 
 
 @Component({
@@ -19,11 +20,9 @@ export class LoginComponent implements OnInit {
   user: SocialUser;
 
   constructor(
-    private fb: FormBuilder, private router: Router, private authService: SocialAuthService, private toastr: ToastrService
-
-  ) {
+    private fb: FormBuilder, private router: Router, private authService: SocialAuthService, private toastr: ToastrService, private userService: UserService) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      emailId: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       password: ['', Validators.required],
     })
   }
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.toastr.success("Successfully Login with Google...");
         this.router.navigate(['dashboard1']);
       }
-      else{
+      else {
         this.toastr.error('Error occured!');
       }
     })
@@ -53,9 +52,9 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(res => {
       if (res) {
         this.toastr.success("Successfully Login with FaceBook...");
-        this.router.navigate(['dashboard2']);
+        this.router.navigate(['/dashboard2']);
       }
-      else{
+      else {
         this.toastr.error('Error occured!');
       }
     })
@@ -78,20 +77,35 @@ export class LoginComponent implements OnInit {
 
   login(data: any) {
 
-    // this.userService.authentication(data).subscribe(Response =>{
-    //   if(Response.data[0].status == 1){
+    // this.userService.adminLogin(data).subscribe((Response => {
+    //   if (Response.data[0].status == 1) {
     //     localStorage.setItem('token', Response.data[1].token);
-    //     localStorage.setItem('user_id', Response.data[0]._id);
-    //     localStorage.setItem('userNumber', Response.data[0].userName);
-    //     localStorage.setItem('user_data', JSON.stringify({"name": Response.data[0].userName, "email" :Response.data.email, "role": Response.data.role }));
+    //     localStorage.setItem('userId', Response.data[0].id);
     //     this.toastr.success(Response.message, "Success")
-    //     this.router.navigate(['./Web-Chat/Chat']);
-    //   }else{
+    //   }
+    //   else {
     //     this.toastr.error(Response.message, "Error");
     //   }
-    // },error=>{
+    // }, error => {
     //   this.toastr.error(error.error.message, 'Error');
-    // })
+    // }
+    // ))
+    console.log("Login Data : ", data);
+
+    this.userService.adminLogin(data).subscribe(Response => {
+      if (Response.data[0].status == 1) {
+        localStorage.setItem('token', Response.data[1].token);
+        localStorage.setItem('user_id', Response.data[0]._id);
+        // localStorage.setItem('userNumber', Response.data[0].userName);
+        // localStorage.setItem('user_data', JSON.stringify({"name": Response.data[0].userName, "email" :Response.data.email, "role": Response.data.role }));
+        this.toastr.success(Response.message, "Success")
+        this.router.navigate(['dashboard1']);
+      } else {
+        this.toastr.error(Response.message, "Error");
+      }
+    }, error => {
+      this.toastr.error(error.error.message, 'Error');
+    })
   }
 
 }

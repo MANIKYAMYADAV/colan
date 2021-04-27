@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
-  providedIn: 'root' 
+  providedIn: 'root'
 })
 export class UserService {
   apiURL: string = 'http://openchefaws-env.eba-zxrnhky2.ap-south-1.elasticbeanstalk.com/chef/v1';
@@ -19,6 +19,15 @@ export class UserService {
     })
   };
   constructor(private http: HttpClient) { }
+
+
+
+  //Users service call to admin login api from userService component class 
+
+  adminLogin(data: any) {
+    console.log("Login Data : ", data);
+    return this.http.post<any>(this.apiURL + '/users/admin/login', {emailId:data.emailId,password:data.password}, this.httpOptions);
+  }
 
 
   //Users service call  to api from userService component classs
@@ -41,7 +50,7 @@ export class UserService {
   }
 
   deleteUser() {
-    return this.http.delete<any>(this.apiURL+'/users/inactive', this.httpOptions)
+    return this.http.delete<any>(this.apiURL + '/users/inactive', this.httpOptions)
   }
 
 
@@ -111,13 +120,13 @@ export class UserService {
 
   //Transactions service call  to api from userService component classs
 
-getAllTransactions(){
-  return this.http.get<any>(this.apiURL + '/transactions',this.httpOptions);
-}
+  getAllTransactions() {
+    return this.http.get<any>(this.apiURL + '/transactions', this.httpOptions);
+  }
 
 
-getTransactionDetails(id){
-  return this.http.get<any>(this.apiURL + `/transactions/${id}`,this.httpOptions);
-}
+  getTransactionDetails(id) {
+    return this.http.get<any>(this.apiURL + `/transactions/${id}`, this.httpOptions);
+  }
 
 }
