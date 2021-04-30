@@ -98,7 +98,7 @@ export class UserService {
   }
 
 
-  //Products service call  to api from userService component classs
+  //Products service call  to api from userService component class
 
 
   getAllProducts() {
@@ -118,7 +118,7 @@ export class UserService {
     return this.http.delete<any>(this.apiURL + `/products/delete?id=${id}`, this.httpOptions);
   }
 
-  //Transactions service call  to api from userService component classs
+  //Transactions service call  to api from userService component class
 
   getAllTransactions() {
     return this.http.get<any>(this.apiURL + '/stripes/list', this.httpOptions);
@@ -128,5 +128,13 @@ export class UserService {
   getTransactionDetails(id) {
     return this.http.get<any>(this.apiURL + `/transactions/${id}`, this.httpOptions);
   }
+
+  //Notifications service call  to api from userService component class
+
+  postNotification(data){
+    return this.http.post<any>(this.apiURL + `/notificatons/add`,{notification:data},this.httpOptions);
+  }
+
+
 
 }

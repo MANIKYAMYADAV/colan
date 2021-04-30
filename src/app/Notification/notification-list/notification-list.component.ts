@@ -19,8 +19,9 @@ export class NotificationListComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
 
     this.notificationForm = this.fb.group({
-      title: ['', Validators.required],
-      body: ['', Validators.required],
+      keys: [''],
+      messageTitle: ['', Validators.required],
+      message: ['', Validators.required],
     })
   }
   ngOnInit(): void {
@@ -28,6 +29,16 @@ export class NotificationListComponent implements OnInit {
 
   createNotification(data) {
     console.log("Notification Data:", data);
+
+    this.userService.postNotification(data).subscribe(response => {
+
+      console.log("Added Notification Data :", response.data);
+      this.toastr.success(response.message, "Success")
+
+    }, (error) => {
+      this.isLoading = false;
+      this.toastr.error(error.error.message, 'Error');
+    })
   }
 
 }
