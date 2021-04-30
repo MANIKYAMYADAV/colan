@@ -51,7 +51,7 @@ export class TransactionDetailsComponent implements OnInit {
       this.isLoading = false;
       if (res && res.data) {
         let transactionDetails = res.data[0];
-        this.transactionForm.get('transactionId').setValue(transactionDetails.transactionId ? transactionDetails.transactionId : '')
+        this.transactionForm.get('id').setValue(transactionDetails.transactionId ? transactionDetails.transactionId : '')
         this.transactionForm.get('description').setValue(transactionDetails.description ? transactionDetails.description : '')
         this.transactionForm.get('status').setValue(transactionDetails.status ? transactionDetails.status : '')
         this.transactionForm.get('type').setValue(transactionDetails.type ? transactionDetails.type : '')

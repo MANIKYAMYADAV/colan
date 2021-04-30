@@ -74,8 +74,9 @@
                                     <tr>
 
                                         <th>Transaction ID</th>
-                                        <th>Type</th>
                                         <th>Description</th>
+                                        <th>Type</th>
+                                        <th>Currency</th>
                                         <th>Status</th>
                                         <th>Total Amount</th>
                                         <th>Actions</th>
@@ -84,11 +85,32 @@
 
 
                                 <tbody>
-                                    <tr>
+                                    <tr
+                                        *ngFor="let transaction of transactions | paginate: config | filter:searchTerm; let i= index">
 
+                                        <td>{{transaction.id}}</td>
+                                        <td>{{transaction.description}}</td>
+                                        <td>{{transaction.type}}</td>
+                                        <td>{{transaction.currency}}</td>
+                                        <td>{{transaction.status}}</td>
+                                        <td>{{transaction.amount}}</td>
+                                        <td>
+
+
+                                            <a (click)="editTransaction(transaction)">
+                                                <i class="far fa-edit"></i>
+                                            </a> &nbsp;
+
+                                            <a (click)="getTransactionId(transaction.id)" data-toggle="modal" data-target="#deleteModal">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+
+
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 
                         </div> <!-- end card body-->
                     </div> <!-- end card -->

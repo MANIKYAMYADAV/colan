@@ -121,7 +121,7 @@ export class UserService {
   //Transactions service call  to api from userService component classs
 
   getAllTransactions() {
-    return this.http.get<any>(this.apiURL + '/transactions', this.httpOptions);
+    return this.http.get<any>(this.apiURL + '/stripes/list', this.httpOptions);
   }
 
 

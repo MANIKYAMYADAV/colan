@@ -89,7 +89,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/dashboard1',
+    redirectTo: '/login',
     pathMatch: 'full'
   }  ,
   { path: 'dashboard1', component: Dashboard1Component },

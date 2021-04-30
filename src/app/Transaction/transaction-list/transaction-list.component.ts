@@ -12,9 +12,21 @@ export class TransactionListComponent implements OnInit {
   searchTerm: any;
   isLoading = false;
   transactionId: any;
+  transactions: any[] = [];
+  config:any;
 
 
-  constructor(private userService: UserService,private router : Router) { }
+  constructor(private userService: UserService, private router: Router) { 
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.transactions.length
+    };
+  }
+
+  pageChanged(event){
+    this.config.currentPage = event;
+  }
 
   ngOnInit(): void {
     this.getAllTransactions();
@@ -22,10 +34,12 @@ export class TransactionListComponent implements OnInit {
   }
 
   getAllTransactions() {
-
     // list of transactions from DB
     this.userService.getAllTransactions().subscribe((response) => {
-      console.log("Transaction Data : ", response.data);
+      if (response.statusCode == 200) {
+        this.transactions = response.data;
+        console.log("Transaction Data : ", response.data);
+      }
     })
 
   }
@@ -35,8 +49,8 @@ export class TransactionListComponent implements OnInit {
     this.transactionId = id;
   }
 
-  editTransaction(transaction){
-    console.log("Transaction Id ",transaction.id)
+  editTransaction(transaction) {
+    console.log("Transaction Id ", transaction.id)
     this.router.navigate(['transaction-details'], { queryParams: { 'id': transaction.id } });
   }
 
