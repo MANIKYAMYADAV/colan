@@ -3,6 +3,9 @@ import { UserService } from 'src/app/Services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {ElementRef, ViewChild } from '@angular/core';  
+import * as XLSX from 'xlsx';  
+declare var $ : any;
 
 
 @Component({
@@ -12,42 +15,51 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductListComponent implements OnInit {
 
-  searchTerm:any;
-  products:any[]=[];
+  searchTerm: any;
+  products: any[] = [];
   productForm: FormGroup;
-  isLoading=false;
-  productId:any;
+  isLoading = false;
+  productId: any;
   todayDate: Date = new Date();
-  config:any;
+  config: any;
 
 
+  @ViewChild('TABLE', { static: false }) TABLE: ElementRef;
+  title = 'Excel';
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'Product.xlsx');
+  }
 
-  constructor(private fb: FormBuilder,private userService:UserService, private router: Router, private toastr: ToastrService) {
+
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
 
     this.productForm = this.fb.group({
-      availableDate	: ['', Validators.required],
-      availableTime	:['',Validators.required],
-      categoryId	:['',Validators.required],
-      categoryName	:['',Validators.required],
-      deliveryOption	:['',Validators.required],
-      deliveryTime	:['',Validators.required],
-      description	:['',Validators.required],
-      endingDate	:['',Validators.required],
-      endingTime	:['',Validators.required],
-      imagePath	:['',Validators.required],
-      isActive	:['',Validators.required],
-      isEditable	:['',Validators.required],
-      name:[''],
-      price:[''],
-      quantity:[''],
-      rating:[''],
-      ratingCount:[''],
-      special:[''],
-      stock:[''],
-      userAddress:[''],
-      userName:[''],
-      status:[''],
-      isDeletable	:['']
+      availableDate: ['', Validators.required],
+      availableTime: ['', Validators.required],
+      categoryId: ['', Validators.required],
+      categoryName: ['', Validators.required],
+      deliveryOption: ['', Validators.required],
+      deliveryTime: ['', Validators.required],
+      description: ['', Validators.required],
+      endingDate: ['', Validators.required],
+      endingTime: ['', Validators.required],
+      imagePath: ['', Validators.required],
+      isActive: ['', Validators.required],
+      isEditable: ['', Validators.required],
+      name: [''],
+      price: [''],
+      quantity: [''],
+      rating: [''],
+      ratingCount: [''],
+      special: [''],
+      stock: [''],
+      userAddress: [''],
+      userName: [''],
+      status: [''],
+      isDeletable: ['']
 
     })
     this.config = {
@@ -57,7 +69,7 @@ export class ProductListComponent implements OnInit {
     };
   }
 
-  pageChanged(event){
+  pageChanged(event) {
     this.config.currentPage = event;
   }
 
@@ -66,12 +78,12 @@ export class ProductListComponent implements OnInit {
     this.getAllProducts();
   }
 
-  getAllProducts(){
-    this.userService.getAllProducts().subscribe((response)=>{
+  getAllProducts() {
+    this.userService.getAllProducts().subscribe((response) => {
       this.products = response.data;
-      console.log("All Products : ",response.data);
+      console.log("All Products : ", response.data);
     })
-    
+
   }
 
   getProductId(id) {
@@ -81,25 +93,25 @@ export class ProductListComponent implements OnInit {
   }
 
   editProduct(product) {
-    console.log("product Id ",product.id)
+    console.log("product Id ", product.id)
     this.router.navigate(['add-product'], { queryParams: { 'id': product.id } });
 
   }
 
 
-  saveProduct(productData){
-    this.userService.addProduct(productData).subscribe((response)=>{
-      console.log("Product Data",response.data)
+  saveProduct(productData) {
+    this.userService.addProduct(productData).subscribe((response) => {
+      console.log("Product Data", response.data)
     })
   }
 
   deleteProduct() {
-    this.isLoading=true;
+    this.isLoading = true;
     console.log("product Id :", this.productId);
     this.userService.deleteProduct(this.productId).subscribe((response) => {
       console.log("Product Deleted : ", response.data)
       this.getAllProducts();
-      this.isLoading =false;
+      this.isLoading = false;
     })
 
   }

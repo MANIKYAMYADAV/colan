@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import {ElementRef, ViewChild } from '@angular/core';  
+import * as XLSX from 'xlsx';  
+declare var $ : any;
 
 @Component({
   selector: 'app-transaction-list',
@@ -14,6 +17,16 @@ export class TransactionListComponent implements OnInit {
   transactionId: any;
   transactions: any[] = [];
   config:any;
+
+  @ViewChild('TABLE', { static: false }) TABLE: ElementRef;
+  title = 'Excel';
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'Transaction.xlsx');
+  }
+
 
 
   constructor(private userService: UserService, private router: Router) { 

@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
+import {ElementRef, ViewChild } from '@angular/core';  
+import * as XLSX from 'xlsx';  
+declare var $ : any;
+
+
 
 @Component({
   selector: 'app-user-list',
@@ -23,6 +28,15 @@ export class UserListComponent implements OnInit {
 
   userForm: FormGroup;
   todayDate: Date = new Date();
+
+  @ViewChild('TABLE', { static: false }) TABLE: ElementRef;  
+  title = 'Excel';  
+  ExportTOExcel() {  
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);  
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();  
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  
+    XLSX.writeFile(wb, 'Users.xlsx');  
+  }  
 
 
 
@@ -148,5 +162,16 @@ export class UserListComponent implements OnInit {
       console.log("Updated Data :", response.data)
     })
   }
+
+
+
+  $(){
+    $('#datatable-buttons').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} 
 
 }
