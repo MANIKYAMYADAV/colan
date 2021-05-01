@@ -50,6 +50,10 @@
                                     <!-- <span><i class="fa fa-search"></i></span> -->
 
                                 </div>
+                                <div class="form-group d-block ml-auto">
+                                    <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+
+                                </div>
                                 <!-- <div class="form-group d-block ml-auto">
                                     <button type="button" class="btn btn-success waves-effect waves-light "
                                         data-toggle="modal" data-target="#con-close-modal">+Add Order</button>
@@ -58,7 +62,8 @@
 
 
                             <br>
-                            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                            <table id="datatable-buttons" #TABLE #table
+                                class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
                                         <th>UserName</th>
@@ -185,7 +190,7 @@
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" >Yes, delete
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes, delete
                     it!</button>
             </div>
         </div>
@@ -208,18 +213,19 @@
                     <div class="card-body p-4">
                         <!-- <button class="btn btn-primary" routerLink="/order-list">back to home</button> -->
                         <form action="#" [formGroup]="orderForm">
-        
+
                             <h1 class="text-center">Add-Order Form</h1>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
                                         <div class="form-group">
                                             <label for="inputAddress">Chef Name </label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="chefName"
-                                                placeholder="Enter chefName">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="chefName" placeholder="Enter chefName">
                                             <div
                                                 *ngIf="(orderForm.get('chefName')?.invalid && orderForm.get('chefName')?.touched) || orderForm.get('chefName')?.dirty">
-                                                <small *ngIf="orderForm.get('chefName')?.errors?.required" class="text-danger">
+                                                <small *ngIf="orderForm.get('chefName')?.errors?.required"
+                                                    class="text-danger">
                                                     chef Name
                                                     is required</small>
                                             </div>
@@ -246,7 +252,7 @@
                                                     is required</small>
                                             </div>
                                         </div>
-        
+
                                         <div class="form-group">
                                             <label for="inputAddress">Delivery Option</label>
                                             <input type="text" class="form-control" id="inputAddress"
@@ -273,13 +279,13 @@
                                                     class="text-danger">Ending Date is required</small>
                                             </div>
                                         </div> -->
-        
+
                                     </div>
                                 </div>
-        
+
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="p-sm-3">
-        
+
                                         <div class="form-group">
                                             <label for="inputAddress">payment Mode</label>
                                             <input type="text" class="form-control" id="inputAddress"
@@ -293,18 +299,19 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Name</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="name"
-                                                placeholder="Enter name">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="name" placeholder="Enter name">
                                             <div
                                                 *ngIf="(orderForm.get('name')?.invalid && orderForm.get('name')?.touched) || orderForm.get('name')?.dirty">
-                                                <small *ngIf="orderForm.get('name')?.errors?.required" class="text-danger">Name
+                                                <small *ngIf="orderForm.get('name')?.errors?.required"
+                                                    class="text-danger">Name
                                                     is required</small>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Price</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="price"
-                                                placeholder="Enter price">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="price" placeholder="Enter price">
                                             <div
                                                 *ngIf="(orderForm.get('price')?.invalid && orderForm.get('price')?.touched) || orderForm.get('price')?.dirty">
                                                 <small *ngIf="orderForm.get('price')?.errors?.required"
@@ -314,8 +321,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputAddress">Quantity</label>
-                                            <input type="text" class="form-control" id="inputAddress" formControlName="quantity"
-                                                placeholder="Enter quantity">
+                                            <input type="text" class="form-control" id="inputAddress"
+                                                formControlName="quantity" placeholder="Enter quantity">
                                             <div
                                                 *ngIf="(orderForm.get('quantity')?.invalid && orderForm.get('quantity')?.touched) || orderForm.get('quantity')?.dirty">
                                                 <small *ngIf="orderForm.get('quantity')?.errors?.required"
@@ -323,11 +330,11 @@
                                                     is required</small>
                                             </div>
                                         </div>
-        
+
                                     </div>
-        
+
                                 </div>
-        
+
                                 <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success"  (click)="saveOrder(orderForm.value)"
@@ -336,13 +343,13 @@
                                     </div>
                                 </div> -->
                             </div>
-        
-        
-                          
-                           
+
+
+
+
                         </form>
-        
-        
+
+
                     </div>
                 </div>
 
@@ -399,7 +406,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="orderForm.invalid" (click)="saveOrder(orderForm.value)">Save changes</button>
+                <button type="button" class="btn btn-success waves-effect waves-light" [disabled]="orderForm.invalid"
+                    (click)="saveOrder(orderForm.value)">Save changes</button>
             </div>
         </div>
     </div>

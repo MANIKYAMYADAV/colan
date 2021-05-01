@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {ElementRef, ViewChild } from '@angular/core';  
+import * as XLSX from 'xlsx';  
+declare var $ : any;
 
 @Component({
   selector: 'app-order-list',
@@ -15,6 +18,15 @@ export class OrderListComponent implements OnInit {
   orderId: any;
   orderForm:any;
   todayDate: Date = new Date();
+
+  @ViewChild('TABLE', { static: false }) TABLE: ElementRef;
+  title = 'Excel';
+  ExportTOExcel() {
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.TABLE.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, 'Order.xlsx');
+  }
 
 
 

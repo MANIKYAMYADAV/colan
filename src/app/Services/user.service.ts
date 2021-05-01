@@ -131,8 +131,12 @@ export class UserService {
 
   //Notifications service call  to api from userService component class
 
-  postNotification(data){
-    return this.http.post<any>(this.apiURL + `/notificatons/add`,{notification:data},this.httpOptions);
+  getAllNotifications() {
+    return this.http.get<any>(this.apiURL + '/notificatons/all', this.httpOptions);
+  }
+
+  postNotification(data) {
+    return this.http.post<any>(this.apiURL + `/notificatons/add`, { notification: data }, this.httpOptions);
   }
 
 

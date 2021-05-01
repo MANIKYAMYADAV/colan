@@ -27,12 +27,12 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                <li class="breadcrumb-item active">UBold</li>
+                                <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li> -->
+                                <li class="breadcrumb-item active">Notification-List</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">UBold</h4>
+                        <h4 class="page-title">Notification-List</h4>
                     </div>
                 </div>
             </div>
@@ -58,6 +58,10 @@
 
                                 </div>
                                 <div class="form-group d-block ml-auto">
+                                    <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+
+                                </div>
+                                <div class="form-group d-block ml-auto">
                                     <button type="button" class="btn btn-success waves-effect waves-light "
                                         data-toggle="modal" data-target="#createField">+Create-Notification</button>
                                 </div>
@@ -69,7 +73,8 @@
 
 
                             <br>
-                            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                            <table id="datatable-buttons" #TABLE #table
+                                class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
 
@@ -173,7 +178,8 @@
                             <input type="text" class="form-control" formControlName="messageTitle" placeholder="Title">
                             <div
                                 *ngIf="(notificationForm.get('messageTitle')?.invalid && notificationForm.get('messageTitle')?.touched) || notificationForm.get('messageTitle')?.dirty">
-                                <small *ngIf="notificationForm.get('messageTitle')?.errors?.required" class="text-danger">Title
+                                <small *ngIf="notificationForm.get('messageTitle')?.errors?.required"
+                                    class="text-danger">Title
                                     is required</small>
                             </div>
                         </div>
@@ -184,7 +190,8 @@
                                 placeholder="message"></textarea>
                             <div
                                 *ngIf="(notificationForm.get('message')?.invalid && notificationForm.get('message')?.touched) || notificationForm.get('message')?.dirty">
-                                <small *ngIf="notificationForm.get('message')?.errors?.required" class="text-danger">message
+                                <small *ngIf="notificationForm.get('message')?.errors?.required"
+                                    class="text-danger">message
                                     is required</small>
                             </div>
                         </div>
