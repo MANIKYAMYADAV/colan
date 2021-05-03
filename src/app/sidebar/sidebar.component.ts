@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
   isNotification = false;
   public isShowSideBar: boolean = false;
 
-  @Input() public headerProp;
+  @Input('isShowSideBar') public ;
 
   toggleSidebar() {
     this.isShow = !this.isShow;

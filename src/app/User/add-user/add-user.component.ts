@@ -72,6 +72,8 @@ export class AddUserComponent implements OnInit {
         this.userForm.get('subscription').setValue(userDetails.subscription ? userDetails.subscription : '')
         this.userForm.get('subscriptionCost').setValue(userDetails.subscriptionCost ? userDetails.subscriptionCost : '')
         this.userForm.get('endingDate').setValue(userDetails.endingDate ? userDetails.endingDate : '')
+        this.userForm.get('ratingCount').setValue(userDetails.ratingCount ? userDetails.ratingCount : '')
+
 
         this.toastr.success(res.message, "Success")
 

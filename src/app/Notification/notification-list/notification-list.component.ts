@@ -45,6 +45,7 @@ export class NotificationListComponent implements OnInit {
   getAllNotifications(){
     this.userService.getAllNotifications().subscribe((response)=>{
       this.notifications = response.data;
+      console.log("Notification List : ",response.data);
 
     })
   }
