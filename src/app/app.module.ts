@@ -147,6 +147,7 @@ import { MaterialModule } from './material/material.module';
 import { TransactionListComponent } from './Transaction/transaction-list/transaction-list.component';
 import { TransactionDetailsComponent } from './Transaction/transaction-details/transaction-details.component';
 import { NotificationListComponent } from './Notification/notification-list/notification-list.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -315,7 +316,8 @@ import { NotificationListComponent } from './Notification/notification-list/noti
           }
         ]
       } as SocialAuthServiceConfig,
-    }
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })
