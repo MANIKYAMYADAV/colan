@@ -63,7 +63,7 @@ export class ProductListComponent implements OnInit {
 
     })
     this.config = {
-      itemsPerPage: 3,
+      itemsPerPage: 5,
       currentPage: 1,
       totalItems: this.products.length
     };

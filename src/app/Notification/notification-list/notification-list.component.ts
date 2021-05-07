@@ -19,6 +19,7 @@ export class NotificationListComponent implements OnInit {
 
   notificationForm: any;
   notifications:any[]=[];
+  config:any;
 
   @ViewChild('TABLE', { static: false }) TABLE: ElementRef;
   title = 'Excel';
@@ -36,6 +37,15 @@ export class NotificationListComponent implements OnInit {
       messageTitle: ['', Validators.required],
       message: ['', Validators.required],
     })
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.notifications.length
+    };
+  }
+
+  pageChanged(event) {
+    this.config.currentPage = event;
   }
   ngOnInit(): void {
     this.getAllNotifications();
