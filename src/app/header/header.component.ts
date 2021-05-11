@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -11,14 +14,29 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   searchTerm: any;
-  constructor(private router: Router) { }
+  settingForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService, private activeRoute: ActivatedRoute) {
+    this.settingForm = this.fb.group({
+      name: ['', Validators.required],
+      description: [''],
+      value: ['', Validators.required],
+      id: [''],
+    })
+  }
   public isShowSideBar: boolean = false;
 
   toggleSidebar() {
     this.isShowSideBar = !this.isShowSideBar;
   }
 
-  ngOnInit(): void {
+  settingAdd(settingData) {
+    console.log("Setting Data  :", settingData)
+   // this.isLoading = true;
+    this.userService.addSetting(settingData).subscribe((response) => {
+      console.log("Added Setting Data  : ", response.data);
+    })
+  } ngOnInit(): void {
     //this.toggleSidebar()
   }
   logout() {

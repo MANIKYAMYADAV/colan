@@ -7,7 +7,7 @@
                 <div class="app-search-box">
                     <div class="input-group">
                         <!-- [(ngModel)]="searchTerm"  -->
-                        <input type="text" class="form-control" placeholder="Search..."  >
+                        <input type="text" class="form-control" placeholder="Search...">
                         <div class="input-group-append">
                             <button class="btn" type="submit">
                                 <i class="fe-search"></i>
@@ -133,10 +133,17 @@
                 </a>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="#trackingDistance" data-toggle="modal" class="btn btn-primary btn-icon-split btn-sm ml-1"
+                    class="dropdown-item notify-item">
                     <i class="fe-settings"></i>
                     <span>Settings</span>
                 </a>
+                <!-- <a>
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text"> Create QrCode</span>
+                </a> -->
 
                 <!-- item-->
                 <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
@@ -337,3 +344,90 @@
 <!-- end Topbar -->
 
 <app-sidebar *ngIf="isShowSideBar"></app-sidebar>
+
+
+<div class="modal fade" id="trackingDistance" tabindex="-1" role="dialog" aria-labelledby="assignTagCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Location tracking distance</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="card shadow mb-4 tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+
+                    <form [formGroup]="settingForm">
+                        <div class="form-group col-12 d-block float-left">
+                            <label for="name">Name
+                            </label>
+                            <input type="tex" class="form-control" id="name" placeholder="place name" formControlName="name">
+                            <div
+                                *ngIf="(settingForm.get('name')?.invalid && settingForm.get('name')?.touched) || settingForm.get('name')?.dirty">
+                                <small *ngIf="settingForm.get('name')?.errors?.required" class="text-danger">name
+                                    is required</small>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 d-block float-left">
+                            <label for="desc">Description</label>
+                            <input type="text" class="form-control" id="desc" placeholder="description" formControlName="description"
+                                placeholder="Enter description">
+                            <div
+                                *ngIf="(settingForm.get('description')?.invalid && settingForm.get('description')?.touched) || settingForm.get('description')?.dirty">
+                                <small *ngIf="settingForm.get('description')?.errors?.required"
+                                    class="text-danger">description
+                                    is required</small>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 d-block float-left">
+                            <label for="exampleFormControlSelect1">Select Kms :
+                            </label>
+                            <select class="form-control" formControlName="value" id="email">
+                                <option value="5km">5km </option>
+                                <option value="10km">10km </option>
+                                <option value="15km">15km </option>
+                                <option value="20km">20km </option>
+                                <option value="25km">25km </option>
+
+                                <!-- *ngFor="let group of allGroups" value="{{group.groupid}}" {{group.groupname}} -->
+                                <option>
+
+                                </option>
+                            </select>
+                            <div
+                                *ngIf="(settingForm.get('value')?.invalid && settingForm.get('value')?.touched) || settingForm.get('value')?.dirty">
+                                <small *ngIf="settingForm.get('value')?.errors?.required"
+                                    class="text-danger">value
+                                    is required</small>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <!-- (click)="createSingleLead(createSinfleLeadForm.value)" -->
+                            <button type="submit" class="btn btn-primary" (click)="settingAdd(settingForm.value)" data-dismiss="modal">Save
+                                Changes</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!-- <div class="tab-pane fade card shadow mb-4 " id="form1" role="tabpanel" aria-labelledby="profile-tab">
+            <div class=" d-flex align-items-center pt-4 pr-4">
+
+            </div>
+            
+
+
+        </div> -->
+    </div>
+</div>
