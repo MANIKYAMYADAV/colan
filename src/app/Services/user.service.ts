@@ -29,9 +29,10 @@ export class UserService {
     return this.http.post<any>(this.apiURL + `/users/admin/login?emailId=${data.emailId}&&password=${data.password}`, this.httpOptions);
   }
 
-  addSetting(data:any){
+  addSetting(data: any) {
     console.log("Setting Data : ", data);
-        return this.http.post<any>(this.apiURL + `/setting/add?=${data}`, this.httpOptions);
+    // name=${data.name}&&description=${data.description}&&value=${data.value}
+    return this.http.post<any>(this.apiURL + `/setting/add?=`,data, this.httpOptions);
   }
 
   //Users service call  to api from userService component classs
