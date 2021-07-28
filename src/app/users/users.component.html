@@ -1,0 +1,353 @@
+<app-header></app-header>
+
+<app-sidebar></app-sidebar>
+
+
+
+
+
+<div class="jumbotron">
+    <div class="mt-3">
+        <div class="account-pages mt-5 mb-5">
+            <div class="container">
+
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+    </div>
+</div>
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-pattern">
+                        <!-- <div class="d-block ml-auto">
+                            <button class="btn btn-primary" routerLink="/users">
+
+                                Back to Users
+
+                            </button>
+
+                        </div> -->
+
+                        <div class="card-body p-4">
+
+                            <div class="text-center w-80 m-auto">
+
+                                <a href="index.html" class="logo text-center">
+                                    <!-- <span class="logo-lg ">
+                                        <img src="assets/images/openchef.png" class="rounded-circle" alt=""
+                                            height="90" width="90">&nbsp; </span> -->
+                                    <!-- <span class="logo-lg-text-light m-1">Open-Chef</span> -->
+
+
+                                    <!-- <h6 class="m-0 font-weight-bold text-primary">{{formId ? 'Edit Form' : 'Create Form'}}</h6> -->
+
+                                    <h1 class="text-center"><strong> Colan:User-Add/Edit Form</strong>
+                                    </h1>
+
+
+                                    <!-- <span class="logo-sm">
+                                        <span class="logo-sm-text-dark">U</span>
+                                        <img src="assets/images/logo-sm.png" alt="" height="24">
+                                    </span> -->
+                                </a>
+
+                                <!-- <p class="text-muted mb-4 mt-3">Enter your email address and password to access
+                                    admin
+                                    panel.</p> -->
+                            </div>
+
+                            <form action="#" [formGroup]="userForm">
+
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">Name</label>
+                                    <input class="form-control" type="text" formControlName="name" id="name" required=""
+                                        placeholder="Enter value">
+                                    <div
+                                        *ngIf="(userForm.get('name')?.invalid && userForm.get('name')?.touched) || userForm.get('name')?.dirty">
+                                        <small *ngIf="userForm.get('name')?.errors?.required" class="text-danger">name
+                                            is
+                                            required</small>
+
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">Phone</label>
+                                    <input class="form-control" type="tel" formControlName="phone" id="name" required=""
+                                        placeholder="Enter mobile">
+                                    <div
+                                        *ngIf="(userForm.get('phone')?.invalid && userForm.get('phone')?.touched) || userForm.get('phone')?.dirty">
+                                        <small *ngIf="userForm.get('phone')?.errors?.required" class="text-danger">phone
+                                            is
+                                            required</small>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">Address</label>
+                                    <input class="form-control" type="text" formControlName="address" id="emailaddress"
+                                        required="" placeholder="Enter value">
+                                    <div
+                                        *ngIf="(userForm.get('address')?.invalid && userForm.get('address')?.touched) || userForm.get('address')?.dirty">
+                                        <small *ngIf="userForm.get('address')?.errors?.required"
+                                            class="text-danger">address
+                                            is
+                                            required</small>
+
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">State</label>
+                                    <input class="form-control" type="text" formControlName="state" id="name"
+                                        required="" placeholder="Enter state">
+                                    <div
+                                        *ngIf="(userForm.get('state')?.invalid && userForm.get('state')?.touched) || userForm.get('state')?.dirty">
+                                        <small *ngIf="userForm.get('state')?.errors?.required" class="text-danger">state
+                                            is
+                                            required</small>
+
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">City</label>
+                                    <input class="form-control" type="text" formControlName="city" id="name" required=""
+                                        placeholder="Enter city">
+                                    <div
+                                        *ngIf="(userForm.get('city')?.invalid && userForm.get('city')?.touched) || userForm.get('city')?.dirty">
+                                        <small *ngIf="userForm.get('city')?.errors?.required" class="text-danger">city
+                                            is
+                                            required</small>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <button class="btn btn-secondary" type="button" (click)="formReset()"> <span
+                                            class="text">Cancel</span></button>
+                                    &nbsp;
+                                    <button class="btn btn-primary" type="button" [disabled]="userForm.invalid"
+                                        (click)="employeeData(userForm.value)">
+                                        <span class="text">Send</span>
+                                    </button>
+                                </div>
+
+                            </form>
+
+
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li> -->
+                                <li class="breadcrumb-item active">Users-List</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Users-List</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+
+            <!-- end row-->
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+
+                        <div class="card-body scrollTable">
+
+                            <h4 class="header-title">Users-List</h4>
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label for="fullname">Search</label>&nbsp;
+                                    <input class="form-control" type="search" placeholder="Search.."
+                                        [(ngModel)]="searchTerm">
+                                    <!-- <span><i class="fa fa-search"></i></span> -->
+
+                                </div>
+                                <!-- <div class="form-group d-block ml-auto">
+                                    <button class="btn btn-primary">
+
+                                        Feedback
+
+                                    </button>
+
+                                </div> -->
+                                <!-- <div class="form-group d-block ml-auto">
+                                    <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+
+                                </div> -->
+                                <!-- <div class="form-group d-block ml-auto">
+                                    <button type="button" class="btn btn-success waves-effect waves-light "
+                                        data-toggle="modal" data-target="#con-close-modal">+Add Product</button>
+                                </div> -->
+                            </div>
+
+                            <!-- #TABLE #table -->
+                            <br>
+                            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>State</th>
+                                        <th>City</th>
+                                        <th>
+                                            Actions
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <!--  *ngFor="let product of products | filter:searchTerm; let i=index" -->
+
+                                <tbody>
+                                    <tr *ngFor="let user of users | filter:searchTerm; let i=index">
+
+                                        <!-- <td><img  src= ${product.Images} style height="30" width="30" onerror="this.onerror=null;this.src='${product.Images}'"> ` : ''</td> -->
+                                        <!-- <td><img src="{{product.Images}}" style="height: 30; width: 30;" alt="" srcset=""></td>
+                                        <td>{{product.Collection}}</td>
+                                        <td>{{product.Price}}</td>
+                                        <td>{{product.ProductTitle}}</td>
+                                        <td>{{product.StyleName}}</td>
+                                        <td>{{product.StyleNumber}}</td>
+                                        <td>{{product.NetQuantity}}</td>
+                                        <td>{{product.ProductCode}}</td>
+                                        <td>{{product.AvailableSizes}}</td>
+                                        -->
+
+                                        <td>{{user.name}}</td>
+                                        <td>{{user.phone}}</td>
+                                        <td>{{user.address}}</td>
+                                        <td>{{user.state}}</td>
+                                        <td>{{user.city}}</td>
+                                        <td>
+                                            <div class="form-group">
+
+
+                                                <a class="form-inline" (click)="editEmployee(user._id)">
+
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                                &nbsp;
+
+
+                                                <a class="form-inline" (click)="getFormId(user._id)" href="#deleteModal"
+                                                    data-toggle="modal" class="dropdown-item">
+                                                    <!--  -->
+                                                    <i class="far fa-trash-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+
+                                                </a>
+
+
+                                            </div>
+                                        </td>
+
+
+
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>State</th>
+                                    <th>City</th>
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tfoot>
+                            </table>
+                            <!-- <div class="d-flex ml-auto">
+                            <pagination-controls  (pageChange)="pageChanged($event)"></pagination-controls>
+                           </div> -->
+
+
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
+            <!-- end row-->
+
+
+
+
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    2021 &copy; theme by <a href="">Colan</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript:void(0);">About Us</a>
+                        <a href="javascript:void(0);">Help</a>
+                        <a href="javascript:void(0);">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
+
+</div>
+
+<app-footer></app-footer>
+
+
+
+<!-- delete Modal HTML -->
+<div id="deleteModal" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title w-100">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body modal-height-body">
+                <p>This is a form that you are going to delete. Be sure this is what you want to do. Once you delete
+                    this form, this data will be gone forever. We CANNOT RESTORE this data.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteUser()">Yes,
+                    Delete it!</button>
+            </div>
+        </div>
+    </div>
+</div>

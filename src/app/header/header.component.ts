@@ -30,13 +30,16 @@ export class HeaderComponent implements OnInit {
     this.isShowSideBar = !this.isShowSideBar;
   }
 
-  settingAdd(settingData) {
-    console.log("Setting Data  :", settingData)
-   // this.isLoading = true;
-    this.userService.addSetting(settingData).subscribe((response) => {
-      console.log("Added Setting Data  : ", response.data);
-    })
-  } ngOnInit(): void {
+  // settingAdd(settingData) {
+  //   console.log("Setting Data  :", settingData)
+  //  // this.isLoading = true;
+  //   this.userService.addSetting(settingData).subscribe((response) => {
+  //     console.log("Added Setting Data  : ", response.data);
+  //   })
+  // }
+  
+  
+  ngOnInit(): void {
     //this.toggleSidebar()
   }
   logout() {
